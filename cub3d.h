@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/16 17:39:59 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/18 16:30:32 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <string.h>
-# include "../minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include "ft_printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
+# include "get_next_line/get_next_line_bonus.h"
 # include "Libft/libft.h"
 
 // # define SCREEN_WIDTH 1920
@@ -33,14 +33,14 @@
 
 typedef struct s_player
 {
-	double		pos_x;
-	double		pos_y;
+	double		x;
+	double		y;
 	double		dir_x;
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
 }				t_player;
-
+//planes perpendiculat to direction vector
 typedef struct s_ray
 {
 	double		camera_x;

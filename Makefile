@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/16 17:42:13 by nour             ###   ########.fr        #
+#    Updated: 2025/12/18 11:22:10 by nfakih           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ SRC = main.c \
 	Libft/ft_split.c Libft/ft_strchr.c Libft/ft_strdup.c Libft/ft_strjoin.c \
 	Libft/ft_strlcat.c Libft/ft_strlcpy.c Libft/ft_strlen.c Libft/ft_strncmp.c \
 	Libft/ft_strnstr.c Libft/ft_strrchr.c Libft/ft_strstr.c Libft/ft_strtrim.c \
-	Libft/ft_substr.c done.c
+	Libft/ft_substr.c
 
 OBJ	= $(SRC:.c=.o)
 
 CC      = cc
-CFLAGS  =  -Wall -Werror -Wextra -Iminilibx-linux -g -Ift_printf -Iget_next_line -ILibft
+CFLAGS  =  -Iminilibx-linux -g -Ift_printf -Iget_next_line -ILibft
 
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a

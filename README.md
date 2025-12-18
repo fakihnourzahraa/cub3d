@@ -157,3 +157,19 @@ Apply the correct texture
 
 You're essentially drawing the world one vertical slice at a time, left to right across the screen.
 Does this clarify things? Would you like me to explain any specific part in more detail (DDA algorithm, texture mapping, rotation math, etc.)?
+
+To calculate each ray’s direction:
+
+rayDir = direction + cameraPlane * cameraX
+Where:
+
+direction = player direction vector
+cameraX = a value from -1 (left edge) to +1 (right edge)
+cameraPlane = left/right direction vector (FOV)
+This means:
+
+The leftmost ray = dir - plane
+The center ray = dir
+The rightmost ray = dir + plane
+So the rays sweep across the FOV — and that’s how the screen gets rendered column by column.
+
