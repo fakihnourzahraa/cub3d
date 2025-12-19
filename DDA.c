@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2025/12/19 14:39:44 by nfakih           ###   ########.fr       */
+/*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
+/*   Updated: 2025/12/19 14:48:21 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
-void	init_game(t_game *game)
+void	start(t_game *game)
 {
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 1280, 720, "cub3d");
-	game->img.img = mlx_new_image(game->mlx, 1280, 720);
+	game->player->plane_x = 
 }
-int main(int argc, char **argv)
-{
-	t_map	*map;
-	t_game	*game;
-
-	map = malloc(sizeof(t_map));
-	init_game(game);
-	mlx_loop(game->mlx);
-}
-

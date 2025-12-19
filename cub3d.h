@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/18 16:30:32 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/19 15:12:05 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,50 +40,50 @@ typedef struct s_player
 	double		plane_x;
 	double		plane_y;
 }				t_player;
-//planes perpendiculat to direction vector
+//x y are the exact positions in the map
+//dir x and y are the directions
+//planes perpendiculat to direction vector and are the camera planes
 typedef struct s_ray
 {
-	double		camera_x;
+	double		camera_x; //-1 to 1
 	double		ray_dir_x;
 	double		ray_dir_y;
-	int			map_x;
+	int			map_x; // current square
 	int			map_y;
-	double		side_dist_x;
+	double		side_dist_x; //distance til next y line
 	double		side_dist_y;
-	double		delta_dist_x;
+	double		delta_dist_x; //distance to travel one grid cell
 	double		delta_dist_y;
-	double		perp_wall_dist;
-	int			step_x;
+	double		perp_wall_dist; //prep distance to wall
+	int			step_x; //step direction
 	int			step_y;
-	int			hit;
-	int			side;
+	int			hit; //hit or not
+	int			side; //0 = x side, 1 = y side
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
+	double		wall_x; //exact hit position on wall for textures
+	int			tex_x; // x coordinates on texture
 }				t_ray;
+// everything needed to cast one ray and draw one vertical line
 
-typedef struct s_texture
+typedef struct s_img
 {
 	void		*img;
-	char		*addr;
+	char		*addr; //pixed data address
+	int			bits_per_pixel; //color depth
+	int			line_length; //bytes per line
+	int			endian; //byte order
 	int			width;
 	int			height;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	double		wall_x;
-	int			tex_x;
-	int			tex_y;
-	double		step;
-	double		tex_pos;
-}				t_texture;
+}				t_img;
 
 typedef struct s_textures
 {
-	t_texture	north;
-	t_texture	south;
-	t_texture	west;
-	t_texture	east;
+	t_img		*north;
+	t_img		*south;
+	t_img		*west;
+	t_img		*east;
 	char		*north_path;
 	char		*south_path;
 	char		*west_path;
@@ -97,31 +97,26 @@ typedef struct s_map
 	char		**grid;
 	int			width;
 	int			height;
+	char		p;
+	int			p_x; //starting positions
+	int			p_y;
 	char		**ff_grid;
 }				t_map;
-
-typedef struct s_img
-{
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			width;
-	int			height;
-}				t_img;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
-	t_player	player;
-	t_map		map;
-	t_textures	textures;
-	t_img		img;
-	int			screen_width;
-	int			screen_height;
+	t_player	*player;
+	t_map		*map;
+	t_textures	*textures;
+	t_img		*img;
+	t_ray		*ray;
+	int			*screen_width;
+	int			*screen_height;
+	int			keys[256];
 }				t_game;
+//includes player, map, textures (includes details), img. and ray
 
 /* ================ PARSING FUNCTIONS ================ */
 int				parse_file(t_game *game, char *filename);
@@ -149,8 +144,8 @@ void			copy_grid(t_map *map);
 
 /* ================ TEXTURE FUNCTIONS ================ */
 int				load_textures(t_game *game);
-int				load_texture(void *mlx, t_texture *texture, char *path);
-void			get_texture_pixel(t_texture *tex, int x, int y, int *color);
+int				load_texture(void *mlx, t_img *texture, char *path);
+void			get_texture_pixel(t_img *tex, int x, int y, int *color);
 int				create_rgb(int r, int g, int b);
 int				parse_rgb(char *str, int *r, int *g, int *b);
 
@@ -167,8 +162,8 @@ void			render_frame(t_game *game);
 void			draw_vertical_line(t_game *game, int x, t_ray *ray);
 void			draw_ceiling_floor(t_game *game, int x, t_ray *ray);
 void			draw_textured_wall(t_game *game, int x, t_ray *ray);
-t_texture		*get_wall_texture(t_game *game, t_ray *ray);
-void			calculate_texture_x(t_ray *ray, t_texture *tex, t_player *p);
+t_img		*get_wall_texture(t_game *game, t_ray *ray);
+void			calculate_texture_x(t_ray *ray, t_img *tex, t_player *p);
 void			put_pixel(t_img *img, int x, int y, int color);
 
 /* ================ PLAYER MOVEMENT ================ */
