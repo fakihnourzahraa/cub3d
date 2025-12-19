@@ -3,6 +3,9 @@
 # nour
 
 git rm --cached -r minilibx-linux
+
+once an x line is crossed (side_dist_x < size_dist_y) set side = 0 else 1
+
 What is Raycasting?
 Raycasting is a rendering technique that creates a 3D perspective from a 2D map. It's essentially a clever optical illusion - you're not actually creating a 3D world, you're drawing 2D vertical slices that look 3D.
 The Core Concept

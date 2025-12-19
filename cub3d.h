@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/19 15:12:05 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/19 15:20:34 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_player
 //x y are the exact positions in the map
 //dir x and y are the directions
 //planes perpendiculat to direction vector and are the camera planes
+
 typedef struct s_ray
 {
 	double		camera_x; //-1 to 1
