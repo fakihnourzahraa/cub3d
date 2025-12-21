@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/21 17:34:33 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/21 19:22:28 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ double	dda(t_ray *ray, t_game *game)
         	hit = 1;
 		calculate_hit(ray, game);
 	}
-	//here we hit a wall therefore we calculate perp (plane) distance
+
+//here we hit a wall therefore we calculate perp (plane) distance
 // 	if (ray->side == 0)  // Hit vertical wall
 //     ray->perp_wall_dist = (ray->map_x - player->x + 
 //                            (1 - ray->step_x) / 2) / ray->ray_dir_x;

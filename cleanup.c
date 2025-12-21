@@ -6,15 +6,12 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:13 by nour              #+#    #+#             */
-/*   Updated: 2025/12/21 19:01:49 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/21 19:23:13 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*
-** Frees a 2D array (map grid)
-*/
 void	free_grid(char **grid)
 {
 	int	i;
@@ -30,9 +27,6 @@ void	free_grid(char **grid)
 	free(grid);
 }
 
-/*
-** Frees a single texture image
-*/
 static void	free_texture_img(void *mlx, t_img *texture)
 {
 	if (!texture)
@@ -42,9 +36,6 @@ static void	free_texture_img(void *mlx, t_img *texture)
 	free(texture);
 }
 
-/*
-** Frees all textures
-*/
 static void	free_textures_struct(void *mlx, t_textures *tex)
 {
 	if (!tex)
@@ -64,9 +55,6 @@ static void	free_textures_struct(void *mlx, t_textures *tex)
 	free(tex);
 }
 
-/*
-** Frees the map structure
-*/
 void	free_map(t_map *map)
 {
 	if (!map)
@@ -76,9 +64,6 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-/*
-** Frees the image structure
-*/
 static void	free_image(void *mlx, t_img *img)
 {
 	if (!img)
@@ -88,9 +73,6 @@ static void	free_image(void *mlx, t_img *img)
 	free(img);
 }
 
-/*
-** Frees the entire game structure
-*/
 void	free_game(t_game *game)
 {
 	if (!game)
@@ -112,9 +94,6 @@ void	free_game(t_game *game)
 	free(game);
 }
 
-/*
-** Error cleanup - frees everything and exits with error message
-*/
 // void	error_exit(t_game *game)
 // {
 // 	ft_putendl_fd("Error", 2);
