@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/19 15:20:34 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/21 19:08:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_player
 //x y are the exact positions in the map
 //dir x and y are the directions
 //planes perpendiculat to direction vector and are the camera planes
-
+//plane distance is used to avoid the fish eye/curved look and maintain the straight line look
 typedef struct s_ray
 {
 	double		camera_x; //-1 to 1
@@ -152,7 +152,7 @@ int				parse_rgb(char *str, int *r, int *g, int *b);
 
 /* ================ RAYCASTING FUNCTIONS ================ */
 void			raycast(t_game *game);
-void			init_ray(t_game *game, t_ray *ray, int x);
+// void			init_ray(t_game *game, t_ray *ray, int x);
 void			calculate_step_and_side_dist(t_player *player, t_ray *ray);
 void			perform_dda(t_map *map, t_ray *ray);
 void			calculate_wall_distance(t_ray *ray);
@@ -175,28 +175,36 @@ void			move_right(t_game *game);
 void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 int				check_collision(t_game *game, double new_x, double new_y);
+void			set_player_spawn(t_player *player, char spawn_char, int x, int y);
 
 /* ================ EVENT HANDLING ================ */
-int				key_press(int keycode, t_game *game);
+int				keys(int code, void *p);
+int				escape_game_no_update(t_game *game);
 int				key_release(int keycode, t_game *game);
 int				close_game(t_game *game);
 int				handle_no_event(t_game *game);
 
 /* ================ INITIALIZATION ================ */
 void			init_game(t_game *game);
-void			init_player(t_player *player, char direction, int x, int y);
-void			init_mlx(t_game *game);
-void			init_image(t_game *game);
+t_game			*init_game_struct(void);
+t_player		*init_player(void);
+t_ray			*init_ray(void);
+// void			init_player(t_player *player, char direction, int x, int y);
+t_img			*init_image(void);
+t_map			*init_map(void);
 
 /* ================ UTILITY FUNCTIONS ================ */
-void			error_exit(t_game *game);
 void			error_message(void);
 void			free_game(t_game *game);
-void			free_map(t_map *map);
-void			free_textures(t_game *game);
-void			free_twod(char **array);
 int				is_whitespace(char c);
 char			*skip_whitespace(char *str);
 int				is_valid_map_char(char c);
 
+t_game			*init_game_struct(void);
+void			move_left(t_game *game);
+void			move_right(t_game *game);
+void			move_up(t_game *game);
+void			move_down(t_game *game);
+void			free_game(t_game *game);
+void			free_map(t_map *map);
 #endif

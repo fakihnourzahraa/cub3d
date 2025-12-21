@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+         #
+#    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/18 11:22:10 by nfakih           ###   ########.fr        #
+#    Updated: 2025/12/21 19:05:24 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = main.c \
 	Libft/ft_split.c Libft/ft_strchr.c Libft/ft_strdup.c Libft/ft_strjoin.c \
 	Libft/ft_strlcat.c Libft/ft_strlcpy.c Libft/ft_strlen.c Libft/ft_strncmp.c \
 	Libft/ft_strnstr.c Libft/ft_strrchr.c Libft/ft_strstr.c Libft/ft_strtrim.c \
-	Libft/ft_substr.c
+	Libft/ft_substr.c later.c cleanup.c data_structures.c fake_map.c
 
 OBJ	= $(SRC:.c=.o)
 
