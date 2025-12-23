@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2025/12/23 18:38:40 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/23 21:19:04 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	t_map	*map;
 	t_game	*game;
 
+	//parsing
 	game = init_game_struct();
 	init_game(game);
 	draw_map(game);

@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/23 19:04:20 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:15:12 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ t_map	*init_map(void)
 
 t_textures	*init_textures(void)
 {
-	t_textures	*tex;
+	t_textures	*text;
 
-	tex = malloc(sizeof(t_textures));
-	tex->north = NULL;
-	tex->south = NULL;
-	tex->west = NULL;
-	tex->east = NULL;
-	tex->north_path = NULL;
-	tex->south_path = NULL;
-	tex->west_path = NULL;
-	tex->east_path = NULL;
-	tex->floor_color = 0;
-	tex->ceiling_color = 0;
-	return (tex);
+	text = malloc(sizeof(t_textures));
+	text->north = NULL;
+	text->south = NULL;
+	text->west = NULL;
+	text->east = NULL;
+	text->north_path = NULL;
+	text->south_path = NULL;
+	text->west_path = NULL;
+	text->east_path = NULL;
+	text->floor_color = 0;
+	text->ceiling_color = 0;
+	return (text);
 }
 
 t_player	*init_player(void)

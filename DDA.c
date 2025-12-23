@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/23 18:51:28 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:29:24 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	wall_hit(t_ray *ray, t_game * game)
 	else	
 		ray->perp_wall_dist = ((ray->map_y - game->map->p_y + (1 - ray->step_y) / 2) / ray->ray_dir_y);
 }
+
 // map_x - pos_x how far the wall is
 // 1-step_x /2 offset correction
 //ray dir x makes it perpendicular
@@ -42,17 +43,16 @@ double	dda(t_ray *ray, t_game *game)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side = 0;//vertical wall (NS)
+			ray->side = 0;//ns
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 1;//horizontal wall (EW)
+			ray->side = 1;//ew
 		}
 		if (game->map->grid[ray->map_y][ray->map_x] == '1')
         	hit = 1;
-	//	calculate_hit(ray, game);
 	}
 	wall_hit(ray, game);
 	//here we hit a wall therefore we calculate perp (plane) distance
