@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/23 18:16:50 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:03:20 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ typedef struct s_game
 	t_textures	*textures;
 	t_img		*img;
 	t_ray		*ray;
-	int			*screen_width;
-	int			*screen_height;
+	int			screen_width;
+	int			screen_height;
 	int			keys[256];
 }				t_game;
 //includes player, map, textures (includes details), img. and ray
@@ -171,7 +171,6 @@ void			move_left(t_game *game);
 void			move_right(t_game *game);
 void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
-void			set_player_spawn(t_player *player, char spawn_char, int x, int y);
 
 /* ================ EVENT HANDLING ================ */
 int				keys(int code, void *p);
@@ -206,4 +205,13 @@ void			free_map(t_map *map);
 void			get_image(t_game *game);
 double			dda(t_ray *ray, t_game *game);
 void			draw_map(t_game *game);
+void			start_player(t_game *game);
+void			update(t_game *game);
+t_map			*init_map(void);
+t_textures		*init_textures(void);
+
+t_player	*init_player(void);
+
+t_ray	*init_ray(void);
+t_img	*init_image(void);
 #endif

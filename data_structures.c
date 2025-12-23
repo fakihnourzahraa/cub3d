@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/23 18:20:53 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:04:20 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_map	*init_map(void)
 	return (map);
 }
 
-static t_textures	*init_textures(void)
+t_textures	*init_textures(void)
 {
 	t_textures	*tex;
 
@@ -110,60 +110,3 @@ t_img	*init_image(void)
 	return (img);
 }
 
-t_game	*init_game_struct(void)
-{
-	t_game	*game;
-	int		i;
-
-	i = 0;
-	game = malloc(sizeof(t_game));
-	game->mlx = NULL;
-	game->win = NULL;
-	game->map = init_map();
-	game->player = init_player();
-	game->ray = init_ray();
-	game->img = init_image();
-	game->textures = init_textures();
-	game->screen_width = 1280;
-	game->screen_height = 720;
-	while (i < 256)
-	{
-		game->keys[i] = 0;
-		i++;		
-	}
-	return (game);
-}
-
-void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
-{
-	player->x = (double)x + 0.5;
-	player->y = (double)y + 0.5;
-	if (spawn_char == 'N')
-	{
-		player->dir_x = 0;
-		player->dir_y = -1;
-		player->plane_x = 0.66;
-		player->plane_y = 0;
-	}
-	else if (spawn_char == 'S')
-	{
-		player->dir_x = 0;
-		player->dir_y = 1;
-		player->plane_x = -0.66;
-		player->plane_y = 0;
-	}
-	else if (spawn_char == 'E')
-	{
-		player->dir_x = 1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = 0.66;
-	}
-	else if (spawn_char == 'W')
-	{
-		player->dir_x = -1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = -0.66;
-	}
-}

@@ -3,15 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   fake_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/21 18:58:09 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/23 19:04:08 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
+{
+	player->x = (double)x + 0.5;
+	player->y = (double)y + 0.5;
+	if (spawn_char == 'N')
+	{
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = 0.66;
+		player->plane_y = 0;
+	}
+	else if (spawn_char == 'S')
+	{
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = -0.66;
+		player->plane_y = 0;
+	}
+	else if (spawn_char == 'E')
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
+	}
+	else if (spawn_char == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
+	}
+}
 static char	**create_test_grid(void)
 {
 	char	**grid;
