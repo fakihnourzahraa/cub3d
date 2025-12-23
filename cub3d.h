@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/21 19:08:24 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/23 18:16:50 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,7 @@ int				parse_file(t_game *game, char *filename);
 int				read_file(char *filename, char ***file_content);
 int				parse_texture_line(char *line, t_textures *tex);
 int				parse_color_line(char *line, int *color);
-int				parse_north_texture(char *line, t_textures *tex);
-int				parse_south_texture(char *line, t_textures *tex);
-int				parse_west_texture(char *line, t_textures *tex);
-int				parse_east_texture(char *line, t_textures *tex);
+int				parse_textures(char *line, t_textures *tex);
 int				parse_floor_color(char *line, t_textures *tex);
 int				parse_ceiling_color(char *line, t_textures *tex);
 int				parse_map(char **file, t_map *map, int start_line);
@@ -163,18 +160,17 @@ void			render_frame(t_game *game);
 void			draw_vertical_line(t_game *game, int x, t_ray *ray);
 void			draw_ceiling_floor(t_game *game, int x, t_ray *ray);
 void			draw_textured_wall(t_game *game, int x, t_ray *ray);
-t_img		*get_wall_texture(t_game *game, t_ray *ray);
+t_img			*get_wall_texture(t_game *game, t_ray *ray);
 void			calculate_texture_x(t_ray *ray, t_img *tex, t_player *p);
 void			put_pixel(t_img *img, int x, int y, int color);
 
 /* ================ PLAYER MOVEMENT ================ */
-void			move_forward(t_game *game);
-void			move_backward(t_game *game);
+void			move_up(t_game *game);
+void			move_down(t_game *game);
 void			move_left(t_game *game);
 void			move_right(t_game *game);
 void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
-int				check_collision(t_game *game, double new_x, double new_y);
 void			set_player_spawn(t_player *player, char spawn_char, int x, int y);
 
 /* ================ EVENT HANDLING ================ */
@@ -207,4 +203,7 @@ void			move_up(t_game *game);
 void			move_down(t_game *game);
 void			free_game(t_game *game);
 void			free_map(t_map *map);
+void			get_image(t_game *game);
+double			dda(t_ray *ray, t_game *game);
+void			draw_map(t_game *game);
 #endif
