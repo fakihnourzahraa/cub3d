@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:13 by nour              #+#    #+#             */
-/*   Updated: 2025/12/21 19:23:13 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/21 19:36:10 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	free_game(t_game *game)
 // 	free_game(game);
 // 	exit(1);
 // }
+
 void	error_message(void)
 {
 	ft_printf("Error\n");

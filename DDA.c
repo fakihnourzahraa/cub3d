@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/21 19:22:28 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/21 19:32:36 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	start(t_game *game)
 	game->ray->map_x = (int)game->player->dir_x;
 	game->ray->map_y = (int)game->player->dir_y;
 }
-
 
 double	dda(t_ray *ray, t_game *game)
 {
