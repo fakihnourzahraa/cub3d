@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 15:53:22 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@
 // # define TEX_WIDTH 64
 // # define TEX_HEIGHT 64
 
+typedef struct s_player		t_player;
+typedef struct s_calc		t_calc;
+typedef struct s_ray		t_ray;
+typedef struct s_img		t_img;
+typedef struct s_textures	t_textures;
+typedef struct s_map		t_map;
+typedef struct s_game		t_game;
 typedef struct s_player
 {
 	double		x;
@@ -45,18 +52,22 @@ typedef struct s_player
 //planes perpendiculat to direction vector and are the camera planes
 //plane distance is used to avoid the fish eye/curved look and maintain the straight line look
 
-typedef struct s_ray
+typedef	struct s_calc
 {
-	double		camera_x; //-1 to 1 for the arrows
 	double		ray_dir_x;
 	double		ray_dir_y;
-	int			map_x; // current square
-	int			map_y;
 	double		side_dist_x; //distance til next y line
 	double		side_dist_y;
 	double		delta_dist_x; //distance to travel one grid cell
 	double		delta_dist_y;
 	double		perp_wall_dist; //prep distance to wall
+}	t_calc;
+
+typedef struct s_ray
+{
+	double		camera_x; //-1 to 1 for the arrows
+	int			map_x; // current square
+	int			map_y;
 	int			step_x; //step direction
 	int			step_y;
 	int			hit; //hit or not
@@ -66,6 +77,8 @@ typedef struct s_ray
 	int			draw_end;
 	double		wall_x; //exact hit position on wall for textures
 	int			tex_x; // x coordinates on texture
+	t_game		*game;
+	t_calc		*calc;
 }				t_ray;
 // everything needed to cast one ray and draw one vertical line
 
@@ -116,7 +129,6 @@ typedef struct s_game
 	t_map		*map;
 	t_textures	*textures;
 	t_img		*img;
-	t_ray		*ray;
 	int			screen_width;
 	int			screen_height;
 	int			keys[256];
@@ -187,7 +199,6 @@ int				handle_no_event(t_game *game);
 void			init_game(t_game *game);
 t_game			*init_game_struct(void);
 t_player		*init_player(void);
-t_ray			*init_ray(void);
 // void			init_player(t_player *player, char direction, int x, int y);
 t_img			*init_image(void);
 t_map			*init_map(void);
@@ -216,7 +227,7 @@ t_textures		*init_textures(void);
 
 t_player	*init_player(void);
 
-t_ray	*init_ray(void);
+t_ray	*init_ray(t_game *game);
 t_img	*init_image(void);
 t_game	*create_test_game(int simple_map);
 #endif

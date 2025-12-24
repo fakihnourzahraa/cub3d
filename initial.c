@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 15:45:39 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_game	*init_game_struct(void)
 	game->win = NULL;
 	game->map = init_map();
 	game->player = init_player();
-	game->ray = init_ray();
 	game->img = init_image();
 	game->textures = init_textures();
 	game->screen_width = 1280;

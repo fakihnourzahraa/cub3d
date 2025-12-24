@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 15:52:21 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,21 @@ t_player	*init_player(void)
 ** Will be recalculated for each column during rendering
 */
 
-t_ray	*init_ray(void)
+t_ray	*init_ray(t_game *game)
 {
 	t_ray	*ray;
 
 	ray = malloc(sizeof(t_ray));
 	ray->camera_x = 0;
-	ray->ray_dir_x = 0;
-	ray->ray_dir_y = 0;
+	ray->calc->ray_dir_x = 0;
+	ray->calc->ray_dir_y = 0;
 	ray->map_x = 0;
 	ray->map_y = 0;
-	ray->side_dist_x = 0;
-	ray->side_dist_y = 0;
-	ray->delta_dist_x = 0;
-	ray->delta_dist_y = 0;
-	ray->perp_wall_dist = 0;
+	ray->calc->side_dist_x = 0;
+	ray->calc->side_dist_y = 0;
+	ray->calc->delta_dist_x = 0;
+	ray->calc->delta_dist_y = 0;
+	ray->calc->perp_wall_dist = 0;
 	ray->step_x = 0;
 	ray->step_y = 0;
 	ray->hit = 0;

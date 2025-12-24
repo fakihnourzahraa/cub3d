@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 15:51:56 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@ void	draw_line(t_game *game, int i)
 {
 	//to do
 }
+void	init_for_col(t_ray *ray)
+{
+
+}
 void	draw_map(t_game *game)
 {
 	int		i;
@@ -96,6 +100,7 @@ void	draw_map(t_game *game)
 	while (i < game->screen_width)
 	{
 		ray = init_ray();
+		// init_for_col(ray,);
 		//to do: init ray for column
 		//to do: calculate camera x and ray direction
 		dda(ray, game);
@@ -103,6 +108,7 @@ void	draw_map(t_game *game)
 		//to do: calculate draw limits (start end end), for draw line
 		// draw_line(game, i);
 		i++;
+		free(ray);
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }
