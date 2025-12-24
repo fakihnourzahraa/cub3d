@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2025/12/23 21:19:04 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:24:06 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int main(int argc, char **argv)
 	t_game	*game;
 
 	//parsing
-	game = init_game_struct();
+	// game = init_game_struct();
+	game = create_test_game(1);
 	init_game(game);
 	draw_map(game);
 	mlx_key_hook(game->win, keys, game);

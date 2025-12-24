@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/23 19:29:24 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:26:05 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	start(t_game *game)
 {
 	t_map *map = game->map;
 
-	game->ray->map_x = (int)game->player->dir_x;
-	game->ray->map_y = (int)game->player->dir_y;
+	game->ray->map_x = (int)game->player->x;
+	game->ray->map_y = (int)game->player->y;
 }
 
 void	wall_hit(t_ray *ray, t_game * game)
@@ -31,6 +31,7 @@ void	wall_hit(t_ray *ray, t_game * game)
 // map_x - pos_x how far the wall is
 // 1-step_x /2 offset correction
 //ray dir x makes it perpendicular
+//to do: calculate step x step side dist x and side dist y before loop
 double	dda(t_ray *ray, t_game *game)
 {
 	int	hit;
@@ -38,7 +39,7 @@ double	dda(t_ray *ray, t_game *game)
 	hit = 0;
 	while (!hit)
 	{
-		//x is closer so jump to x
+//		x is closer so jump to x
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
@@ -54,7 +55,7 @@ double	dda(t_ray *ray, t_game *game)
 		if (game->map->grid[ray->map_y][ray->map_x] == '1')
         	hit = 1;
 	}
-	wall_hit(ray, game);
+	// wall_hit(ray, game);
 	//here we hit a wall therefore we calculate perp (plane) distance
 		//return distination from wall
 	return (0);

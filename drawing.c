@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/23 18:15:08 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:20:19 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	get_image(t_game *game)
 }
 void	draw_line(t_game *game, int i)
 {
-
+	//to do
 }
 void	draw_map(t_game *game)
 {
@@ -96,11 +96,16 @@ void	draw_map(t_game *game)
 	while (i < game->screen_width)
 	{
 		ray = init_ray();
+		//to do: init ray for column
+		//to do: calculate camera x and ray direction
 		dda(ray, game);
-		draw_line(game, i);
+		//to do: calculate wall height
+		//to do: calculate draw limits (start end end), for draw line
+		// draw_line(game, i);
 		i++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }
 //we're drawing pixel by pixel into the buffer, then putting the buffer
 //that way its smoother execution
+//to do: put pixel function

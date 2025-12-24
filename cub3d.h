@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/23 19:03:20 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:22:58 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,4 +214,5 @@ t_player	*init_player(void);
 
 t_ray	*init_ray(void);
 t_img	*init_image(void);
+t_game	*create_test_game(int simple_map);
 #endif
