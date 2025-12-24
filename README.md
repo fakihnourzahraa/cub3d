@@ -58,7 +58,7 @@ Key insight: The farther away = smaller wall height
 cdraw_start = (screen_height - wall_height) / 2;  // Top of wall
 draw_end = (screen_height + wall_height) / 2;    // Bottom of wall
 
-// Draw ceiling above the wall (color C)
+// Draw sky above the wall (color C)
 // Draw the wall (with texture)
 // Draw floor below the wall (color F)
 ```
@@ -81,7 +81,7 @@ What player sees (3D view):
 
     Result on screen:
     ┌───────────────────────┐
-    │ ceiling               │
+    │ sky               │
     │ ▓▓   ▓▓▓▓▓▓▓▓   ▓▓   │  ← Wall heights vary by distance
     │ ▓▓   ▓▓▓▓▓▓▓▓   ▓▓   │
     │ floor                 │

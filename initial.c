@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/23 18:38:12 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 //parse function
 

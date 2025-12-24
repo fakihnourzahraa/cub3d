@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:24:51 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
 {
 	player->x = (double)x + 0.5;
@@ -215,7 +215,7 @@ t_game	*create_test_game(int simple_map)
 	if (game->textures)
 	{
 		game->textures->floor_color = create_rgb(220, 100, 0);
-		game->textures->ceiling_color = create_rgb(135, 206, 235);
+		game->textures->sky_color = create_rgb(135, 206, 235);
 	}
 	return (game);
 }

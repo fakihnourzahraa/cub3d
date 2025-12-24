@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 14:22:58 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ typedef struct s_player
 //dir x and y are the directions
 //planes perpendiculat to direction vector and are the camera planes
 //plane distance is used to avoid the fish eye/curved look and maintain the straight line look
+
 typedef struct s_ray
 {
-	double		camera_x; //-1 to 1
+	double		camera_x; //-1 to 1 for the arrows
 	double		ray_dir_x;
 	double		ray_dir_y;
 	int			map_x; // current square
@@ -90,8 +91,9 @@ typedef struct s_textures
 	char		*west_path;
 	char		*east_path;
 	int			floor_color;
-	int			ceiling_color;
+	int			sky_color;
 }				t_textures;
+//they could all be the same texture saraha we can decide later
 
 typedef struct s_map
 {
@@ -103,6 +105,8 @@ typedef struct s_map
 	int			p_y;
 	char		**ff_grid;
 }				t_map;
+// p is player(N/S/W/E), p_x and p_y are those positions
+//ff_grid is flood fill grid
 
 typedef struct s_game
 {
@@ -126,7 +130,7 @@ int				parse_texture_line(char *line, t_textures *tex);
 int				parse_color_line(char *line, int *color);
 int				parse_textures(char *line, t_textures *tex);
 int				parse_floor_color(char *line, t_textures *tex);
-int				parse_ceiling_color(char *line, t_textures *tex);
+int				parse_sky_color(char *line, t_textures *tex);
 int				parse_map(char **file, t_map *map, int start_line);
 int				extract_map_section(char **file, t_map *map);
 int				get_map_dimensions(char **map_lines, t_map *map);
@@ -158,7 +162,7 @@ void			calculate_wall_height(t_ray *ray, int screen_height);
 /* ================ RENDERING FUNCTIONS ================ */
 void			render_frame(t_game *game);
 void			draw_vertical_line(t_game *game, int x, t_ray *ray);
-void			draw_ceiling_floor(t_game *game, int x, t_ray *ray);
+void			draw_sky_floor(t_game *game, int x, t_ray *ray);
 void			draw_textured_wall(t_game *game, int x, t_ray *ray);
 t_img			*get_wall_texture(t_game *game, t_ray *ray);
 void			calculate_texture_x(t_ray *ray, t_img *tex, t_player *p);

@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:24:06 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+# include "cub3D.h"
 
 int main(int argc, char **argv)
 {

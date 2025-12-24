@@ -6,11 +6,11 @@
 #    By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/23 18:50:10 by nfakih           ###   ########.fr        #
+#    Updated: 2025/12/24 14:42:12 by nfakih           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME   = cub3d
+NAME   = cub3D
 
 SRC = main.c \
 	get_next_line/get_next_line_bonus.c \

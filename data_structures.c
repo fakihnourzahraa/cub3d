@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:19:28 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+# include "cub3D.h"
 
 t_map	*init_map(void)
 {
@@ -41,7 +41,7 @@ t_textures	*init_textures(void)
 	text->west_path = NULL;
 	text->east_path = NULL;
 	text->floor_color = 0;
-	text->ceiling_color = 0;
+	text->sky_color = 0;
 	return (text);
 }
 

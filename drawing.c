@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:20:19 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 void	move_left(t_game *g)
 {

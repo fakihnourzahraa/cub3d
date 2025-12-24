@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:13 by nour              #+#    #+#             */
-/*   Updated: 2025/12/21 19:36:10 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 void	free_grid(char **grid)
 {

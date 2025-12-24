@@ -6,11 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 14:19:07 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 14:58:07 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+# include "cub3D.h"
 
 int	keys(int code, void *p)
 {
@@ -36,10 +36,6 @@ void	init_game(t_game *game)
 	game->img->img = mlx_new_image(game->mlx, game->screen_width, game->screen_height);
 	game->img->addr = mlx_get_data_addr(game->img->img, &game->img->bits_per_pixel, & game->img->line_length, &game->img->endian);
 	start_player(game);
-// In your init_game() after mlx_get_data_addr:
-printf("addr: %p\n", game->img->addr);  // Should NOT be NULL
-printf("bpp: %d\n", game->img->bits_per_pixel);  // Usually 32
-printf("line_len: %d\n", game->img->line_length);  // Usually screen_width * 4
 	// get_image(game);
 }
 int	escape_game_no_update(t_game *game)
