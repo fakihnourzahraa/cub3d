@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 15:53:22 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 18:03:51 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef	struct s_calc
 
 typedef struct s_ray
 {
-	double		camera_x; //-1 to 1 for the arrows
 	int			map_x; // current square
 	int			map_y;
 	int			step_x; //step direction
@@ -132,6 +131,7 @@ typedef struct s_game
 	int			screen_width;
 	int			screen_height;
 	int			keys[256];
+	int			move_speed;
 }				t_game;
 //includes player, map, textures (includes details), img. and ray
 
@@ -224,10 +224,8 @@ void			start_player(t_game *game);
 void			update(t_game *game);
 t_map			*init_map(void);
 t_textures		*init_textures(void);
-
-t_player	*init_player(void);
-
-t_ray	*init_ray(t_game *game);
-t_img	*init_image(void);
-t_game	*create_test_game(int simple_map);
+t_player		*init_player(void);
+t_ray			*init_ray(t_game *game);
+t_img			*init_image(void);
+t_game			*create_test_game(int simple_map);
 #endif

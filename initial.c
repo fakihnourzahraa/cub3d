@@ -6,13 +6,11 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 15:45:39 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 18:13:40 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//parse function
 
 void	vertical(t_map *map, t_player *player)
 {
@@ -76,6 +74,7 @@ t_game	*init_game_struct(void)
 	game->textures = init_textures();
 	game->screen_width = 1280;
 	game->screen_height = 720;
+	game->move_speed = 0.1;
 	while (i < 256)
 	{
 		game->keys[i] = 0;

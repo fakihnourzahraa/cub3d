@@ -6,7 +6,7 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 15:52:21 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 16:05:37 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,8 @@ t_ray	*init_ray(t_game *game)
 	t_ray	*ray;
 
 	ray = malloc(sizeof(t_ray));
-	ray->camera_x = 0;
 	ray->calc->ray_dir_x = 0;
 	ray->calc->ray_dir_y = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
 	ray->calc->side_dist_x = 0;
 	ray->calc->side_dist_y = 0;
 	ray->calc->delta_dist_x = 0;
@@ -88,6 +85,9 @@ t_ray	*init_ray(t_game *game)
 	ray->draw_end = 0;
 	ray->wall_x = 0;
 	ray->tex_x = 0;
+	ray->game = game;
+	ray->map_x = (int)game->player->x;
+	ray->map_y = (int)game->player->y;
 	return (ray);
 }
 

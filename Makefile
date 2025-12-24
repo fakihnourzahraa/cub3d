@@ -6,13 +6,13 @@
 #    By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/24 14:42:12 by nfakih           ###   ########.fr        #
+#    Updated: 2025/12/24 18:13:22 by nfakih           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME   = cub3D
 
-SRC = main.c \
+SRC = main.c  moves.c\
 	get_next_line/get_next_line_bonus.c \
 	ft_printf/ft_printf.c ft_printf/ft_putchar_fd.c ft_printf/ft_putnbr_base.c \
 	ft_printf/ft_putstr_fd.c \

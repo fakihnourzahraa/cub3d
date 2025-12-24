@@ -6,19 +6,12 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 15:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/24 18:16:27 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	start(t_game *game)
-{
-	// t_map *map = game->map;
-
-	// game->ray->map_x = (int)game->player->x;
-	// game->ray->map_y = (int)game->player->y;
-}
 
 void	wall_hit(t_ray *ray, t_game * game)
 {
@@ -44,13 +37,13 @@ double	dda(t_ray *ray, t_game *game)
 		{
 			ray->calc->side_dist_x += ray->calc->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side = 0;//ns
+			ray->side = 0;//NS
 		}
 		else
 		{
 			ray->calc->side_dist_y += ray->calc->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 1;//ew
+			ray->side = 1;//EW
 		}
 		if (game->map->grid[ray->map_y][ray->map_x] == '1')
         	hit = 1;
