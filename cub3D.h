@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 16:25:08 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/25 16:37:22 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,6 @@ void			init_game(t_game *game);
 t_game			*init_game_struct(void);
 t_player		*init_player(void);
 // void			init_player(t_player *player, char direction, int x, int y);
-t_img			*init_image(void);
 t_map			*init_map(void);
 
 /* ================ UTILITY FUNCTIONS ================ */
@@ -227,7 +226,7 @@ t_map			*init_map(void);
 t_textures		*init_textures(void);
 t_player		*init_player(void);
 t_ray			*init_ray(t_game *game);
-t_img			*init_image(void);
+t_img			*init_image(t_game * game);
 t_game			*create_test_game(int simple_map);
 void	init_for_col(t_ray *ray, int i);
 void	update(t_game *game);

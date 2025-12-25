@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 14:17:25 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/25 16:37:10 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ t_game	*init_game_struct(void)
 	game->win = NULL;
 	game->map = init_map();
 	game->player = init_player();
-	game->img = init_image();
 	game->textures = init_textures();
 	game->screen_width = 1280;
 	game->screen_height = 720;
@@ -81,5 +80,6 @@ t_game	*init_game_struct(void)
 		game->keys[i] = 0;
 		i++;		
 	}
+	game->img = init_image(game);
 	return (game);
 }

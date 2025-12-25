@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 18:16:27 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 16:39:32 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ double	dda(t_ray *ray, t_game *game)
 		if (game->map->grid[ray->map_y][ray->map_x] == '1')
         	hit = 1;
 	}
-	// wall_hit(ray, game);
+	wall_hit(ray, game);
 	//here we hit a wall therefore we calculate perp (plane) distance
 		//return distination from wall
-	return (0);
+	return (ray->calc->perp_wall_dist);
 }

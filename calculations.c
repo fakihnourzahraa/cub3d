@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/25 16:30:25 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/25 16:37:46 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	calc_steps(t_ray *ray)
 void	init_for_col(t_ray *ray, int i)
 {
 	t_game 	*game;
-	int		camera_x;
+	double	camera_x;
 
 	game = ray->game;
 	camera_x = ((2 * i) / (double)game->screen_width) - 1;

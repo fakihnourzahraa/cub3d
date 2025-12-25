@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:14:58 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 16:29:29 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/25 16:38:30 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	draw_line(t_ray *ray, int x)
         y++;
     }	
 }
+//scratch, just for testing!!!
+
 void	draw_map(t_game *game)
 {
 	int		i;

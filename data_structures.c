@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 16:05:37 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 16:36:40 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_ray	*init_ray(t_game *game)
 	t_ray	*ray;
 
 	ray = malloc(sizeof(t_ray));
+	ray->calc = malloc(sizeof(t_calc));
 	ray->calc->ray_dir_x = 0;
 	ray->calc->ray_dir_y = 0;
 	ray->calc->side_dist_x = 0;
@@ -95,7 +96,7 @@ t_ray	*init_ray(t_game *game)
 ** Initializes the image structure (frame buffer)
 ** img will be created with mlx_new_image
 */
-t_img	*init_image(void)
+t_img	*init_image(t_game *game)
 {
 	t_img	*img;
 
@@ -107,6 +108,8 @@ t_img	*init_image(void)
 	img->endian = 0;
 	img->width = 0;
 	img->height = 0;
+	img->width = game->screen_width;
+	img->height = game->screen_height;
 	return (img);
 }
 
