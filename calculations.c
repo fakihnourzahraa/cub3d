@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calulations.c                                      :+:      :+:    :+:   */
+/*   calculations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 18:14:52 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 16:30:25 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void	update(t_game *game)
 void	get_image(t_game *game)
 {
 
-}
-void	draw_line(t_game *game, int i)
-{
-	//to do
 }
 void	calc_steps(t_ray *ray)
 {
@@ -92,4 +88,4 @@ void	calc_to_draw(t_ray *ray)
 }
 //line height: the lower the distance the higher the wall (perspective)
 //draw start: the center of the screen - the offset 
-//=0 so it wont start off screen
+// = 0 so it wont start off screen

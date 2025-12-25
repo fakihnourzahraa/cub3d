@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2025/12/24 14:51:49 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 16:33:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	game = create_test_game(1);
 	init_game(game);
 	draw_map(game);
-	mlx_key_hook(game->win, keys, game);
+	//mlx_key_hook(game->win, keys, game);
 	mlx_hook(game->win, 17, 0, escape_game_no_update, game);
 	mlx_loop(game->mlx);
 }

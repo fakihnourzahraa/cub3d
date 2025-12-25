@@ -6,7 +6,7 @@
 #    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/25 16:25:17 by nour             ###   ########.fr        #
+#    Updated: 2025/12/25 16:31:29 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,5 +54,7 @@ fclean: clean
 	@echo "👺 done fcleaning"
 
 re: fclean all
+
+ex: all clean
 
 .PHONY: all clean fclean re
