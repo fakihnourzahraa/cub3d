@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 14:58:07 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 14:04:32 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int	keys(int code, void *p)
 		move_up(game);
 	else if (code == 31)
 		move_down(game);
-	if (code == 65307)
+	else if (code == 65307)
 		escape_game_no_update(game);
+	else if (code == 65361)
+        rotate_left(game);
+    else if (code == 65363)
+        rotate_right(game);
 	return (0);
 }
 void	init_game(t_game *game)

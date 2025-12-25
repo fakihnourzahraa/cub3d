@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+         #
+#    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/24 18:13:22 by nfakih           ###   ########.fr        #
+#    Updated: 2025/12/25 16:25:17 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME   = cub3D
 
-SRC = main.c  moves.c\
+SRC = main.c  moves.c calculations.c\
 	get_next_line/get_next_line_bonus.c \
 	ft_printf/ft_printf.c ft_printf/ft_putchar_fd.c ft_printf/ft_putnbr_base.c \
 	ft_printf/ft_putstr_fd.c \

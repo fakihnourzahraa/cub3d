@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/24 18:03:51 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/25 16:25:08 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct s_game
 	int			screen_height;
 	int			keys[256];
 	int			move_speed;
+	int			rot_speed;
 }				t_game;
 //includes player, map, textures (includes details), img. and ray
 
@@ -228,4 +229,7 @@ t_player		*init_player(void);
 t_ray			*init_ray(t_game *game);
 t_img			*init_image(void);
 t_game			*create_test_game(int simple_map);
+void	init_for_col(t_ray *ray, int i);
+void	update(t_game *game);
+void	calc_to_draw(t_ray *ray);
 #endif
