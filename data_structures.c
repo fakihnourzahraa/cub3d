@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/25 16:36:40 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:58:47 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,6 @@ t_player	*init_player(void)
 	player->plane_y = 0;
 	return (player);
 }
-
-/*
-** Initializes the ray structure
-** Will be recalculated for each column during rendering
-*/
-
 t_ray	*init_ray(t_game *game)
 {
 	t_ray	*ray;
@@ -92,10 +86,6 @@ t_ray	*init_ray(t_game *game)
 	return (ray);
 }
 
-/*
-** Initializes the image structure (frame buffer)
-** img will be created with mlx_new_image
-*/
 t_img	*init_image(t_game *game)
 {
 	t_img	*img;

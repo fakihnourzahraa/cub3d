@@ -6,19 +6,22 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 17:47:45 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:59:50 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 
-void	wall_hit(t_ray *ray, t_game * game)
+double	wall_hit(t_ray *ray, t_game * game)
 {
 	if (ray->side == 0)
-		ray->calc->perp_wall_dist = ((ray->map_x - game->player->x + (1 - ray->step_x) / 2) / ray->calc->ray_dir_x);
+		ray->calc->perp_wall_dist = ((ray->map_x - game->player->x
+			+ (1 - ray->step_x) / 2) / ray->calc->ray_dir_x);
 	else	
-		ray->calc->perp_wall_dist = ((ray->map_y - game->player->y + (1 - ray->step_y) / 2) / ray->calc->ray_dir_y);
+		ray->calc->perp_wall_dist = ((ray->map_y - game->player->y
+			+ (1 - ray->step_y) / 2) / ray->calc->ray_dir_y);
+	return (ray->calc->perp_wall_dist);
 }
 // map_x - pos_x how far the wall is
 // 1-step_x /2 offset correction
@@ -48,8 +51,7 @@ double	dda(t_ray *ray, t_game *game)
 		if (game->map->grid[ray->map_y][ray->map_x] == '1')
         	hit = 1;
 	}
-	wall_hit(ray, game);
+	return (wall_hit(ray, game));
+}
 	//here we hit a wall therefore we calculate perp (plane) distance
 		//return distination from wall
-	return (ray->calc->perp_wall_dist);
-}

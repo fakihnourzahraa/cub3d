@@ -6,11 +6,12 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 16:46:26 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:00:54 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
 void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
 {
 	player->x = (double)x + 0.5;
