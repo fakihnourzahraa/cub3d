@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 16:39:32 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:47:45 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 void	wall_hit(t_ray *ray, t_game * game)
 {
 	if (ray->side == 0)
-		ray->calc->perp_wall_dist = ((ray->map_x - game->map->p_x + (1 - ray->step_x) / 2) / ray->calc->ray_dir_x);
+		ray->calc->perp_wall_dist = ((ray->map_x - game->player->x + (1 - ray->step_x) / 2) / ray->calc->ray_dir_x);
 	else	
-		ray->calc->perp_wall_dist = ((ray->map_y - game->map->p_y + (1 - ray->step_y) / 2) / ray->calc->ray_dir_y);
+		ray->calc->perp_wall_dist = ((ray->map_y - game->player->y + (1 - ray->step_y) / 2) / ray->calc->ray_dir_y);
 }
-
 // map_x - pos_x how far the wall is
 // 1-step_x /2 offset correction
 //ray dir x makes it perpendicular
 //to do: calculate step x step side dist x and side dist y before loop
+
 double	dda(t_ray *ray, t_game *game)
 {
 	int	hit;

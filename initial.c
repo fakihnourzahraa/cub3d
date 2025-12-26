@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 16:55:25 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:43:35 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,60 @@ void	horizontal(t_map *map, t_player *player)
         player->plane_y = 0.0;
     }
 }
-void	start_player(t_game *game)
-{
-	t_player *player;
-	t_map *map;
+// void	start_player(t_game *game)
+// {
+// 	t_player *player;
+// 	t_map *map;
 
-	player = game->player;
-	map = game->map;
-	player->x = (double)map->p_x + 0.5;
-	player->y = (double)map->p_y + 0.5;
-	// vertical(map, player);
-	// horizontal(map, player);
-	if (map->p == 'N' || map->p == 'S')
-        horizontal(map, player);
-    else if (map->p == 'E' || map->p == 'W')
-        vertical(map, player);
+// 	player = game->player;
+// 	map = game->map;
+// 	player->x = (double)map->p_x + 0.5;
+// 	player->y = (double)map->p_y + 0.5;
+// 	// vertical(map, player);
+// 	// horizontal(map, player);
+// 	if (map->p == 'N' || map->p == 'S')
+//         horizontal(map, player);
+//     else if (map->p == 'E' || map->p == 'W')
+//         vertical(map, player);
+// }
+void start_player(t_game *game)
+{
+    t_player *player;
+    t_map *map;
+
+    player = game->player;
+    map = game->map;
+    player->x = (double)map->p_x + 0.5;
+    player->y = (double)map->p_y + 0.5;
+    
+    if (map->p == 'N')
+    {
+        player->dir_x = 0.0;
+        player->dir_y = -1.0;
+        player->plane_x = 0.66;
+        player->plane_y = 0.0;
+    }
+    else if (map->p == 'S')
+    {
+        player->dir_x = 0.0;
+        player->dir_y = 1.0;
+        player->plane_x = -0.66;
+        player->plane_y = 0.0;
+    }
+    else if (map->p == 'E')
+    {
+        player->dir_x = 1.0;
+        player->dir_y = 0.0;
+        player->plane_x = 0.0;
+        player->plane_y = 0.66;
+    }
+    else if (map->p == 'W')
+    {
+        player->dir_x = -1.0;
+        player->dir_y = 0.0;
+        player->plane_x = 0.0;
+        player->plane_y = -0.66;
+    }
 }
 
 t_game	*init_game_struct(void)

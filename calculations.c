@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 17:29:54 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:40:41 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,25 +70,53 @@ void	calc_steps(t_ray *ray)
 // 	ray->calc->delta_dist_y = fabs(1 / ray->calc->ray_dir_y);
 // 	calc_steps(ray);
 // }
-void	init_for_col(t_ray *ray, int i)
+// void	init_for_col(t_ray *ray, int i)
+// {
+// 	t_game 	*game;
+// 	double	camera_x;
+
+// 	game = ray->game;
+// 	camera_x = ((2 * i) / (double)game->screen_width) - 1;
+// 	ray->calc->ray_dir_x = (game->player->dir_x + game->player->plane_x) * camera_x;
+// 	ray->calc->ray_dir_y = (game->player->dir_y + game->player->plane_y) * camera_x;
+// if (ray->calc->ray_dir_x == 0)
+//     ray->calc->delta_dist_x = 1e30;  // Very large number
+// else
+//     ray->calc->delta_dist_x = fabs(1 / ray->calc->ray_dir_x);
+
+// if (ray->calc->ray_dir_y == 0)
+//     ray->calc->delta_dist_y = 1e30;
+// else
+//     ray->calc->delta_dist_y = fabs(1 / ray->calc->ray_dir_y);
+// 	calc_steps(ray);
+// }
+
+void init_for_col(t_ray *ray, int i)
 {
-	t_game 	*game;
-	double	camera_x;
+    t_game  *game;
+    double  camera_x;
 
-	game = ray->game;
-	camera_x = ((2 * i) / (double)game->screen_width) - 1;
-	ray->calc->ray_dir_x = (game->player->dir_x + game->player->plane_x) * camera_x;
-	ray->calc->ray_dir_y = (game->player->dir_y + game->player->plane_y) * camera_x;
-if (ray->calc->ray_dir_x == 0)
-    ray->calc->delta_dist_x = 1e30;  // Very large number
-else
-    ray->calc->delta_dist_x = fabs(1 / ray->calc->ray_dir_x);
-
-if (ray->calc->ray_dir_y == 0)
-    ray->calc->delta_dist_y = 1e30;
-else
-    ray->calc->delta_dist_y = fabs(1 / ray->calc->ray_dir_y);
-	calc_steps(ray);
+    game = ray->game;
+    
+    // Calculate camera X position (-1 to +1, left to right)
+    camera_x = 2.0 * i / (double)game->screen_width - 1.0;
+    
+    // ✓ CORRECT FORMULA (direction + plane * camera_x):
+    ray->calc->ray_dir_x = game->player->dir_x + game->player->plane_x * camera_x;
+    ray->calc->ray_dir_y = game->player->dir_y + game->player->plane_y * camera_x;
+    
+    // Handle division by zero for delta distances
+    if (ray->calc->ray_dir_x == 0)
+        ray->calc->delta_dist_x = 1e30;
+    else
+        ray->calc->delta_dist_x = fabs(1.0 / ray->calc->ray_dir_x);
+    
+    if (ray->calc->ray_dir_y == 0)
+        ray->calc->delta_dist_y = 1e30;
+    else
+        ray->calc->delta_dist_y = fabs(1.0 / ray->calc->ray_dir_y);
+    
+    calc_steps(ray);
 }
 //camera x: for ray direction
 //if i is 0, itll be -1 (far left)
