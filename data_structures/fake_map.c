@@ -6,11 +6,11 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 18:00:54 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:38:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
 {
@@ -55,11 +55,11 @@ static char	**create_test_grid(void)
 		return (NULL);
 	i = 0;
 	grid[i++] = ft_strdup("11111111111111111111");
-	grid[i++] = ft_strdup("10000000000000000001");
 	grid[i++] = ft_strdup("10000100000000000001");
-	grid[i++] = ft_strdup("10000000000000000001");
-	grid[i++] = ft_strdup("11111N00000000000001");
-	grid[i++] = ft_strdup("10000000000000000001");
+	grid[i++] = ft_strdup("10001000000000000001");
+	grid[i++] = ft_strdup("1000101000000000001");
+	grid[i++] = ft_strdup("11111E11000000000001");
+	grid[i++] = ft_strdup("10000110000000000001");
 	grid[i++] = ft_strdup("10000000000000000001");
 	grid[i++] = ft_strdup("11111111111111111111");
 	grid[i] = NULL;

@@ -6,12 +6,11 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 17:59:50 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:16:22 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
+#include "../cub3D.h"
 
 double	wall_hit(t_ray *ray, t_game * game)
 {

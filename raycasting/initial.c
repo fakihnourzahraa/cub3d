@@ -6,11 +6,11 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 18:01:38 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:16:28 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	vertical(t_map *map, t_player *player)
 {

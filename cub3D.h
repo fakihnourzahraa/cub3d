@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 16:53:46 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:31:58 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_img		t_img;
 typedef struct s_textures	t_textures;
 typedef struct s_map		t_map;
 typedef struct s_game		t_game;
+
 typedef struct s_player
 {
 	double		x;
@@ -131,8 +132,8 @@ typedef struct s_game
 	int			screen_width;
 	int			screen_height;
 	int			keys[256];
-	double			move_speed;
-	double			rot_speed;
+	double		move_speed;
+	double		rot_speed;
 }				t_game;
 //includes player, map, textures (includes details), img. and ray
 
@@ -164,48 +165,13 @@ void			get_texture_pixel(t_img *tex, int x, int y, int *color);
 int				create_rgb(int r, int g, int b);
 int				parse_rgb(char *str, int *r, int *g, int *b);
 
-/* ================ RAYCASTING FUNCTIONS ================ */
-void			raycast(t_game *game);
-// void			init_ray(t_game *game, t_ray *ray, int x);
-void			calculate_step_and_side_dist(t_player *player, t_ray *ray);
-void			perform_dda(t_map *map, t_ray *ray);
-void			calculate_wall_distance(t_ray *ray);
-void			calculate_wall_height(t_ray *ray, int screen_height);
-
-/* ================ RENDERING FUNCTIONS ================ */
-void			render_frame(t_game *game);
-void			draw_vertical_line(t_game *game, int x, t_ray *ray);
-void			draw_sky_floor(t_game *game, int x, t_ray *ray);
-void			draw_textured_wall(t_game *game, int x, t_ray *ray);
-t_img			*get_wall_texture(t_game *game, t_ray *ray);
-void			calculate_texture_x(t_ray *ray, t_img *tex, t_player *p);
-void			put_pixel(t_img *img, int x, int y, int color);
-
-/* ================ PLAYER MOVEMENT ================ */
-void			move_up(t_game *game);
-void			move_down(t_game *game);
-void			move_left(t_game *game);
-void			move_right(t_game *game);
-void			rotate_left(t_game *game);
-void			rotate_right(t_game *game);
 
 /* ================ EVENT HANDLING ================ */
-int				keys(int code, void *p);
-int				escape_game_no_update(t_game *game);
 int				key_release(int keycode, t_game *game);
 int				close_game(t_game *game);
 int				handle_no_event(t_game *game);
 
-/* ================ INITIALIZATION ================ */
-void			init_game(t_game *game);
-t_game			*init_game_struct(void);
-t_player		*init_player(void);
-// void			init_player(t_player *player, char direction, int x, int y);
-t_map			*init_map(void);
-
 /* ================ UTILITY FUNCTIONS ================ */
-void			error_message(void);
-void			free_game(t_game *game);
 int				is_whitespace(char c);
 char			*skip_whitespace(char *str);
 int				is_valid_map_char(char c);
@@ -217,7 +183,6 @@ void			move_up(t_game *game);
 void			move_down(t_game *game);
 void			free_game(t_game *game);
 void			free_map(t_map *map);
-void			get_image(t_game *game);
 double			dda(t_ray *ray, t_game *game);
 void			draw_map(t_game *game);
 void			start_player(t_game *game);
@@ -228,7 +193,23 @@ t_player		*init_player(void);
 t_ray			*init_ray(t_game *game);
 t_img			*init_image(t_game * game);
 t_game			*create_test_game(int simple_map);
-void	init_for_col(t_ray *ray, int i);
-void	update(t_game *game);
-void	calc_to_draw(t_ray *ray);
+void			init_for_col(t_ray *ray, int i);
+void			update(t_game *game);
+void			calc_to_draw(t_ray *ray);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			init_game(t_game *game);
+t_game			*init_game_struct(void);
+t_player		*init_player(void);
+t_map			*init_map(void);
+void			error_message(void);
+void			free_game(t_game *game);
+void			move_up(t_game *game);
+void			move_down(t_game *game);
+void			move_left(t_game *game);
+void			move_right(t_game *game);
+void			rotate_left(t_game *game);
+void			rotate_right(t_game *game);
+int				keys(int code, void *p);
+int				escape_game_no_update(t_game *game);
+
 #endif

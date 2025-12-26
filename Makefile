@@ -6,13 +6,13 @@
 #    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/25 16:31:29 by nour             ###   ########.fr        #
+#    Updated: 2025/12/26 18:17:18 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME   = cub3D
 
-SRC = main.c  moves.c calculations.c\
+SRC = main.c  raycasting/moves.c raycasting/calculations.c\
 	get_next_line/get_next_line_bonus.c \
 	ft_printf/ft_printf.c ft_printf/ft_putchar_fd.c ft_printf/ft_putnbr_base.c \
 	ft_printf/ft_putstr_fd.c \
@@ -20,7 +20,7 @@ SRC = main.c  moves.c calculations.c\
 	Libft/ft_split.c Libft/ft_strchr.c Libft/ft_strdup.c Libft/ft_strjoin.c \
 	Libft/ft_strlcat.c Libft/ft_strlcpy.c Libft/ft_strlen.c Libft/ft_strncmp.c \
 	Libft/ft_strnstr.c Libft/ft_strrchr.c Libft/ft_strstr.c Libft/ft_strtrim.c \
-	Libft/ft_substr.c DDA.c drawing.c initial.c cleanup.c mlx.c data_structures.c fake_map.c
+	Libft/ft_substr.c raycasting/DDA.c raycasting/drawing.c raycasting/initial.c data_structures/cleanup.c mlx.c data_structures/data_structures.c data_structures/fake_map.c
 
 OBJ	= $(SRC:.c=.o)
 

@@ -6,11 +6,11 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 17:58:30 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 18:28:03 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 //figure out how the player will be tracked
 void update(t_game *game)
@@ -92,7 +92,7 @@ void	calc_to_draw(t_ray *ray)
 		ray->draw_start = 0;
 	ray->draw_end = (ray->line_height / 2) + game->screen_height / 2;
 	if (ray->draw_end >=game->screen_height)
-		ray->draw_end = game->screen_height - 1;
+		ray->draw_end = game->screen_height;
 }
 //line height: the lower the distance the higher the wall (perspective)
 //draw start: the center of the screen - the offset 
