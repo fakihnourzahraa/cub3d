@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/25 16:37:46 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 16:43:04 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //figure out how the player will be tracked
 void	update(t_game *game)
 {
+
 	draw_map(game);
 }
 void	get_image(t_game *game)

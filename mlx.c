@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 14:04:32 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 16:40:55 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ int	keys(int code, void *p)
 	t_game	*game;
 
 	game = (t_game *)p;
-	if (code == 30)
+	printf("%d\n", code);
+	if (code == 97)
 		move_left(game);
-	else if (code == 32)
+	else if (code == 100)
 		move_right(game);
-	else if (code == 17)
+	else if (code == 119)
 		move_up(game);
-	else if (code == 31)
+	else if (code == 115)
 		move_down(game);
 	else if (code == 65307)
 		escape_game_no_update(game);
 	else if (code == 65361)
         rotate_left(game);
-    else if (code == 65363)
+    else if (code == 653563)
         rotate_right(game);
 	return (0);
 }
