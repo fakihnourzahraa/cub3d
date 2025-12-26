@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:14:58 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 16:43:36 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 17:37:09 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,75 @@ void put_pixel(t_img *img, int x, int y, int color)
     // Write the color (assuming 32-bit color)
     *(unsigned int *)dst = color;
 }
-void	draw_line(t_ray *ray, int x)
-{
-	t_game	*game;
+// void	draw_line(t_ray *ray, int x)
+// {
+// 	t_game	*game;
 
-	game = ray->game;
+// 	game = ray->game;
+//     int y;
+    
+//     // Draw ceiling (from top to wall start)
+//     y = 0;
+//     while (y < ray->draw_start)
+//     {
+//         put_pixel(game->img, x, y, game->textures->sky_color);
+//         y++;
+//     }
+    
+//     // Draw wall (from draw_start to draw_end)
+//     y = ray->draw_start;
+//     while (y < ray->draw_end)
+//     {
+//         // For now, just use a solid color
+//         // Later you'll add textures here
+//         int color;
+//         if (ray->side == 1)  // Make one side darker
+//             color = 0x808080;  // Gray
+//         else
+//             color = 0xFFFFFF;  // White
+        
+//         put_pixel(game->img, x, y, color);
+//         y++;
+//     }
+    
+//     // Draw floor (from wall end to bottom)
+//     y = ray->draw_end;
+//     while (y < game->screen_height)
+//     {
+//         put_pixel(game->img, x, y, game->textures->floor_color);
+//         y++;
+//     }	
+// }
+//scratch, just for testing!!!
+void draw_line(t_ray *ray, int x)
+{
+    t_game *game;
     int y;
+
+    game = ray->game;
+    if (x == 0)  // Only print for first column
+    {
+        fflush(stdout);
+    }
+    
+    // Safety checks
+    if (ray->draw_start < 0)
+    {
+        printf("ERROR: draw_start is negative: %d\n", ray->draw_start);
+        ray->draw_start = 0;
+    }
+    if (ray->draw_end > game->screen_height)
+    {
+        printf("ERROR: draw_end too large: %d (max %d)\n", 
+               ray->draw_end, game->screen_height);
+        ray->draw_end = game->screen_height;
+    }
+    if (ray->draw_start >= ray->draw_end)
+    {
+        // printf("ERROR: draw_start >= draw_end (%d >= %d)\n", 
+        //        ray->draw_start, ray->draw_end);
+        return;  // Skip this line
+    }
     
     // Draw ceiling (from top to wall start)
     y = 0;
@@ -39,22 +102,24 @@ void	draw_line(t_ray *ray, int x)
         put_pixel(game->img, x, y, game->textures->sky_color);
         y++;
     }
-    
+    if (x == 0)
+        printf("  ceiling done\n");
     // Draw wall (from draw_start to draw_end)
     y = ray->draw_start;
     while (y < ray->draw_end)
     {
-        // For now, just use a solid color
-        // Later you'll add textures here
         int color;
-        if (ray->side == 1)  // Make one side darker
-            color = 0x808080;  // Gray
+        if (ray->side == 1)
+            color = 0x808080;
         else
-            color = 0xFFFFFF;  // White
+            color = 0xFFFFFF;
         
         put_pixel(game->img, x, y, color);
         y++;
     }
+    
+    if (x == 0)
+        printf("  wall done\n");
     
     // Draw floor (from wall end to bottom)
     y = ray->draw_end;
@@ -62,10 +127,11 @@ void	draw_line(t_ray *ray, int x)
     {
         put_pixel(game->img, x, y, game->textures->floor_color);
         y++;
-    }	
+    }
+    
+    if (x == 0)
+        printf("  floor done\n");
 }
-//scratch, just for testing!!!
-
 void	draw_map(t_game *game)
 {
 	int		i;
@@ -80,7 +146,8 @@ void	draw_map(t_game *game)
 		calc_to_draw(ray);
 		draw_line(ray, i);
 		i++;
-		free(ray);
+        // free(ray->calc);
+		// free(ray);
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }

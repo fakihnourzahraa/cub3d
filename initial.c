@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 16:37:10 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 16:55:25 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ void	start_player(t_game *game)
 	map = game->map;
 	player->x = (double)map->p_x + 0.5;
 	player->y = (double)map->p_y + 0.5;
-	vertical(map, player);
-	horizontal(map, player);
+	// vertical(map, player);
+	// horizontal(map, player);
+	if (map->p == 'N' || map->p == 'S')
+        horizontal(map, player);
+    else if (map->p == 'E' || map->p == 'W')
+        vertical(map, player);
 }
 
 t_game	*init_game_struct(void)
@@ -73,7 +77,7 @@ t_game	*init_game_struct(void)
 	game->textures = init_textures();
 	game->screen_width = 1280;
 	game->screen_height = 720;
-	game->move_speed = 0.05;
+	game->move_speed = 0.5;
 	game->rot_speed = 0.03;
 	while (i < 256)
 	{

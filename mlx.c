@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 16:40:55 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 16:46:52 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	keys(int code, void *p)
 		escape_game_no_update(game);
 	else if (code == 65361)
         rotate_left(game);
-    else if (code == 653563)
+    else if (code == 65363)
         rotate_right(game);
 	return (0);
 }

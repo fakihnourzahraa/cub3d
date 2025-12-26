@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/25 16:37:22 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/26 16:53:46 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ typedef struct s_game
 	int			screen_width;
 	int			screen_height;
 	int			keys[256];
-	int			move_speed;
-	int			rot_speed;
+	double			move_speed;
+	double			rot_speed;
 }				t_game;
 //includes player, map, textures (includes details), img. and ray
 
