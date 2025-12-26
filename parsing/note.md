@@ -215,3 +215,31 @@ Spaces in map are VALID characters
 Spaces must be PRESERVED (don't trim!)
 Spaces affect map width calculation
 Spaces are treated as walls/void in flood fill
+
+
+
+Day 1-2: File Reading Foundation
+parsing/
+├── parse_file.c          # Main controller - reads entire .cub file
+├── parse_utils.c         # String utilities (trim, skip whitespace, etc.)
+└── error_handling.c      # Error messages and exit
+Day 3: Texture Parsing
+parsing/
+└── parse_textures.c      # Extract NO, SO, WE, EA paths
+Day 4: Color Parsing
+parsing/
+└── parse_colors.c        # Extract F and C (RGB values)
+Day 5-6: Map Extraction & Storage
+parsing/
+├── parse_map.c           # Extract map section from file
+└── map_utils.c           # Map dimensions, storage helpers
+Day 7: Map Validation (Flood Fill)
+parsing/
+├── validate_map.c        # Character validation, wall checks
+└── flood_fill.c          # Flood fill algorithm for closed walls
+Day 8: Player Detection
+parsing/
+└── find_player.c         # Find N/S/E/W, extract position, validate
+Day 9: Error Handling (Already started Day 1)
+parsing/
+└── error_handling.c      # (Expand this with all error cases)

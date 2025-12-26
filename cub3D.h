@@ -212,4 +212,17 @@ void			rotate_right(t_game *game);
 int				keys(int code, void *p);
 int				escape_game_no_update(t_game *game);
 
+/* ================ PARSING FUNCTIONS ================ */
+char    *skip_whitespace(char *str);
+int     is_empty_line(char *line);
+int     count_lines(char **lines);
+void    free_string_array(char **arr);
+int     parse_cub_file(char *filename, t_game *game);
+char    **read_entire_file(char *filename);
+int     validate_file_extension(char *filename);
+int     print_error(char *message);
+int     validate_file_access(char *filepath);
+int		count_file_lines(char *filename);
+char 	**fill_lines(int fd, int lines_count);
+
 #endif

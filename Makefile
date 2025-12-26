@@ -16,7 +16,7 @@ SRC = main.c  raycasting/moves.c raycasting/calculations.c\
 	get_next_line/get_next_line_bonus.c \
 	ft_printf/ft_printf.c ft_printf/ft_putchar_fd.c ft_printf/ft_putnbr_base.c \
 	ft_printf/ft_putstr_fd.c \
-	Libft/ft_atoi.c Libft/ft_itoa.c Libft/ft_memset.c Libft/ft_putendl_fd.c \
+	Libft/ft_atoi.c Libft/ft_itoa.c Libft/ft_strcmp.c Libft/ft_memset.c Libft/ft_putendl_fd.c \
 	Libft/ft_split.c Libft/ft_strchr.c Libft/ft_strdup.c Libft/ft_strjoin.c \
 	Libft/ft_strlcat.c Libft/ft_strlcpy.c Libft/ft_strlen.c Libft/ft_strncmp.c \
 	Libft/ft_strnstr.c Libft/ft_strrchr.c Libft/ft_strstr.c Libft/ft_strtrim.c \

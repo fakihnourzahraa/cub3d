@@ -27,6 +27,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_atoi(const char *nptr);
+int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memset(void *s, int c, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
