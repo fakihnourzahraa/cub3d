@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   cleanup1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:13 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 18:17:34 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/27 16:15:20 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_grid(char **grid)
 	free(grid);
 }
 
-static void	free_texture_img(void *mlx, t_img *texture)
+void	free_texture_img(void *mlx, t_img *texture)
 {
 	if (!texture)
 		return ;
@@ -36,7 +36,7 @@ static void	free_texture_img(void *mlx, t_img *texture)
 	free(texture);
 }
 
-static void	free_textures_struct(void *mlx, t_textures *tex)
+void	free_textures_struct(void *mlx, t_textures *tex)
 {
 	if (!tex)
 		return ;
@@ -64,43 +64,11 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-static void	free_image(void *mlx, t_img *img)
+void	free_image(void *mlx, t_img *img)
 {
 	if (!img)
 		return ;
 	if (img->img && mlx)
 		mlx_destroy_image(mlx, img->img);
 	free(img);
-}
-
-void	free_game(t_game *game)
-{
-	if (!game)
-		return ;
-	if (game->textures)
-		free_textures_struct(game->mlx, game->textures);
-	if (game->map)
-		free_map(game->map);
-	free_image(game->mlx, game->img);
-	free(game->player);
-	if (game->win && game->mlx)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-	}
-	free(game);
-}
-
-// void	error_exit(t_game *game)
-// {
-// 	ft_putendl_fd("Error", 2);
-// 	free_game(game);
-// 	exit(1);
-// }
-
-void	error_message(void)
-{
-	ft_printf("Error\n");
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   data_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2025/12/27 15:34:40 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/27 16:22:44 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-t_map *init_map(void)
+t_map	*init_map(void)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = malloc(sizeof(t_map));
 	map->grid = NULL;
@@ -27,9 +27,9 @@ t_map *init_map(void)
 	return (map);
 }
 
-t_textures *init_textures(void)
+t_textures	*init_textures(void)
 {
-	t_textures *text;
+	t_textures	*text;
 
 	text = malloc(sizeof(t_textures));
 	text->north = NULL;
@@ -45,9 +45,9 @@ t_textures *init_textures(void)
 	return (text);
 }
 
-t_player *init_player(void)
+t_player	*init_player(void)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = malloc(sizeof(t_player));
 	player->x = 0;
@@ -58,9 +58,10 @@ t_player *init_player(void)
 	player->plane_y = 0;
 	return (player);
 }
-t_ray *init_ray(t_game *game)
+
+t_ray	*init_ray(t_game *game)
 {
-	t_ray *ray;
+	t_ray	*ray;
 
 	ray = malloc(sizeof(t_ray));
 	ray->calc = malloc(sizeof(t_calc));
@@ -86,9 +87,9 @@ t_ray *init_ray(t_game *game)
 	return (ray);
 }
 
-t_img *init_image(t_game *game)
+t_img	*init_image(t_game *game)
 {
-	t_img *img;
+	t_img	*img;
 
 	img = malloc(sizeof(t_img));
 	img->img = NULL;

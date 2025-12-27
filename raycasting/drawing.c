@@ -3,35 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:14:58 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 15:34:14 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/27 16:26:16 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void put_pixel(t_img *img, int x, int y, int color)
+void	put_pixel(t_img *img, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
-		return;
+		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 // were just finding offset and writing the 32 bit color to it
 
 // scratch, just for testing!!!
-void draw_line(t_ray *ray, int x)
+void	draw_line(t_ray *ray, int x)
 {
-	t_game *game;
-	int y;
+	t_game	*game;
+	int		y;
+	int		color;
 
 	game = ray->game;
 	if (ray->draw_start >= ray->draw_end)
-		return;
+		return ;
 	y = 0;
 	while (y < ray->draw_start)
 	{
@@ -41,7 +42,6 @@ void draw_line(t_ray *ray, int x)
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
-		int color;
 		if (ray->side == 1)
 			color = 0x808080;
 		else
@@ -57,10 +57,10 @@ void draw_line(t_ray *ray, int x)
 	}
 }
 
-void draw_map(t_game *game)
+void	update(t_game *game)
 {
-	int i;
-	t_ray *ray;
+	int		i;
+	t_ray	*ray;
 
 	i = 0;
 	while (i < game->screen_width)

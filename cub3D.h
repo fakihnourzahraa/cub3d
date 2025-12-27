@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 14:51:08 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/27 16:21:34 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,9 +183,7 @@ void			move_down(t_game *game);
 void			free_game(t_game *game);
 void			free_map(t_map *map);
 double			dda(t_ray *ray, t_game *game);
-void			draw_map(t_game *game);
 void			start_player(t_game *game);
-void			update(t_game *game);
 t_map			*init_map(void);
 t_textures		*init_textures(void);
 t_player		*init_player(void);
@@ -210,8 +208,6 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 int				keys(int code, void *p);
 int				escape_game_no_update(t_game *game);
-
-/* ================ PARSING FUNCTIONS ================ */
 char    *skip_whitespace(char *str);
 int     is_empty_line(char *line);
 int     count_lines(char **lines);
@@ -223,7 +219,13 @@ int     print_error(char *message);
 int     validate_file_access(char *filepath);
 int		count_file_lines(char *filename);
 char 	**fill_lines(int fd, int lines_count);
-int	key_loop(t_game *game);
-int	keys(int code, void *p);
-int	key_release(int code, void *p);
+int		key_loop(t_game *game);
+int		keys(int code, void *p);
+int		key_release(int code, void *p);
+void	free_grid(char **grid);
+void	free_texture_img(void *mlx, t_img *texture);
+void	free_textures_struct(void *mlx, t_textures *tex);
+void	free_map(t_map *map);
+void	free_image(void *mlx, t_img *img);
+
 #endif

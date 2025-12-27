@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 15:34:17 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/27 16:27:12 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void vertical(t_map *map, t_player *player)
+void	vertical(t_map *map, t_player *player)
 {
 	if (map->p == 'E')
 	{
@@ -29,7 +29,8 @@ void vertical(t_map *map, t_player *player)
 		player->plane_y = -0.66;
 	}
 }
-void horizontal(t_map *map, t_player *player)
+
+void	horizontal(t_map *map, t_player *player)
 {
 	if (map->p == 'N')
 	{
@@ -46,10 +47,11 @@ void horizontal(t_map *map, t_player *player)
 		player->plane_y = 0.0;
 	}
 }
-void start_player(t_game *game)
+
+void	start_player(t_game *game)
 {
-	t_player *player;
-	t_map *map;
+	t_player	*player;
+	t_map		*map;
 
 	player = game->player;
 	map = game->map;
@@ -61,10 +63,10 @@ void start_player(t_game *game)
 		vertical(map, player);
 }
 
-t_game *init_game_struct(void)
+t_game	*init_game_struct(void)
 {
-	t_game *game;
-	int i;
+	t_game	*game;
+	int		i;
 
 	i = 0;
 	game = malloc(sizeof(t_game));
