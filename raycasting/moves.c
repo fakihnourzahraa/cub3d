@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:12:07 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 18:16:03 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/27 15:12:37 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	move_down(t_game *g)
 		update(g);
 	}
 }
-void	rotate_left(t_game *g)
+void	rotate_right(t_game *g)
 {
 	double	old_dir;
 	double	old_plane;
@@ -94,8 +94,9 @@ void	rotate_left(t_game *g)
 		- g->player->plane_y * sin(g->rot_speed);
 	g->player->plane_y = old_plane * sin(g->rot_speed)
 		+ g->player->plane_y * cos(g->rot_speed);
+		update(g);
 }
-void	rotate_right(t_game *g)
+void	rotate_left(t_game *g)
 {
 	double	old_dir;
 	double	old_plane;
@@ -110,5 +111,6 @@ void	rotate_right(t_game *g)
 		- g->player->plane_y * sin(-1 * g->rot_speed);
 	g->player->plane_y = old_plane * sin(-1 * g->rot_speed)
 		+ g->player->plane_y * cos (-1 * g->rot_speed);
+			update(g);
 
 }

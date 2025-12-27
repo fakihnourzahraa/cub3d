@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/26 18:31:58 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/27 14:51:08 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,6 @@ int				parse_rgb(char *str, int *r, int *g, int *b);
 
 
 /* ================ EVENT HANDLING ================ */
-int				key_release(int keycode, t_game *game);
 int				close_game(t_game *game);
 int				handle_no_event(t_game *game);
 
@@ -224,5 +223,7 @@ int     print_error(char *message);
 int     validate_file_access(char *filepath);
 int		count_file_lines(char *filename);
 char 	**fill_lines(int fd, int lines_count);
-
+int	key_loop(t_game *game);
+int	keys(int code, void *p);
+int	key_release(int code, void *p);
 #endif
