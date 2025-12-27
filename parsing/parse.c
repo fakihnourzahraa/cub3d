@@ -12,9 +12,10 @@
 
 #include "../cub3D.h"
 
-int     parse_cub_file(char *filename, t_game *game)
+int	parse_cub_file(char *filename, t_game *game)
 {
 	char	**lines;
+	(void) game;
 
 	if (!validate_file_extension(filename))
 		return (print_error("Invalid file extension (must be .cub)"));
@@ -23,6 +24,7 @@ int     parse_cub_file(char *filename, t_game *game)
 	lines = read_entire_file(filename);
 	if (!lines)
 		return (print_error("Failed to read file"));
+	process_lines(lines);
 	printf("Successfully read %d lines\n", count_lines(lines));
 	free_string_array(lines);
 	return (1);

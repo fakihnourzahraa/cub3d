@@ -36,10 +36,31 @@ int     validate_file_access(char *filepath)
     return (1);
 }
 
+void    error_exit(char *message, t_game *game)
+{
+	write(2, "Error\n", 6);
+	if (message)
+	{
+		write(2, message, ft_strlen(message));
+		write(2, "\n", 1);
+	}
+	cleanup_parsing(game);
+	exit(1);
+}
 
+void    cleanup_parsing(t_game *game)
+{
+	if (!game)
+		return;
+}
 
 /* .int print_error(char *message):la ektub l error mtl 
 invalid file extension */
 
 /* .int validate_file_access(char *filepath):Checks if the file exists,
 Prevent crashes from trying to read non-existent files*/
+
+/*void error_exit(char *message, t_game *game):used Free all allocated memory 
+in game structure*/
+
+/*void cleanup_parsing(t_game *game):used to free map if alloc*/

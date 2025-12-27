@@ -43,5 +43,6 @@ char	*ft_strtrim(char const *s1, char const *set);;
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+int	ft_strcmp(const char *s1, const char *s2);
+int	ft_isdigit(int c);
 #endif

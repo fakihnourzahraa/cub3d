@@ -140,9 +140,7 @@ typedef struct s_game
 /* ================ PARSING FUNCTIONS ================ */
 int				parse_file(t_game *game, char *filename);
 int				read_file(char *filename, char ***file_content);
-int				parse_texture_line(char *line, t_textures *tex);
 int				parse_color_line(char *line, int *color);
-int				parse_textures(char *line, t_textures *tex);
 int				parse_floor_color(char *line, t_textures *tex);
 int				parse_sky_color(char *line, t_textures *tex);
 int				parse_map(char **file, t_map *map, int start_line);
@@ -171,7 +169,6 @@ int				close_game(t_game *game);
 int				handle_no_event(t_game *game);
 
 /* ================ UTILITY FUNCTIONS ================ */
-int				is_whitespace(char c);
 char			*skip_whitespace(char *str);
 int				is_valid_map_char(char c);
 
@@ -208,6 +205,17 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 int				keys(int code, void *p);
 int				escape_game_no_update(t_game *game);
+
+int		key_loop(t_game *game);
+int		keys(int code, void *p);
+int		key_release(int code, void *p);
+void	free_grid(char **grid);
+void	free_texture_img(void *mlx, t_img *texture);
+void	free_textures_struct(void *mlx, t_textures *tex);
+void	free_map(t_map *map);
+void	free_image(void *mlx, t_img *img);
+
+/* ================ MIRA PARSING FUNCTIONS ================ */
 char    *skip_whitespace(char *str);
 int     is_empty_line(char *line);
 int     count_lines(char **lines);
@@ -219,13 +227,16 @@ int     print_error(char *message);
 int     validate_file_access(char *filepath);
 int		count_file_lines(char *filename);
 char 	**fill_lines(int fd, int lines_count);
-int		key_loop(t_game *game);
-int		keys(int code, void *p);
-int		key_release(int code, void *p);
-void	free_grid(char **grid);
-void	free_texture_img(void *mlx, t_img *texture);
-void	free_textures_struct(void *mlx, t_textures *tex);
-void	free_map(t_map *map);
-void	free_image(void *mlx, t_img *img);
+int     is_whitespace(char c);
+int		starts_with(char *str, char *prefix);
+void    error_exit(char *message, t_game *game);  
+void    cleanup_parsing(t_game *game);
+void	identify_line_type(char *line, int line_num);
+void	process_lines(char **lines);
+int				parse_textures(char *line, t_textures *tex);
+int				parse_texture_line(char *line, t_textures *tex);
+int 			validate_texture_path(char path);
+int				check_duplicate_texture(char existing_path, char identifier);
+int				 all_textures_found(t_textures textures);
 
 #endif
