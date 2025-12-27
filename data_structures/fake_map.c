@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fake_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/26 18:38:24 by nour             ###   ########.fr       */
+/*   Updated: 2025/12/27 15:34:37 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
+void set_player_spawn(t_player *player, char spawn_char, int x, int y)
 {
 	player->x = (double)x + 0.5;
 	player->y = (double)y + 0.5;
@@ -45,10 +45,10 @@ void	set_player_spawn(t_player *player, char spawn_char, int x, int y)
 		player->plane_y = -0.66;
 	}
 }
-static char	**create_test_grid(void)
+static char **create_test_grid(void)
 {
-	char	**grid;
-	int		i;
+	char **grid;
+	int i;
 
 	grid = malloc(sizeof(char *) * 9);
 	if (!grid)
@@ -56,10 +56,10 @@ static char	**create_test_grid(void)
 	i = 0;
 	grid[i++] = ft_strdup("11111111111111111111");
 	grid[i++] = ft_strdup("10000100000000000001");
-	grid[i++] = ft_strdup("10001000000000000001");
-	grid[i++] = ft_strdup("1000101000000000001");
-	grid[i++] = ft_strdup("11111E11000000000001");
-	grid[i++] = ft_strdup("10000110000000000001");
+	grid[i++] = ft_strdup("10001100000000000001");
+	grid[i++] = ft_strdup("10000000000000000001");
+	grid[i++] = ft_strdup("110010E01000000000001");
+	grid[i++] = ft_strdup("10000000000000000001");
 	grid[i++] = ft_strdup("10000000000000000001");
 	grid[i++] = ft_strdup("11111111111111111111");
 	grid[i] = NULL;
@@ -70,10 +70,10 @@ static char	**create_test_grid(void)
 ** Creates a more complex test map with some walls
 ** Better for testing raycasting
 */
-static char	**create_complex_grid(void)
+static char **create_complex_grid(void)
 {
-	char	**grid;
-	int		i;
+	char **grid;
+	int i;
 
 	grid = malloc(sizeof(char *) * 13);
 	if (!grid)
@@ -101,11 +101,11 @@ static char	**create_complex_grid(void)
 ** Finds the player spawn position in the grid
 ** Returns 1 if found, 0 if not
 */
-static int	find_player_spawn(char **grid, int *spawn_x, 
-								int *spawn_y, char *spawn_char)
+static int find_player_spawn(char **grid, int *spawn_x,
+							 int *spawn_y, char *spawn_char)
 {
-	int	y;
-	int	x;
+	int y;
+	int x;
 
 	y = 0;
 	while (grid[y])
@@ -113,8 +113,7 @@ static int	find_player_spawn(char **grid, int *spawn_x,
 		x = 0;
 		while (grid[y][x])
 		{
-			if (grid[y][x] == 'N' || grid[y][x] == 'S'
-				|| grid[y][x] == 'E' || grid[y][x] == 'W')
+			if (grid[y][x] == 'N' || grid[y][x] == 'S' || grid[y][x] == 'E' || grid[y][x] == 'W')
 			{
 				*spawn_x = x;
 				*spawn_y = y;
@@ -132,11 +131,11 @@ static int	find_player_spawn(char **grid, int *spawn_x,
 /*
 ** Calculates map dimensions from grid
 */
-static void	calculate_dimensions(char **grid, int *width, int *height)
+static void calculate_dimensions(char **grid, int *width, int *height)
 {
-	int	y;
-	int	x;
-	int	max_width;
+	int y;
+	int x;
+	int max_width;
 
 	y = 0;
 	max_width = 0;
@@ -157,12 +156,12 @@ static void	calculate_dimensions(char **grid, int *width, int *height)
 ** Loads a fake map for testing
 ** simple: 0 for complex map, 1 for simple map
 */
-t_map	*load_fake_map(int simple)
+t_map *load_fake_map(int simple)
 {
-	t_map		*map;
-	int			spawn_x;
-	int			spawn_y;
-	char		spawn_char;
+	t_map *map;
+	int spawn_x;
+	int spawn_y;
+	char spawn_char;
 
 	map = init_map();
 	if (!map)
@@ -192,12 +191,12 @@ t_map	*load_fake_map(int simple)
 ** Creates a complete game with fake map
 ** Use this for testing execution while parser is being developed
 */
-t_game	*create_test_game(int simple_map)
+t_game *create_test_game(int simple_map)
 {
-	t_game		*game;
-	int			spawn_x;
-	int			spawn_y;
-	char		spawn_char;
+	t_game *game;
+	int spawn_x;
+	int spawn_y;
+	char spawn_char;
 
 	game = init_game_struct();
 	if (!game)
@@ -224,7 +223,7 @@ t_game	*create_test_game(int simple_map)
 /*
 ** Helper function to create RGB color
 */
-int	create_rgb(int r, int g, int b)
+int create_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
@@ -238,7 +237,7 @@ int	create_rgb(int r, int g, int b)
 **
 **     // Create simple test map
 **     game = create_test_game(1);
-**     
+**
 **     // OR create complex test map
 **     // game = create_test_game(0);
 **
@@ -249,10 +248,10 @@ int	create_rgb(int r, int g, int b)
 **     game->mlx = mlx_init();
 **     game->win = mlx_new_window(game->mlx, 1920, 1080, "cub3D");
 **     game->img->img = mlx_new_image(game->mlx, 1920, 1080);
-**     game->img->addr = mlx_get_data_addr(game->img->img, 
+**     game->img->addr = mlx_get_data_addr(game->img->img,
 **         &game->img->bits_per_pixel,
 **         &game->img->line_length, &game->img->endian);
-**     
+**
 **     // Your rendering code here...
 **     // mlx_loop_hook(game->mlx, render_frame, game);
 **     // mlx_hook(game->win, 2, 1L<<0, key_press, game);

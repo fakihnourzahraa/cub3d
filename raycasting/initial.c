@@ -6,47 +6,47 @@
 /*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 15:02:32 by nfakih           ###   ########.fr       */
+/*   Updated: 2025/12/27 15:34:17 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	vertical(t_map *map, t_player *player)
+void vertical(t_map *map, t_player *player)
 {
 	if (map->p == 'E')
-    {
-        player->dir_x = 1;
-        player->dir_y = 0;
-        player->plane_x = 0;
-        player->plane_y = 0.66;
-    }
-    else if (map->p == 'W')
-    {
-        player->dir_x = -1;
-        player->dir_y = 0;
-        player->plane_x = 0;
-        player->plane_y = -0.66;
-    }
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
+	}
+	else if (map->p == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
+	}
 }
-void	horizontal(t_map *map, t_player *player)
+void horizontal(t_map *map, t_player *player)
 {
 	if (map->p == 'N')
-    {
-        player->dir_x = 0.0;
-        player->dir_y = -1.0;
-        player->plane_x = 0.66;
-        player->plane_y = 0.0;
-    }
-    else if (map->p == 'S')
-    {
-        player->dir_x = 0.0;
-        player->dir_y = 1.0;
-        player->plane_x = -0.66;
-        player->plane_y = 0.0;
-    }
+	{
+		player->dir_x = 0.0;
+		player->dir_y = -1.0;
+		player->plane_x = 0.66;
+		player->plane_y = 0.0;
+	}
+	else if (map->p == 'S')
+	{
+		player->dir_x = 0.0;
+		player->dir_y = 1.0;
+		player->plane_x = -0.66;
+		player->plane_y = 0.0;
+	}
 }
-void	start_player(t_game *game)
+void start_player(t_game *game)
 {
 	t_player *player;
 	t_map *map;
@@ -56,15 +56,15 @@ void	start_player(t_game *game)
 	player->x = (double)map->p_x + 0.5;
 	player->y = (double)map->p_y + 0.5;
 	if (map->p == 'N' || map->p == 'S')
-        horizontal(map, player);
-    else if (map->p == 'E' || map->p == 'W')
-        vertical(map, player);
+		horizontal(map, player);
+	else if (map->p == 'E' || map->p == 'W')
+		vertical(map, player);
 }
 
-t_game	*init_game_struct(void)
+t_game *init_game_struct(void)
 {
-	t_game	*game;
-	int		i;
+	t_game *game;
+	int i;
 
 	i = 0;
 	game = malloc(sizeof(t_game));
@@ -80,7 +80,7 @@ t_game	*init_game_struct(void)
 	while (i < 256)
 	{
 		game->keys[i] = 0;
-		i++;		
+		i++;
 	}
 	game->img = init_image(game);
 	return (game);
