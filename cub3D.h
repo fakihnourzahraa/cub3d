@@ -233,10 +233,18 @@ void    error_exit(char *message, t_game *game);
 void    cleanup_parsing(t_game *game);
 void	identify_line_type(char *line, int line_num);
 void	process_lines(char **lines);
-int				parse_textures(char *line, t_textures *tex);
-int				parse_texture_line(char *line, t_textures *tex);
-int 			validate_texture_path(char path);
-int				check_duplicate_texture(char existing_path, char identifier);
-int				 all_textures_found(t_textures textures);
+
+int		parse_textures(char **lines, t_game *game);
+int		parse_texture_line(char *line,char **dest, char *id);
+int 	validate_texture_path(char *path);
+int		check_duplicate_texture(char *existing, char *id);
+char	*extract_texture_path(char *line);
+
+char    *extract_rgb_string(char *line);
+int     parse_rgb_values(char *rgb_str, int *r, int *g, int *b);
+int     rgb_to_int(int r, int g, int b);
+int     parse_one_color(char *line, int *dest, char *id);
+int     parse_colors(char **lines, t_game *game);
+
 
 #endif
