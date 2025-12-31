@@ -40,8 +40,8 @@ t_textures	*init_textures(void)
 	text->south_path = NULL;
 	text->west_path = NULL;
 	text->east_path = NULL;
-	text->floor_color = 0;
-	text->sky_color = 0;
+	text->floor_color = -1;
+	text->sky_color = -1;
 	return (text);
 }
 

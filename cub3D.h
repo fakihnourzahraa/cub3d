@@ -246,5 +246,14 @@ int     rgb_to_int(int r, int g, int b);
 int     parse_one_color(char *line, int *dest, char *id);
 int     parse_colors(char **lines, t_game *game);
 
+int		find_map_start(char **lines);
+int 	count_map_lines(char **lines, int start);
+char	**extract_map_lines(char **lines, int start, int count);
+int 	parse_maps(char **lines, t_game *game);
+int		get_map_width(char **map);
+int		is_map_char(char c);
+int		validate_map_chars(char **map);
+char	*copy_map_line(char *line, int width);
+int		normalize_map(t_map *map);
 
 #endif

@@ -45,4 +45,5 @@ size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int	ft_strcmp(const char *s1, const char *s2);
 int	ft_isdigit(int c);
+int	ft_atoi_safe(char *str, int *result);
 #endif

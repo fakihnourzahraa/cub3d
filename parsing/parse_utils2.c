@@ -35,5 +35,10 @@ int	starts_with(char *str, char *prefix)
 	return (1);
 }
 
+int	rgb_to_int(int r, int g, int b)
+{
+	return ((r << 16) | (g << 8) | b);
+}
+
 /*int	starts_with(char *str, char *prefix):used la eml check if str start with prefix
 starts_with("NO ./path", "NO") ->sah */
