@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 16:21:34 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/14 09:40:26 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ void			copy_grid(t_map *map);
 
 /* ================ TEXTURE FUNCTIONS ================ */
 int				load_textures(t_game *game);
-int				load_texture(void *mlx, t_img *texture, char *path);
 void			get_texture_pixel(t_img *tex, int x, int y, int *color);
 int				create_rgb(int r, int g, int b);
 int				parse_rgb(char *str, int *r, int *g, int *b);

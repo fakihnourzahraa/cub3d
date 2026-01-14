@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fake_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2025/12/27 15:34:37 by nfakih           ###   ########.fr       */
+/*   Updated: 2026/01/14 09:40:06 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void set_player_spawn(t_player *player, char spawn_char, int x, int y)
 		player->plane_y = -0.66;
 	}
 }
+
 static char **create_test_grid(void)
 {
 	char **grid;
@@ -66,10 +67,6 @@ static char **create_test_grid(void)
 	return (grid);
 }
 
-/*
-** Creates a more complex test map with some walls
-** Better for testing raycasting
-*/
 static char **create_complex_grid(void)
 {
 	char **grid;
@@ -97,10 +94,6 @@ static char **create_complex_grid(void)
 	return (grid);
 }
 
-/*
-** Finds the player spawn position in the grid
-** Returns 1 if found, 0 if not
-*/
 static int find_player_spawn(char **grid, int *spawn_x,
 							 int *spawn_y, char *spawn_char)
 {
@@ -128,9 +121,6 @@ static int find_player_spawn(char **grid, int *spawn_x,
 	return (0);
 }
 
-/*
-** Calculates map dimensions from grid
-*/
 static void calculate_dimensions(char **grid, int *width, int *height)
 {
 	int y;
@@ -153,9 +143,58 @@ static void calculate_dimensions(char **grid, int *width, int *height)
 }
 
 /*
-** Loads a fake map for testing
-** simple: 0 for complex map, 1 for simple map
+** Load a texture image from file path
 */
+static t_img *load_texture(void *mlx, char *path)
+{
+	t_img *texture;
+
+	texture = malloc(sizeof(t_img));
+	if (!texture)
+		return (NULL);
+	texture->img = mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
+	if (!texture->img)
+	{
+		free(texture);
+		return (NULL);
+	}
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
+									  &texture->line_length, &texture->endian);
+	return (texture);
+}
+
+/*
+** Load all wall textures
+** Put your texture paths here (must be .xpm files)
+*/
+static int load_wall_textures(t_game *game)
+{
+	if (!game->textures)
+		return (0);
+	
+	// Load North texture
+	game->textures->north = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->north)
+		return (0);
+	
+	// Load South texture
+	game->textures->south = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->south)
+		return (0);
+	
+	// Load East texture
+	game->textures->east = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->east)
+		return (0);
+	
+	// Load West texture
+	game->textures->west = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->west)
+		return (0);
+	
+	return (1);
+}
+
 t_map *load_fake_map(int simple)
 {
 	t_map *map;
@@ -187,10 +226,6 @@ t_map *load_fake_map(int simple)
 	return (map);
 }
 
-/*
-** Creates a complete game with fake map
-** Use this for testing execution while parser is being developed
-*/
 t_game *create_test_game(int simple_map)
 {
 	t_game *game;
@@ -201,6 +236,15 @@ t_game *create_test_game(int simple_map)
 	game = init_game_struct();
 	if (!game)
 		return (NULL);
+	
+	// Initialize MLX first (needed for loading textures)
+	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		free_game(game);
+		return (NULL);
+	}
+	
 	free(game->map);
 	game->map = load_fake_map(simple_map);
 	if (!game->map)
@@ -212,52 +256,24 @@ t_game *create_test_game(int simple_map)
 	spawn_y = game->map->p_y;
 	spawn_char = game->map->p;
 	set_player_spawn(game->player, spawn_char, spawn_x, spawn_y);
+	
 	if (game->textures)
 	{
 		game->textures->floor_color = create_rgb(220, 100, 0);
 		game->textures->sky_color = create_rgb(135, 206, 235);
+		
+		// Load wall textures
+		if (!load_wall_textures(game))
+		{
+			printf("Error: Failed to load wall textures\n");
+			free_game(game);
+			return (NULL);
+		}
 	}
 	return (game);
 }
 
-/*
-** Helper function to create RGB color
-*/
 int create_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
-
-/*
-** Usage example:
-**
-** int main(void)
-** {
-**     t_game *game;
-**
-**     // Create simple test map
-**     game = create_test_game(1);
-**
-**     // OR create complex test map
-**     // game = create_test_game(0);
-**
-**     if (!game)
-**         return (1);
-**
-**     // Initialize MLX and start rendering
-**     game->mlx = mlx_init();
-**     game->win = mlx_new_window(game->mlx, 1920, 1080, "cub3D");
-**     game->img->img = mlx_new_image(game->mlx, 1920, 1080);
-**     game->img->addr = mlx_get_data_addr(game->img->img,
-**         &game->img->bits_per_pixel,
-**         &game->img->line_length, &game->img->endian);
-**
-**     // Your rendering code here...
-**     // mlx_loop_hook(game->mlx, render_frame, game);
-**     // mlx_hook(game->win, 2, 1L<<0, key_press, game);
-**     // mlx_hook(game->win, 17, 0, close_game, game);
-**     // mlx_loop(game->mlx);
-**
-**     return (0);
-** }
-*/
