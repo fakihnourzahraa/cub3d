@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/14 09:32:25 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 16:21:42 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game->mlx, key_loop, game);
 	mlx_loop(game->mlx);
 }
+
 // int main(int argc, char **argv)
 // {
 // 	t_game	game;
