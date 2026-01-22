@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 16:32:32 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 15:35:48 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,70 @@ int	key_release(int code, void *p)
 	return (0);
 }
 
+static t_img *load_texture(void *mlx, char *path)
+{
+	t_img *texture;
+
+	texture = malloc(sizeof(t_img));
+	if (!texture)
+		return (NULL);
+	texture->img = mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
+	if (!texture->img)
+	{
+		free(texture);
+		return (NULL);
+	}
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
+									  &texture->line_length, &texture->endian);
+	return (texture);
+}
+static int load_wall_textures(t_game *game)
+{
+	if (!game->textures)
+		return (0);
+	
+	// Load North texture
+	game->textures->north = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->north)
+		return (0);
+	
+	// Load South texture
+	game->textures->south = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->south)
+		return (0);
+	
+	// Load East texture
+	game->textures->east = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->east)
+		return (0);
+	
+	// Load West texture
+	game->textures->west = load_texture(game->mlx, "./txt/wall.xpm");
+	if (!game->textures->west)
+		return (0);
+	
+	return (1);
+}
 void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		free_game(game);
+		exit(1);
+	}
+
+	if (game->textures)
+	{
+		game->textures->floor_color = create_rgb(220, 100, 0);
+		game->textures->sky_color = create_rgb(135, 206, 235);
+		if (!load_wall_textures(game))
+		{
+			printf("Error: Failed to load wall textures\n");
+			free_game(game);
+			exit(1);
+		}
+	}
 	game->win = mlx_new_window(game->mlx, game->screen_width,
 			game->screen_height, "cub3d");
 	game->img->img = mlx_new_image(game->mlx, game->screen_width,
@@ -64,6 +125,7 @@ void	init_game(t_game *game)
 	game->img->addr = mlx_get_data_addr(game->img->img,
 			&game->img->bits_per_pixel, &game->img->line_length,
 			&game->img->endian);
+
 	start_player(game);
 }
 

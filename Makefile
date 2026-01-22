@@ -6,7 +6,7 @@
 #    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/27 16:29:28 by nour             ###   ########.fr        #
+#    Updated: 2026/01/22 15:22:31 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = main.c raycasting/moves.c raycasting/calculations.c mlx.c\
 
 OBJ	= $(SRC:.c=.o)
 
-CC      = cc -Wall -Werror -Wextra
+CC      = cc 
 CFLAGS  =  -Iminilibx-linux -g -Ift_printf -Iget_next_line -ILibft
 
 MLX_DIR = minilibx-linux

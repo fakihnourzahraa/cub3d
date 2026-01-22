@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:48 by nour              #+#    #+#             */
-/*   Updated: 2026/01/14 09:40:06 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 15:27:19 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,55 +145,55 @@ static void calculate_dimensions(char **grid, int *width, int *height)
 /*
 ** Load a texture image from file path
 */
-static t_img *load_texture(void *mlx, char *path)
-{
-	t_img *texture;
+// static t_img *load_texture(void *mlx, char *path)
+// {
+// 	t_img *texture;
 
-	texture = malloc(sizeof(t_img));
-	if (!texture)
-		return (NULL);
-	texture->img = mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
-	if (!texture->img)
-	{
-		free(texture);
-		return (NULL);
-	}
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
-									  &texture->line_length, &texture->endian);
-	return (texture);
-}
+// 	texture = malloc(sizeof(t_img));
+// 	if (!texture)
+// 		return (NULL);
+// 	texture->img = mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
+// 	if (!texture->img)
+// 	{
+// 		free(texture);
+// 		return (NULL);
+// 	}
+// 	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
+// 									  &texture->line_length, &texture->endian);
+// 	return (texture);
+// }
 
 /*
 ** Load all wall textures
 ** Put your texture paths here (must be .xpm files)
 */
-static int load_wall_textures(t_game *game)
-{
-	if (!game->textures)
-		return (0);
+// static int load_wall_textures(t_game *game)
+// {
+// 	if (!game->textures)
+// 		return (0);
 	
-	// Load North texture
-	game->textures->north = load_texture(game->mlx, "./txt/wall.xpm");
-	if (!game->textures->north)
-		return (0);
+// 	// Load North texture
+// 	game->textures->north = load_texture(game->mlx, "./txt/wall.xpm");
+// 	if (!game->textures->north)
+// 		return (0);
 	
-	// Load South texture
-	game->textures->south = load_texture(game->mlx, "./txt/wall.xpm");
-	if (!game->textures->south)
-		return (0);
+// 	// Load South texture
+// 	game->textures->south = load_texture(game->mlx, "./txt/wall.xpm");
+// 	if (!game->textures->south)
+// 		return (0);
 	
-	// Load East texture
-	game->textures->east = load_texture(game->mlx, "./txt/wall.xpm");
-	if (!game->textures->east)
-		return (0);
+// 	// Load East texture
+// 	game->textures->east = load_texture(game->mlx, "./txt/wall.xpm");
+// 	if (!game->textures->east)
+// 		return (0);
 	
-	// Load West texture
-	game->textures->west = load_texture(game->mlx, "./txt/wall.xpm");
-	if (!game->textures->west)
-		return (0);
+// 	// Load West texture
+// 	game->textures->west = load_texture(game->mlx, "./txt/wall.xpm");
+// 	if (!game->textures->west)
+// 		return (0);
 	
-	return (1);
-}
+// 	return (1);
+// }
 
 t_map *load_fake_map(int simple)
 {
@@ -238,12 +238,12 @@ t_game *create_test_game(int simple_map)
 		return (NULL);
 	
 	// Initialize MLX first (needed for loading textures)
-	game->mlx = mlx_init();
-	if (!game->mlx)
-	{
-		free_game(game);
-		return (NULL);
-	}
+	// game->mlx = mlx_init();
+	// if (!game->mlx)
+	// {
+	// 	free_game(game);
+	// 	return (NULL);
+	// }
 	
 	free(game->map);
 	game->map = load_fake_map(simple_map);
@@ -257,19 +257,19 @@ t_game *create_test_game(int simple_map)
 	spawn_char = game->map->p;
 	set_player_spawn(game->player, spawn_char, spawn_x, spawn_y);
 	
-	if (game->textures)
-	{
-		game->textures->floor_color = create_rgb(220, 100, 0);
-		game->textures->sky_color = create_rgb(135, 206, 235);
+	// if (game->textures)
+	// {
+	// 	game->textures->floor_color = create_rgb(220, 100, 0);
+	// 	game->textures->sky_color = create_rgb(135, 206, 235);
 		
-		// Load wall textures
-		if (!load_wall_textures(game))
-		{
-			printf("Error: Failed to load wall textures\n");
-			free_game(game);
-			return (NULL);
-		}
-	}
+	// 	// Load wall textures
+	// 	if (!load_wall_textures(game))
+	// 	{
+	// 		printf("Error: Failed to load wall textures\n");
+	// 		free_game(game);
+	// 		return (NULL);
+	// 	}
+	// }
 	return (game);
 }
 
