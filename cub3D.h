@@ -153,7 +153,6 @@ int				validate_characters(t_map *map);
 int				validate_walls(t_map *map);
 int				validate_player(t_map *map, t_player *player);
 int				check_closed_map(t_map *map);
-void			flood_fill(t_map *map, int x, int y);
 void			copy_grid(t_map *map);
 
 /* ================ TEXTURE FUNCTIONS ================ */
@@ -254,5 +253,9 @@ int		is_map_char(char c);
 int		validate_map_chars(char **map);
 char	*copy_map_line(char *line, int width);
 int		normalize_map(t_map *map);
+void	copy_grid_for_flood_fill(t_map *map);
+void	flood_fill(t_map *map, int x, int y, int *error);
+void	free_ff_grid(t_map *map);
+int		validate_map_closed(t_map *map);
 
 #endif
