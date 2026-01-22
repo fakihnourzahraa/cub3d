@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/14 09:40:26 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 16:44:02 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_player
 }				t_player;
 //x y are the exact positions in the map
 //dir x and y are the directions
-//planes perpendiculat to direction vector and are the camera planes
+//planes perpendicular to direction vector and are the camera planes
 //plane distance is used to avoid the fish eye/curved look and maintain the straight line look
 
 typedef	struct s_calc
@@ -135,7 +135,7 @@ typedef struct s_game
 	double		move_speed;
 	double		rot_speed;
 }				t_game;
-//includes player, map, textures (includes details), img. and ray
+//includes player, map, textures (includes details), img
 
 /* ================ PARSING FUNCTIONS ================ */
 int				parse_file(t_game *game, char *filename);
@@ -258,4 +258,12 @@ void	flood_fill(t_map *map, int x, int y, int *error);
 void	free_ff_grid(t_map *map);
 int		validate_map_closed(t_map *map);
 
+
+void	draw_ceiling(t_game *game, int x, int draw_start);
+void	draw_floor(t_game *game, int x, int draw_end);
+int		calculate_tex_x(t_ray *ray, t_game *game, t_img *texture);
+void	draw_textured_wall(t_ray *ray, t_game *game, t_img *texture, int x);
+void	draw_solid_wall(t_ray *ray, t_game *game, int x);
+int		get_texture_color(t_img *texture, int x, int y);
+int		load_wall_textures(t_game *game);
 #endif

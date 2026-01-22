@@ -6,7 +6,7 @@
 #    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2025/12/27 16:29:28 by nour             ###   ########.fr        #
+#    Updated: 2026/01/22 16:36:51 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = main.c raycasting/moves.c raycasting/calculations.c mlx.c\
  raycasting/rotations.c\
  parsing/error_handle.c parsing/helped.c parsing/parse_utils.c \
  parsing/parse_utils2.c parsing/parse.c\
+ raycasting/drawing_single.c\
 
 OBJ	= $(SRC:.c=.o)
 
