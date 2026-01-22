@@ -6,11 +6,37 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/22 16:21:42 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 16:42:58 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	init_game(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		free_game(game);
+		exit(1);
+	}
+	game->textures->floor_color = create_rgb(220, 100, 0);
+	game->textures->sky_color = create_rgb(135, 206, 235);
+	if (!load_wall_textures(game))
+	{
+		free_game(game);
+		exit(1);
+	}
+	game->win = mlx_new_window(game->mlx, game->screen_width,
+			game->screen_height, "cub3d");
+	game->img->img = mlx_new_image(game->mlx, game->screen_width,
+			game->screen_height);
+	game->img->addr = mlx_get_data_addr(game->img->img,
+			&game->img->bits_per_pixel, &game->img->line_length,
+			&game->img->endian);
+	start_player(game);
+}
+//make sure game.txt exist
 
 int	main(int argc, char **argv)
 {
@@ -39,13 +65,12 @@ int	main(int argc, char **argv)
 // 		print_error("Usage: ./cub3D <map.cub>");
 // 		return (1);
 // 	}
-	
 // 	if (!parse_cub_file(argv[1], &game))
 // 	{
 // 		printf("❌ Parsing failed!\n");
 // 		return (1);
 // 	}
-	
+
 // 	printf("\n✅ Parsing successful!\n");
 // 	return (0);
 // }

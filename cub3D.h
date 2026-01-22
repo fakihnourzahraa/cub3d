@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/22 16:37:13 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/22 16:44:02 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,6 @@ void	draw_floor(t_game *game, int x, int draw_end);
 int		calculate_tex_x(t_ray *ray, t_game *game, t_img *texture);
 void	draw_textured_wall(t_ray *ray, t_game *game, t_img *texture, int x);
 void	draw_solid_wall(t_ray *ray, t_game *game, int x);
-int	get_texture_color(t_img *texture, int x, int y);
+int		get_texture_color(t_img *texture, int x, int y);
+int		load_wall_textures(t_game *game);
 #endif
