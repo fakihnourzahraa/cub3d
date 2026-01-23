@@ -6,7 +6,7 @@
 /*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:44:03 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/23 16:13:20 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/23 16:36:35 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	find_player(t_map *map, int *count)
 				map->p = map->grid[y][x];
 				map->p_x = x;
 				map->p_y = y;
+				map->grid[y][x] = '0'; 
 				(*count)++;
 			}
 			x++;

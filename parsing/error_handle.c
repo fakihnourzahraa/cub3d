@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 00:43:51 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/27 00:43:51 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/23 16:38:53 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void    cleanup_parsing(t_game *game)
 {
 	if (!game)
 		return;
+	if (game->map && game->map->grid)
+        free_string_array(game->map->grid);
 }
 
 /* .int print_error(char *message):la ektub l error mtl 
