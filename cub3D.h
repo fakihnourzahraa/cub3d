@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/22 16:44:02 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/23 16:13:00 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,4 +266,7 @@ void	draw_textured_wall(t_ray *ray, t_game *game, t_img *texture, int x);
 void	draw_solid_wall(t_ray *ray, t_game *game, int x);
 int		get_texture_color(t_img *texture, int x, int y);
 int		load_wall_textures(t_game *game);
+int		find_player(t_map *map, int *count);
+int		validate_player_count(int count);
+int		validate_player(t_map *map);
 #endif

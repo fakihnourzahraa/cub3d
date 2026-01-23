@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/22 16:42:58 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/23 16:04:58 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,24 @@ int	main(int argc, char **argv)
 	mlx_loop(game->mlx);
 }
 
+
+int	main(int ac, char **av)
+{
+	t_map	map;
+
+	if (ac != 2)
+		return (error("Usage: ./cub3D map.cub"));
+
+	if (parse_cub_file(av[1], &map))
+		return (1);
+
+	printf("Parsing OK\n");
+}
+
+
+
+
+
 // int main(int argc, char **argv)
 // {
 // 	t_game	game;
@@ -78,3 +96,4 @@ int	main(int argc, char **argv)
 // key hook doesnt register how long we're pressing for
 // 2 -> key is pressed, 3 -> key is released
 // 1 key press, 2 key release, 0 no mask needed
+
