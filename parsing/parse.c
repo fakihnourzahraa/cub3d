@@ -3,31 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 23:34:15 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/26 23:34:15 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/24 12:01:37 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	parse_cub_file(char *filename, t_game *game)
+int parse_cub_file(char *filename, t_game *game)
 {
-	char	**lines;
-	(void) game;
+    char **lines;
+    
+    if (!validate_file_extension(filename))
+        return (print_error("Invalid file extension"));
 
-	if (!validate_file_extension(filename))
-		return (print_error("Invalid file extension (must be .cub)"));
-	if (!validate_file_access(filename))
-		return (print_error("Failed to open file"));
-	lines = read_entire_file(filename);
-	if (!lines)
-		return (print_error("Failed to read file"));
-	process_lines(lines);
-	printf("Successfully read %d lines\n", count_lines(lines));
-	free_string_array(lines);
-	return (1);
+    lines = read_entire_file(filename);
+    if (!lines)
+        return (print_error("Failed to read file"));
+
+    if (!parse_textures(lines, game))
+    {
+        free_string_array(lines);
+        return (0);
+    }
+
+    if (!parse_colors(lines, game))
+    {
+        free_string_array(lines);
+        return (0);
+    }
+
+    if (!parse_maps(lines, game))
+    {
+        free_string_array(lines);
+        return (0);
+    }
+ 
+    if (validate_player(game->map))
+    {
+        free_string_array(lines);
+        return (0);
+    }
+    if (!validate_map_closed(game->map))
+    {
+        free_string_array(lines);
+        return (print_error("Map is not closed by walls"));
+    }
+    
+    free_string_array(lines);
+    return (1);
 }
 
 char **fill_lines(int fd, int lines_count)

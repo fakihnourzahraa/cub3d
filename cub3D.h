@@ -6,7 +6,7 @@
 /*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/23 16:31:29 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/24 12:39:54 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,4 +269,5 @@ int		load_graphics(t_game *game);
 int		load_wall_textures(t_game *game);
 int		find_player(t_map *map, int *count);
 int		validate_player_count(int count);
+int     parse_cub_file(char *filename, t_game *game);
 #endif

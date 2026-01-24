@@ -6,13 +6,37 @@
 /*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/23 16:30:21 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/24 12:36:27 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_game(t_game *game)
+void init_game(t_game *game)
+{
+    game->mlx = mlx_init();
+    if (!game->mlx)
+    {
+        free_game(game);
+        exit(1);
+    }
+    if (!load_wall_textures(game))
+    {
+        free_game(game);
+        exit(1);
+    }
+    game->win = mlx_new_window(game->mlx, game->screen_width,
+            game->screen_height, "cub3d");
+
+    game->img->img = mlx_new_image(game->mlx, game->screen_width,
+            game->screen_height);
+    game->img->addr = mlx_get_data_addr(game->img->img,
+            &game->img->bits_per_pixel, &game->img->line_length,
+            &game->img->endian);
+
+    start_player(game);
+}
+/*void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -35,10 +59,10 @@ void	init_game(t_game *game)
 			&game->img->bits_per_pixel, &game->img->line_length,
 			&game->img->endian);
 	start_player(game);
-}
+}*/
 //make sure game.txt exist
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	t_game	*game;
 
@@ -54,25 +78,39 @@ int	main(int argc, char **argv)
 	mlx_hook(game->win, 17, 0, escape_game_no_update, game);
 	mlx_loop_hook(game->mlx, key_loop, game);
 	mlx_loop(game->mlx);
-}
+}*/
 
 
-int	main(int ac, char **av)
+int main(int argc, char **argv)
 {
-	t_map	map;
+    t_game *game;
 
-	if (ac != 2)
-		return (error("Usage: ./cub3D map.cub"));
+    if (argc != 2)
+    {
+        print_error("Usage: ./cub3D <map.cub>");
+        return (1);
+    }
+    game = init_game_struct();
+    if (!game)
+        return (1);
 
-	if (parse_cub_file(av[1], &map))
-		return (1);
+    if (!parse_cub_file(argv[1], game))
+    {
+        free_game(game);
+        return (1);
+    }
 
-	printf("Parsing OK\n");
+    init_game(game);
+
+    update(game);
+    mlx_hook(game->win, 2, 1, keys, game);
+    mlx_hook(game->win, 3, 2, key_release, game);
+    mlx_hook(game->win, 17, 0, escape_game_no_update, game);
+    mlx_loop_hook(game->mlx, key_loop, game);
+    mlx_loop(game->mlx);
+
+    return (0);
 }
-
-
-
-
 
 // int main(int argc, char **argv)
 // {
