@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/22 15:40:39 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/24 14:38:16 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_game	*init_game_struct(void)
 	game = malloc(sizeof(t_game));
 	game->mlx = NULL;
 	game->win = NULL;
-	game->map = init_map();
+	// game->map = init_map();
 	game->player = init_player();
 	game->textures = init_textures();
 	game->screen_width = 1280;
