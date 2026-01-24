@@ -6,7 +6,7 @@
 /*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/24 12:39:54 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/24 13:10:54 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ int				get_map_dimensions(char **map_lines, t_map *map);
 int				validate_map(t_map *map);
 int				validate_characters(t_map *map);
 int				validate_walls(t_map *map);
-int				validate_player(t_map *map, t_player *player);
 int				check_closed_map(t_map *map);
 void			copy_grid(t_map *map);
 
@@ -270,4 +269,5 @@ int		load_wall_textures(t_game *game);
 int		find_player(t_map *map, int *count);
 int		validate_player_count(int count);
 int     parse_cub_file(char *filename, t_game *game);
+int		validate_player(t_map *map);
 #endif
