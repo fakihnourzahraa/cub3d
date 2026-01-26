@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/24 14:38:16 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/26 20:45:29 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_game	*init_game_struct(void)
 	game->win = NULL;
 	if (!game)
         return (NULL);
-	game->map = init_map();
+	// game->map = init_map();
 	game->player = init_player();
 	game->textures = init_textures();
 	game->screen_width = 1280;
@@ -90,6 +90,6 @@ t_game	*init_game_struct(void)
 	game->img = init_image(game);
 	return (game);
 }
-	// valgrind:
-	// game->move_speed = 0.5;
-	// game->rot_speed = 0.3;
+// valgrind:
+// game->move_speed = 0.5;
+// game->rot_speed = 0.3;
