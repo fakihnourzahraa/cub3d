@@ -129,6 +129,7 @@ line_height = (int)(screen_height / perp_wall_dist)
 - Helped trace fish eye cause
 - Assisted with crashes and overlooked parts of the code
 - Basic intialization and cleanup
+- Unkown variables (ideal fov, speed, etc..)
 
 # Work Division
 
