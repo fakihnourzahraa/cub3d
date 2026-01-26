@@ -63,6 +63,7 @@ void	start_player(t_game *game)
 		vertical(map, player);
 }
 
+
 t_game	*init_game_struct(void)
 {
 	t_game	*game;
