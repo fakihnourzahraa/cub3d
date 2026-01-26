@@ -1,12 +1,11 @@
 # cub3D
 
+_This project has been created as part of the 42 curriculum by nfakih and miwehbe._
+
 A 3D graphical representation of a maze from a first-person perspective, inspired by Wolfenstein 3D
 
 # Description
-
-cub3D is a raycasting engine built from scratch in C using the miniLibX graphics library. The project creates a pseudo-3D perspective by casting rays from the player's position and calculating wall distances to render a realistic maze environment.
-
-# Key Features
+//To do
 
 - **Raycasting Engine**: Full DDA (Digital Differential Analysis) algorithm implementation
 - **Textured Walls**: Different textures for each cardinal direction (North, South, East, West)
@@ -16,21 +15,9 @@ cub3D is a raycasting engine built from scratch in C using the miniLibX graphics
 - **RGB Colors**: Customizable floor and ceiling colors
 - **Error Handling**: Comprehensive validation and clean error messages
 
-# Technical Highlights
-
-- **No fish-eye effect**: Proper perpendicular distance calculations
-- **Optimized rendering**: Targeting 60+ FPS
-- **Memory safe**: No leaks, proper cleanup
-- **Norm compliant**: Follows 42 coding standards
-
-# Installation
-
-# Prerequisites
-
-- miniLibX library
-- X11 development libraries
-
 # Instructions
+
+After cloning the repository, enter the folder, make and run the executable "cub3d" using one of the maps.
 
 ```bash
 make
@@ -48,8 +35,7 @@ D - Move right
 → - Rotate right
 ESC / x button - Exit program
 
-
-### Map File Format
+# Map File Format
 
 .cub file 
 
@@ -85,9 +71,7 @@ Valid Maps:
 - Lines can have different lengths (spaces handled correctly)
 - Colors in rgb values
 
-## 🧮 How Raycasting Works
-
-### The Concept
+## Raycasting
 
 Raycasting creates a 3D perspective from a 2D map by:
 
@@ -118,6 +102,7 @@ line_height = (int)(screen_height / perp_wall_dist)
 # Resources
 
 # Parsing
+- https://www.youtube.com/watch?v=ldqAmkdthHY
 
 # Execution 
 - https://lodev.org/cgtutor/raycasting.html
@@ -129,6 +114,8 @@ line_height = (int)(screen_height / perp_wall_dist)
 - Helped trace fish eye cause
 - Assisted with crashes and overlooked parts of the code
 - Basic intialization and cleanup
+- Unkown variables (ideal fov, speed, etc..)
+- ReadMe Formatting
 
 # Work Division
 
