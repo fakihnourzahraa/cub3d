@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/24 12:36:27 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/26 14:37:11 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ void init_game(t_game *game)
 	mlx_loop(game->mlx);
 }*/
 
-
-/*int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     t_game *game;
 
@@ -110,37 +109,8 @@ void init_game(t_game *game)
     mlx_loop(game->mlx);
 
     return (0);
-}*/
-int main(int argc, char **argv)
-{
-    t_game *game;
-
-    if (argc != 2)
-    {
-        print_error("Usage: ./cub3D <map.cub>");
-        return (1);
-    }
-    game = init_game_struct();
-    if (!game)
-        return (1);
-
-    if (!parse_cub_file(argv[1], game))
-    {
-        free_game(game);
-        return (1);
-    }
-
-    printf("✅ Parsing complete - freeing memory...\n");
-    free_game(game);
-    printf("✅ Memory freed - exiting cleanly\n");
-    return (0);
-    
-    // COMMENT OUT THE REST:
-    // init_game(game);
-    // update(game);
-    // mlx_hook(game->win, 2, 1, keys, game);
-    // ...
 }
+
 
 // int main(int argc, char **argv)
 // {
