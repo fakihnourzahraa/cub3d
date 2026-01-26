@@ -1,7 +1,7 @@
-NO ./txt/wall.xpm
-SO ./txt/wall.xpm
-WE ./txt/wall.xpm
-EA ./txt/wall.xpm
+NO ./txt/north.xpm
+SO ./txt/south.xpm
+WE ./txt/west.xpm
+EA ./txt/east.xpm
 
 F 30,20,20
 C 40,0,40
