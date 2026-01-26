@@ -54,20 +54,15 @@ static int	validate_parsed_map(t_map *map)
 static int	has_config_after_map(char **lines, int map_start)
 {
 	int		i;
-	char	*trimmed;
 
 	if (map_start < 0)
 		return (0);
 	i = map_start;
-	while (lines[i])
-	{
-		trimmed = skip_whitespace(lines[i]);
-		if (starts_with(trimmed, "NO ") || starts_with(trimmed, "SO ")
-			|| starts_with(trimmed, "WE ") || starts_with(trimmed, "EA ")
-			|| starts_with(trimmed, "F ") || starts_with(trimmed, "C "))
-			return (1);
+	while (lines[i] && !is_empty_line(lines[i]))
 		i++;
-	}
+	if (lines[i])
+		return (1);
+	
 	return (0);
 }
 
@@ -129,3 +124,32 @@ complete_parse()
     4. free_string_array()       Clean up lines
     5. validate_parsed_map()     Validate player & walls
     Return success/failure*/
+
+
+/*static int	has_config_after_map(char **lines, int map_start)
+{
+	int		i;
+	char	*trimmed;
+
+	if (map_start < 0)
+		return (0);
+	
+	i = map_start;
+
+	while (lines[i] && !is_empty_line(lines[i]))
+		i++;
+	while (lines[i])
+	{
+		trimmed = skip_whitespace(lines[i]);
+		
+		if (!is_empty_line(trimmed))
+		{
+			if (starts_with(trimmed, "NO ") || starts_with(trimmed, "SO ")
+				|| starts_with(trimmed, "WE ") || starts_with(trimmed, "EA ")
+				|| starts_with(trimmed, "F ") || starts_with(trimmed, "C "))
+				return (1);
+		}
+		i++;
+	}
+	return (0);
+}*/

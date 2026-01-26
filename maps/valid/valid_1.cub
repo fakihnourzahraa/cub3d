@@ -3,7 +3,7 @@ C 135,206,235
 EA ./txt/east.xpm
 NO ./txt/north.xpm
 WE ./txt/west.xpm
-SO ./tx/south.xpm
+SO ./txt/south.xpm
 
 111111
 100001

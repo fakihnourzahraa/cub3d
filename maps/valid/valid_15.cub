@@ -1,4 +1,4 @@
-NO .//north.xpm
+NO ./txt/north.xpm
 SO ./txt/south.xpm
 WE ./txt/west.xpm
 EA ./txt/east.xpm

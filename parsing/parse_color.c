@@ -31,7 +31,7 @@ int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
 	parts = ft_split(rgb_str, ',');
 	if (!parts || count_lines(parts) != 3)
 	{
-		print_error("invalid it should be only 3 values");
+		print_error("Invalid RGB format (must be exactly 3 values)");
 		free_string_array(parts);
 		return (0);
 	}
@@ -39,11 +39,13 @@ int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
 		|| !ft_atoi_safe(parts[1], g)
 		|| !ft_atoi_safe(parts[2], b))
 	{
+		print_error("Invalid RGB values (must be numeric)");
 		free_string_array(parts);
 		return (0);
 	}
 	if (*r < 0 || *r > 255 || *g < 0 || *g > 255 || *b < 0 || *b > 255)
 	{
+		print_error("Invalid RGB range (must be 0-255)");
 		free_string_array(parts);
 		return (0);
 	}
@@ -67,8 +69,7 @@ int	parse_one_color(char *line, int *dest, char *id)
 	if (!parse_rgb_values(rgb_str, &r, &g, &b))
 	{
 		free(rgb_str);
-		//return(0);
-		return (print_error("Invalid RGB values (must be 0-255)"));
+		return(0);
 	}
 	*dest = rgb_to_int(r, g, b);
 	free(rgb_str);

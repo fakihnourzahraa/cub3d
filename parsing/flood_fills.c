@@ -60,8 +60,6 @@ static int	is_valid_position(t_map *map, int x, int y)
 		return (0);
 	if (x >= (int)ft_strlen(map->grid[y]))
 		return (0);
-	if (map->grid[y][x] == ' ')
-		return (0);
 	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')
 		return (0);
 	return (1);
@@ -74,8 +72,7 @@ void	flood_fill(t_map *map, int x, int y, int *error)
 	if (!is_valid_position(map, x, y))
 	{
 		if (y < 0 || y >= map->height || x < 0
-			|| x >= (int)ft_strlen(map->grid[y])
-			|| map->grid[y][x] == ' ')
+			|| x >= (int)ft_strlen(map->grid[y]))
 			*error = 1;
 		return ;
 	}
@@ -89,7 +86,29 @@ void	flood_fill(t_map *map, int x, int y, int *error)
 int	validate_map_closed(t_map *map)
 {
 	int	error;
+	int	y;
+	int	x;
 
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (map->grid[y][x])
+		{
+			if (y == 0 || y == map->height - 1 || 
+			    x == 0 || x == (int)ft_strlen(map->grid[y]) - 1)
+			{
+				if (map->grid[y][x] == '0' || 
+				    map->grid[y][x] == 'N' || 
+				    map->grid[y][x] == 'S' || 
+				    map->grid[y][x] == 'E' || 
+				    map->grid[y][x] == 'W')
+					return (0);
+			}
+			x++;
+		}
+		y++;
+	}
 	error = 0;
 	copy_grid_for_flood_fill(map);
 	if (!map->ff_grid)
@@ -100,6 +119,21 @@ int	validate_map_closed(t_map *map)
 		return (0);
 	return (1);
 }
+
+/*int	validate_map_closed(t_map *map)
+{
+	int	error;
+
+	error = 0;
+	copy_grid_for_flood_fill(map);
+	if (!map->ff_grid)
+		return (0);
+	flood_fill(map, map->p_x, map->p_y, &error);
+	free_ff_grid(map);
+	if (error)
+		return (0);
+	return (1);
+}*/
 
 /*
 .void	copy_grid_for_flood_fill(t_map *map):

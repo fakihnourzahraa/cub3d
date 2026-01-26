@@ -241,5 +241,6 @@ int				find_player(t_map *map, int *count);
 int				validate_player_count(int count);
 int     			parse_cub_file(char *filename, t_game *game);
 int				validate_player(t_map *map);
+int     complete_parse(char *filename, t_game *game);
 
 #endif
