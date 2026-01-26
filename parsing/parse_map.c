@@ -12,102 +12,46 @@
 
 #include "../cub3D.h"
 
-int	find_map_start(char **lines)
+static int	get_map_position(char **lines, int *map_start, int *map_height)
 {
-	int	i;
-	char	*trimmed;
-
-	i = 0;
-	while (lines[i])
+	*map_start = find_map_start(lines);
+	if (*map_start < 0)
 	{
-		trimmed = skip_whitespace(lines[i]);
-
-		if (is_empty_line(trimmed))
-		{
-			i++;
-			continue;
-		}
-		if (starts_with(trimmed, "NO ")
-			|| starts_with(trimmed, "SO ")
-			|| starts_with(trimmed, "WE ")
-			|| starts_with(trimmed, "EA ")
-			|| starts_with(trimmed, "F ")
-			|| starts_with(trimmed, "C "))
-		{
-			i++;
-			continue;
-		}
-		if (ft_strchr(trimmed, '1') || ft_strchr(trimmed, '0'))
-			return (i);
-		return (-1);
+		print_error("No map found");
+		return (0);
 	}
-	return (-1);
+	*map_height = count_map_lines(lines, *map_start);
+	if (*map_height == 0)
+	{
+		print_error("Empty map");
+		return (0);
+	}
+	return (1);
 }
 
-int 	count_map_lines(char **lines, int start)
+static char	**get_validated_map(char **lines, int *map_start, int *map_height)
 {
-	int	i;
-	int	count;
-
-	i = start;
-	count = 0;
-	while (lines[i])
-	{
-		if (is_empty_line(lines[i]))
-			break;
-		count++;
-		i++;
-	}
-	return (count);
-}
-
-char **extract_map_lines(char **lines, int start, int count)
-{
-	char	**map;
-	char	*temp;
-	int		i;
-
-	map = malloc(sizeof(char *) * (count + 1));
-	if (!map)
-		return (NULL);
-	i = 0;
-	while (i < count)
-	{
-		temp = ft_strtrim(lines[start + i], "\n");
-		if (!temp)
-		{
-			while (--i >= 0)
-				free(map[i]);
-			free(map);
-			return (NULL);
-		}
-		map[i] = temp;
-		i++;
-	}
-	map[i] = NULL;
-	return (map);
-}
-
-int 	parse_maps(char **lines, t_game *game)
-{
-	int		map_start;
-	int		map_height;
 	char	**map_grid;
 
-	map_start = find_map_start(lines);
-	if (map_start < 0)
-		return (print_error("No map found"));
-	map_height = count_map_lines(lines, map_start);
-	if (map_height == 0)
-		return (print_error("Empty map"));
-	map_grid = extract_map_lines(lines, map_start, map_height);
+	if (!get_map_position(lines, map_start, map_height))
+		return (NULL);
+	map_grid = extract_map_lines(lines, *map_start, *map_height);
 	if (!map_grid)
-		return (print_error("Failed to extract map"));
+	{
+		print_error("Failed to extract map");
+		return (NULL);
+	}
 	if (!validate_map_chars(map_grid))
 	{
 		free_string_array(map_grid);
-		return (print_error("Invalid map characters"));
+		print_error("Invalid map characters");
+		return (NULL);
 	}
+	return (map_grid);
+}
+
+static int	init_map_struct(t_game *game, char **map_grid, int map_height)
+{
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
 	{
@@ -117,6 +61,20 @@ int 	parse_maps(char **lines, t_game *game)
 	game->map->grid = map_grid;
 	game->map->height = map_height;
 	game->map->width = get_map_width(map_grid);
+	return (1);
+}
+
+int	parse_maps(char **lines, t_game *game)
+{
+	int		map_start;
+	int		map_height;
+	char	**map_grid;
+
+	map_grid = get_validated_map(lines, &map_start, &map_height);
+	if (!map_grid)
+		return (0);
+	if (!init_map_struct(game, map_grid, map_height))
+		return (0);
 	if (!normalize_map(game->map))
 	{
 		free_string_array(map_grid);

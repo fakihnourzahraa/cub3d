@@ -102,15 +102,17 @@ int	validate_map_closed(t_map *map)
 }
 
 /*
-.void	copy_grid_for_flood_fill(t_map *map):create a copy for map  and see who which cell 
+.void	copy_grid_for_flood_fill(t_map *map):
+create a copy for map  and see who which cell 
 is visited ,awal shi btkun m3btun klun 0 yani manu visited abl
 .void	flood_fill(t_map *map, int x, int y, int *error):
-
 */
 
 
-/*flood fill is algo that test if map is valid or not,there is many cas when map is not vlaid:
-if edge are not all 1, space in wall yani 11 11, line different length,
+/*flood fill is algo that test if map is valid or not,
+there is many cas when map is not vlaid:
+if edge are not all 1, space in wall yani 11 11, 
+line different length,
 internal space 1100 1, player is outside , tabs inside map*/
 
 /*Goes above the map (y < 0)
@@ -119,4 +121,5 @@ Goes left of the map (x < 0)
 Goes past the right edge of a row (x >= strlen(row))
 Touches a space ' ' (outside the map)
 kl hol l cases yani:
-Water (flood fill) escaped the walls , the map is open ,invalid*/
+Water (flood fill) escaped the walls , the map is
+open ,invalid*/

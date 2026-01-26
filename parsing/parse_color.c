@@ -104,7 +104,8 @@ int	parse_colors(char **lines, t_game *game)
 	return (1);
 }
 
-/*char	*extract_rgb_string(char *line):hon bas am nmshe la baad F wn2t3 space
+/*char	*extract_rgb_string(char *line):hon bas am 
+nmshe la baad F wn2t3 space
 wbtrdle yehe mn dun newline*/
 
 /*int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b):hon ana 
@@ -112,8 +113,10 @@ bde eml validate enu hne ben 0 wl 255 ,wbde et2kd enu hne anjd 3 integer
 r,g ,b la kel wehd wbst3ml split wbhet seperator huwe , laan 255,120,20 
 fa ha efsle bl , {255,120,20,NULL},,,,count_line bt3dle ede fi bl array*/
 
-/*int	parse_one_color(char *line, int *dest, char *id):btkhud line bteml rgb,validate the nbr,
+/*int	parse_one_color(char *line, int *dest, char *id):btkhud
+line bteml rgb,validate the nbr,
 convert to int,check dupli*/
 
 /*int	parse_colors(char **lines, t_game *game):finds F and C lines, parses 
-their RGB values, stores them safely, prevents duplicates, and errors if anything is missing or invalid.*/
+their RGB values, stores them safely, prevents duplicates,
+ and errors if anything is missing or invalid.*/

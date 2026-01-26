@@ -88,13 +88,18 @@ char **read_entire_file(char *filename)
     return (lines);
 }
 
-/*int parse_cub_file(char *filename, t_game *game): bthud file as input ,bt3ml check ize
-mnthe b .cub 1 valid,o error,find length,check if at least 5 char
+/*int parse_cub_file(char *filename, t_game *game): 
+bthud file as input ,bt3ml check ize
+mnthe b .cub 1 valid,o error,find length,check 
+if at least 5 char
 */
 
-/*char **read_entire_file(char *filename):take file ,open it ,read it,store each line in line(gnl)
-read .cub file and store all lines in memory as a char ** array, so parser can process it later
+/*char **read_entire_file(char *filename):take file 
+,open it ,read it,store each line in line(gnl)
+read .cub file and store all lines in memory as
+a char ** array, so parser can process it later
 */
 
-/*int     validate_file_extension(char *filename):its is the main one
+/*int     validate_file_extension(char *filename)
+:its is the main one
 check if it is end with .cub*/

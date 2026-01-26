@@ -29,7 +29,7 @@ SRC = main.c raycasting/moves.c raycasting/calculations.c mlx.c\
  parsing/parse_utils2.c parsing/parse.c parsing/parse_texture.c \
  parsing/parse_color.c parsing/parse_map.c parsing/map_utils.c \
  parsing/validate_map.c parsing/flood_fills.c parsing/combine.c\
- raycasting/drawing_single.c\
+ parsing/map_help.c raycasting/drawing_single.c\
 
 OBJ	= $(SRC:.c=.o)
 

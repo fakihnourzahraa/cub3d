@@ -67,11 +67,12 @@ int	complete_parse(char *filename, t_game *game)
 		return (0);
 	return (validate_parsed_map(game->map));
 }
+
 /*
 complete_parse()
-    1. validate_file()           → Check extension & access
-    2. load_file_lines()         → Read all lines into memory
-    3. parse_file_content()      → Parse textures, colors, map
-    4. free_string_array()       → Clean up lines
-    5. validate_parsed_map()     → Validate player & walls
+    1. validate_file()           Check extension & access
+    2. load_file_lines()         Read all lines into memory
+    3. parse_file_content()      Parse textures, colors, map
+    4. free_string_array()       Clean up lines
+    5. validate_parsed_map()     Validate player & walls
     Return success/failure*/

@@ -65,5 +65,7 @@ int	validate_player(t_map *map)
 		return (1);
 	return (0);
 }
-/*int	starts_with(char *str, char *prefix):used la eml check if str start with prefix
+
+/*int	starts_with(char *str, char *prefix)
+:used la eml check if str start with prefix
 starts_with("NO ./path", "NO") ->sah */

@@ -12,7 +12,7 @@
 
 #include "../cub3D.h"
 
-int  get_map_width(char **map)
+int	get_map_width(char **map)
 {
 	int	i;
 	int	len;
@@ -30,7 +30,8 @@ int  get_map_width(char **map)
 	return (max);
 
 }
-int  is_map_char(char c)
+
+int	is_map_char(char c)
 {
 	if (c == '0' || c == '1')
 		return (1);
@@ -43,7 +44,7 @@ int  is_map_char(char c)
 	return (0);
 }
 
-int  validate_map_chars(char **map)
+int	validate_map_chars(char **map)
 {
 	int	i;
 	int	j;
@@ -63,7 +64,7 @@ int  validate_map_chars(char **map)
 	return (1);
 }
 
-char *copy_map_line(char *line, int width)
+char	*copy_map_line(char *line, int width)
 {
 	char	*new_line;
 	int		i;
@@ -88,7 +89,7 @@ char *copy_map_line(char *line, int width)
 	return (new_line);
 }
 
-int  normalize_map(t_map *map)
+int	normalize_map(t_map *map)
 {
 	int		i;
 	int		max_width;
@@ -116,8 +117,11 @@ int  normalize_map(t_map *map)
 	return (1);
 }
 
-/*char *copy_map_line(char *line, int width):btkhli lint klun nfs ltul mn khilel ene t3be l
+/*char *copy_map_line(char *line, int width):btkhli 
+lint klun nfs ltul mn khilel ene t3be l
 width be2e space laan raycasting mtwak3a rect */
-/*int  is_map_char(char c):bteml check ize lcahr masmuh ykun bl map (0,1,n,s,e,w,space)*/
+/*int  is_map_char(char c):bteml check ize
+lcahr masmuh ykun bl map (0,1,n,s,e,w,space)*/
 
-/*int  get_map_width(char **map):bttl3 length la atwal line bl map*/
+/*int  get_map_width(char **map):bttl3 length 
+la atwal line bl map*/

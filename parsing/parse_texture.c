@@ -101,17 +101,22 @@ int	parse_textures(char **lines, t_game *game)
 	return (1);
 }
 
-/*parse texture:hye l main fct lal parsing text laan ht3ml loop ala kl line bl texture
+/*parse texture:hye l main fct lal parsing text laan ht3ml 
+loop ala kl line bl texture
 wtshuf shu no3e ize fi NO bt3mle parse wbthte bl north_path ...,wbt3ml
 check enu 4 text are found(NO,SO,WE,EA)*/
 
-/*parse_texture_line:hyde bteml extra lal path yane ize ana amle NO ./textures/north.xpm
+/*parse_texture_line:hyde bteml extra lal path yane ize ana amle
+ NO ./textures/north.xpm
 btkhlye tser ./textures/north.xpm
-bteml skip lal space,skip lal identifier,Check duplicate,skip space after ident,extrat la b2e l path*/
+bteml skip lal space,skip lal identifier,Check duplicate,
+skip space after ident,extrat la b2e l path*/
 
-/* validate_texture_path: bteml check ize opath valid,ize mnthe bi .xpm,if exist 
+/* validate_texture_path: bteml check ize opath valid,
+ize mnthe bi .xpm,if exist 
 (path not null,not empty,end with.xpm,)*/
 
 /* check_duplicate_texture:btmn3 l dup mtl enu ykun ende tnen NO*/
 
-/**extract_texture_path(char *line): Extract path from line  "NO ./textures/north.xpm" btsr "./textures/north.xpm */
+/**extract_texture_path(char *line): Extract path from line  
+*"NO ./textures/north.xpm" btsr "./textures/north.xpm */
