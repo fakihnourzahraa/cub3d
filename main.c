@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:20:50 by nour              #+#    #+#             */
-/*   Updated: 2026/01/26 14:37:11 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/26 14:39:31 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ int main(int argc, char **argv)
         free_game(game);
         return (1);
     }
-
     init_game(game);
-
     update(game);
     mlx_hook(game->win, 2, 1, keys, game);
     mlx_hook(game->win, 3, 2, key_release, game);
@@ -110,27 +108,6 @@ int main(int argc, char **argv)
 
     return (0);
 }
-
-
-// int main(int argc, char **argv)
-// {
-// 	t_game	game;
-
-// 	if (argc != 2)
-// 	{
-// 		print_error("Usage: ./cub3D <map.cub>");
-// 		return (1);
-// 	}
-// 	if (!parse_cub_file(argv[1], &game))
-// 	{
-// 		printf("❌ Parsing failed!\n");
-// 		return (1);
-// 	}
-
-// 	printf("\n✅ Parsing successful!\n");
-// 	return (0);
-// }
-
 // key hook doesnt register how long we're pressing for
 // 2 -> key is pressed, 3 -> key is released
 // 1 key press, 2 key release, 0 no mask needed

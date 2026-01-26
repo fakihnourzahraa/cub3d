@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/26 14:36:44 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/26 14:52:10 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ t_game	*init_game_struct(void)
 	game->textures = init_textures();
 	game->screen_width = 1280;
 	game->screen_height = 720;
-	game->move_speed = 0.5;
-	game->rot_speed = 0.3;
+	game->move_speed = 0.05;
+	game->rot_speed = 0.03;
 	while (i < 256)
 	{
 		game->keys[i] = 0;
@@ -89,6 +89,6 @@ t_game	*init_game_struct(void)
 	game->img = init_image(game);
 	return (game);
 }
-	// valgrind:
-	// game->move_speed = 0.5;
-	// game->rot_speed = 0.3;
+// valgrind:
+// game->move_speed = 0.5;
+// game->rot_speed = 0.3;
