@@ -12,7 +12,7 @@
 
 #include "../cub3D.h"
 
-/*int	find_map_start(char **lines)
+int	find_map_start(char **lines)
 {
 	int	i;
 	char	*trimmed;
@@ -42,46 +42,6 @@
 		return (-1);
 	}
 	return (-1);
-}*/
-int find_map_start(char **lines)
-{
-    int     i;
-    char    *trimmed;
-
-    i = 0;
-    while (lines[i])
-    {
-        printf("DEBUG MAP: Line %d: [%s]\n", i, lines[i]);  // ADD THIS
-        
-        trimmed = skip_whitespace(lines[i]);
-
-        if (is_empty_line(trimmed))
-        {
-            printf("DEBUG MAP: Line %d is empty, skipping\n", i);  // ADD THIS
-            i++;
-            continue;
-        }
-        if (starts_with(trimmed, "NO ")
-            || starts_with(trimmed, "SO ")
-            || starts_with(trimmed, "WE ")
-            || starts_with(trimmed, "EA ")
-            || starts_with(trimmed, "F ")
-            || starts_with(trimmed, "C "))
-        {
-            printf("DEBUG MAP: Line %d is config, skipping\n", i);  // ADD THIS
-            i++;
-            continue;
-        }
-        if (ft_strchr(trimmed, '1') || ft_strchr(trimmed, '0'))
-        {
-            printf("DEBUG MAP: Line %d is map! Returning %d\n", i, i);  // ADD THIS
-            return (i);
-        }
-        printf("DEBUG MAP: Line %d doesn't match any pattern, returning -1\n", i);  // ADD THIS
-        return (-1);
-    }
-    printf("DEBUG MAP: Reached end of file, no map found\n");  // ADD THIS
-    return (-1);
 }
 
 int 	count_map_lines(char **lines, int start)
@@ -164,3 +124,45 @@ int 	parse_maps(char **lines, t_game *game)
 	}
 	return (1);
 }
+
+
+/*int find_map_start(char **lines)
+{
+    int     i;
+    char    *trimmed;
+
+    i = 0;
+    while (lines[i])
+    {
+        printf("DEBUG MAP: Line %d: [%s]\n", i, lines[i]);  // ADD THIS
+        
+        trimmed = skip_whitespace(lines[i]);
+
+        if (is_empty_line(trimmed))
+        {
+            printf("DEBUG MAP: Line %d is empty, skipping\n", i);  // ADD THIS
+            i++;
+            continue;
+        }
+        if (starts_with(trimmed, "NO ")
+            || starts_with(trimmed, "SO ")
+            || starts_with(trimmed, "WE ")
+            || starts_with(trimmed, "EA ")
+            || starts_with(trimmed, "F ")
+            || starts_with(trimmed, "C "))
+        {
+            printf("DEBUG MAP: Line %d is config, skipping\n", i);  // ADD THIS
+            i++;
+            continue;
+        }
+        if (ft_strchr(trimmed, '1') || ft_strchr(trimmed, '0'))
+        {
+            printf("DEBUG MAP: Line %d is map! Returning %d\n", i, i);  // ADD THIS
+            return (i);
+        }
+        printf("DEBUG MAP: Line %d doesn't match any pattern, returning -1\n", i);  // ADD THIS
+        return (-1);
+    }
+    printf("DEBUG MAP: Reached end of file, no map found\n");  // ADD THIS
+    return (-1);
+}*/

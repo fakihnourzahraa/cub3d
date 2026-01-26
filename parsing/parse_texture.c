@@ -24,7 +24,7 @@ char	*extract_texture_path(char *line)
 	return (ft_strtrim(line + i, " \t\n\r"));
 }
 
-/*int	validate_texture_path(char *path)
+int	validate_texture_path(char *path)
 {
 	int	len;
 
@@ -36,34 +36,6 @@ char	*extract_texture_path(char *line)
 	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
 		return (0);
 	return (1);
-}*/
-int validate_texture_path(char *path)
-{
-    int len;
-
-    printf("DEBUG: Validating path: [%s]\n", path);  // ADD THIS
-    
-    if (!path)
-    {
-        printf("DEBUG: Path is NULL\n");  // ADD THIS
-        return (0);
-    }
-    len = ft_strlen(path);
-    printf("DEBUG: Path length: %d\n", len);  // ADD THIS
-    
-    if (len < 5)
-    {
-        printf("DEBUG: Path too short\n");  // ADD THIS
-        return (0);
-    }
-    if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
-    {
-        printf("DEBUG: Doesn't end with .xpm\n");  // ADD THIS
-        printf("DEBUG: Last 4 chars: [%s]\n", path + len - 4);  // ADD THIS
-        return (0);
-    }
-    printf("DEBUG: Path valid!\n");  // ADD THIS
-    return (1);
 }
 
 int	check_duplicate_texture(char *existing, char *id)
