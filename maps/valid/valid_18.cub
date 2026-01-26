@@ -1,7 +1,7 @@
-EA ./assets/textures/east.xpm
-NO ./assets/textures/north.xpm
-WE ./assets/textures/west.xpm
-SO ./assets/textures/south.xpm
+EA ./txt/east.xpm
+NO ./txt/north.xpm
+WE ./txt/west.xpm
+SO ./txt/south.xpm
 
 F 0,32,0
 C 120,0,16

@@ -31,6 +31,7 @@ int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
 	parts = ft_split(rgb_str, ',');
 	if (!parts || count_lines(parts) != 3)
 	{
+		print_error("invalid it should be only 3 values");
 		free_string_array(parts);
 		return (0);
 	}
@@ -66,6 +67,7 @@ int	parse_one_color(char *line, int *dest, char *id)
 	if (!parse_rgb_values(rgb_str, &r, &g, &b))
 	{
 		free(rgb_str);
+		//return(0);
 		return (print_error("Invalid RGB values (must be 0-255)"));
 	}
 	*dest = rgb_to_int(r, g, b);
