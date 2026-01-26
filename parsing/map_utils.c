@@ -73,20 +73,17 @@ char *copy_map_line(char *line, int width)
 	new_line = malloc(sizeof(char) * (width + 1));
 	if (!new_line)
 		return (NULL);
-
 	i = 0;
 	while (i < len)
 	{
 		new_line[i] = line[i];
 		i++;
 	}
-
 	while (i < width)
 	{
 		new_line[i] = ' ';
 		i++;
 	}
-
 	new_line[i] = '\0';
 	return (new_line);
 }
@@ -102,7 +99,6 @@ int  normalize_map(t_map *map)
 		return (0);
 	max_width = get_map_width(map->grid);
 	map->width = max_width;
-
 	i = 0;
 	while (map->grid[i])
 	{

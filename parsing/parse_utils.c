@@ -12,7 +12,7 @@
 
 #include "../cub3D.h"
 
-char    *skip_whitespace(char *str)
+char	*skip_whitespace(char *str)
 {
 	int	i;
 
@@ -22,10 +22,9 @@ char    *skip_whitespace(char *str)
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	return (&str[i]);
-
 }
 
-int     is_empty_line(char *line)
+int	is_empty_line(char *line)
 {
 	int	i;
 
@@ -33,17 +32,16 @@ int     is_empty_line(char *line)
 	if (!line)
 		return (1);
 	while (line[i])
-    {
-        if (line[i] != ' ' && line[i] != '\t' && 
-            line[i] != '\n' && line[i] != '\r')
-            return (0);
-        i++;
-    }
+	{
+		if (line[i] != ' ' && line[i] != '\t'
+			&& line[i] != '\n' && line[i] != '\r')
+			return (0);
+		i++;
+	}
 	return (1);
-
 }
 
-int     count_lines(char **lines)
+int	count_lines(char **lines)
 {
 	int	count;
 
@@ -55,7 +53,7 @@ int     count_lines(char **lines)
 	return (count);
 }
 
-void    free_string_array(char **arr)
+void	free_string_array(char **arr)
 {
 	int	i;
 
@@ -82,10 +80,12 @@ int	count_file_lines(char *filename)
 	if (fd < 0)
 		return (-1);
 	count = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
 		free(line);
 		count++;
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (count);

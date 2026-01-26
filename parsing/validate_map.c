@@ -17,6 +17,7 @@ static int	is_player(char c)
 	return (c == 'N' || c == 'S'
 		|| c == 'E' || c == 'W');
 }
+
 int	find_player(t_map *map, int *count)
 {
 	int	y;
@@ -41,31 +42,5 @@ int	find_player(t_map *map, int *count)
 		}
 		y++;
 	}
-	return (0);
-}
-
-int	validate_player_count(int count)
-{
-	if (count == 0)
-	{
-		print_error("Error: No player found");
-		return (1); 
-	}
-	if (count > 1)
-	{
-		print_error("Error: Multiple players found");
-		return (1);
-	}
-	return (0);
-}
-
-int	validate_player(t_map *map)
-{
-	int	count;
-
-	if (find_player(map, &count))
-		return (1);
-	if (validate_player_count(count))
-		return (1);
 	return (0);
 }

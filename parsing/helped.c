@@ -46,3 +46,19 @@ void	process_lines(char **lines)
 		i++;
 	}
 }
+
+void	free_ff_grid(t_map *map)
+{
+	int	i;
+
+	if (!map->ff_grid)
+		return ;
+	i = 0;
+	while (i < map->height)
+	{
+		free(map->ff_grid[i]);
+		i++;
+	}
+	free(map->ff_grid);
+	map->ff_grid = NULL;
+}

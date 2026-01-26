@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-  
+
 int	is_whitespace(char c)
 {
 	if (c == ' ' || c == '\t')
@@ -40,5 +40,30 @@ int	rgb_to_int(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
+int	validate_player_count(int count)
+{
+	if (count == 0)
+	{
+		print_error("Error: No player found");
+		return (1); 
+	}
+	if (count > 1)
+	{
+		print_error("Error: Multiple players found");
+		return (1);
+	}
+	return (0);
+}
+
+int	validate_player(t_map *map)
+{
+	int	count;
+
+	if (find_player(map, &count))
+		return (1);
+	if (validate_player_count(count))
+		return (1);
+	return (0);
+}
 /*int	starts_with(char *str, char *prefix):used la eml check if str start with prefix
 starts_with("NO ./path", "NO") ->sah */

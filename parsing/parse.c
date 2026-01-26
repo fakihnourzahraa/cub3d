@@ -12,49 +12,49 @@
 
 #include "../cub3D.h"
 
-int parse_cub_file(char *filename, t_game *game)
+static int	parse_config(char **lines, t_game *game)
 {
-    char **lines;
-    
-    if (!validate_file_extension(filename))
-        return (print_error("Invalid file extension"));
-
-    lines = read_entire_file(filename);
-    if (!lines)
-        return (print_error("Failed to read file"));
-
-    if (!parse_textures(lines, game))
-    {
-        free_string_array(lines);
-        return (0);
-    }
-
-    if (!parse_colors(lines, game))
-    {
-        free_string_array(lines);
-        return (0);
-    }
-
-    if (!parse_maps(lines, game))
-    {
-        free_string_array(lines);
-        return (0);
-    }
- 
-    if (validate_player(game->map))
-    {
-        free_string_array(lines);
-        return (0);
-    }
-    if (!validate_map_closed(game->map))
-    {
-        free_string_array(lines);
-        return (print_error("Map is not closed by walls"));
-    }
-    
-    free_string_array(lines);
-    return (1);
+	if (!parse_textures(lines, game))
+		return (0);
+	if (!parse_colors(lines, game))
+		return (0);
+	return (1);
 }
+
+static int	validate_map(t_map *map)
+{
+	if (validate_player(map))
+		return (0);
+	if (!validate_map_closed(map))
+		return (print_error("Map is not closed by walls"));
+	return (1);
+}
+
+int	parse_cub_file(char *filename, t_game *game)
+{
+	char	**lines;
+
+	if (!validate_file_extension(filename))
+		return (print_error("Invalid file extension"));
+	lines = read_entire_file(filename);
+	if (!lines)
+		return (print_error("Failed to read file"));
+	if (!parse_config(lines, game))
+	{
+		free_string_array(lines);
+		return (0);
+	}
+	if (!parse_maps(lines, game))
+	{
+		free_string_array(lines);
+		return (0);
+	}
+	free_string_array(lines);
+	if (!validate_map(game->map))
+		return (0);
+	return (1);
+}
+
 char **fill_lines(int fd, int lines_count)
 {
     char	**lines;
@@ -86,20 +86,6 @@ char **read_entire_file(char *filename)
     lines = fill_lines(fd, lines_count);
     close(fd);
     return (lines);
-}
-
-int     validate_file_extension(char *filename)
-{
-	int	len;
-
-	if (!filename)
-		return (0);
-	len = ft_strlen(filename);
-	if (len < 5)
-		return (0);
-	if (ft_strcmp(filename + len - 4, ".cub") == 0)
-		return (1);
-	return (0);
 }
 
 /*int parse_cub_file(char *filename, t_game *game): bthud file as input ,bt3ml check ize

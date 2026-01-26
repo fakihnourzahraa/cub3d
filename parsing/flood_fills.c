@@ -23,12 +23,12 @@ static char	*allocate_ff_row(int width)
 	j = 0;
 	while (j < width)
 	{
-		row[j] = '0';//hon klun 0
+		row[j] = '0';
 		j++;
 	}
 	row[j] = '\0';
-	return (row);//row by row
-}//hon width yane kem cell bl sater
+	return (row);
+}
 
 void	copy_grid_for_flood_fill(t_map *map)
 {
@@ -52,50 +52,38 @@ void	copy_grid_for_flood_fill(t_map *map)
 		i++;
 	}
 	map->ff_grid[i] = NULL;
-}//hon height yani kem sater ende+ekhr wehd null
+}
+
+static int	is_valid_position(t_map *map, int x, int y)
+{
+	if (y < 0 || y >= map->height || x < 0)
+		return (0);
+	if (x >= (int)ft_strlen(map->grid[y]))
+		return (0);
+	if (map->grid[y][x] == ' ')
+		return (0);
+	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')
+		return (0);
+	return (1);
+}
 
 void	flood_fill(t_map *map, int x, int y, int *error)
 {
 	if (*error)
-		return ;//ize l2et hol ma tkml,error bteml check hole
-	if (y < 0 || y >= map->height || x < 0)
-	{
-		*error = 1;
 		return ;
-	}//ize tl3t bara l map
-	if (x >= (int)ft_strlen(map->grid[y]))
+	if (!is_valid_position(map, x, y))
 	{
-		*error = 1;
+		if (y < 0 || y >= map->height || x < 0
+			|| x >= (int)ft_strlen(map->grid[y])
+			|| map->grid[y][x] == ' ')
+			*error = 1;
 		return ;
 	}
-	if (map->grid[y][x] == ' ')
-	{
-		*error = 1;
-		return ;
-	}
-	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')//wall or already visit
-		return ;
 	map->ff_grid[y][x] = '1';
 	flood_fill(map, x + 1, y, error);
 	flood_fill(map, x - 1, y, error);
 	flood_fill(map, x, y + 1, error);
 	flood_fill(map, x, y - 1, error);
-}
-
-void	free_ff_grid(t_map *map)
-{
-	int	i;
-
-	if (!map->ff_grid)
-		return ;
-	i = 0;
-	while (i < map->height)
-	{
-		free(map->ff_grid[i]);
-		i++;
-	}
-	free(map->ff_grid);
-	map->ff_grid = NULL;
 }
 
 int	validate_map_closed(t_map *map)
