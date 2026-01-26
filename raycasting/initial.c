@@ -72,7 +72,9 @@ t_game	*init_game_struct(void)
 	game = malloc(sizeof(t_game));
 	game->mlx = NULL;
 	game->win = NULL;
-	// game->map = init_map();
+	if (!game)
+        return (NULL);
+	game->map = init_map();
 	game->player = init_player();
 	game->textures = init_textures();
 	game->screen_width = 1280;

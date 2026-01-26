@@ -21,10 +21,10 @@ char	*extract_texture_path(char *line)
 		i++;
 	while (line[i] == ' ')
 		i++;
-	return (ft_strtrim(line + i, "\n"));
+	return (ft_strtrim(line + i, " \t\n\r"));
 }
 
-int	validate_texture_path(char *path)
+/*int	validate_texture_path(char *path)
 {
 	int	len;
 
@@ -36,6 +36,34 @@ int	validate_texture_path(char *path)
 	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
 		return (0);
 	return (1);
+}*/
+int validate_texture_path(char *path)
+{
+    int len;
+
+    printf("DEBUG: Validating path: [%s]\n", path);  // ADD THIS
+    
+    if (!path)
+    {
+        printf("DEBUG: Path is NULL\n");  // ADD THIS
+        return (0);
+    }
+    len = ft_strlen(path);
+    printf("DEBUG: Path length: %d\n", len);  // ADD THIS
+    
+    if (len < 5)
+    {
+        printf("DEBUG: Path too short\n");  // ADD THIS
+        return (0);
+    }
+    if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+    {
+        printf("DEBUG: Doesn't end with .xpm\n");  // ADD THIS
+        printf("DEBUG: Last 4 chars: [%s]\n", path + len - 4);  // ADD THIS
+        return (0);
+    }
+    printf("DEBUG: Path valid!\n");  // ADD THIS
+    return (1);
 }
 
 int	check_duplicate_texture(char *existing, char *id)
@@ -66,17 +94,20 @@ int	parse_texture_line(char *line, char **dest, char *id)
 
 static int	process_texture_line(char *line, t_game *game)
 {
-	if (starts_with(line, "NO "))
-		return (parse_texture_line(line,
+	char	*trimmed;
+	(void)line;
+	trimmed = skip_whitespace(line);
+	if (starts_with(trimmed, "NO "))
+		return (parse_texture_line(trimmed,
 				&game->textures->north_path, "NO"));
-	if (starts_with(line, "SO "))
-		return (parse_texture_line(line,
+	if (starts_with(trimmed, "SO "))
+		return (parse_texture_line(trimmed,
 				&game->textures->south_path, "SO"));
-	if (starts_with(line, "WE "))
-		return (parse_texture_line(line,
+	if (starts_with(trimmed, "WE "))
+		return (parse_texture_line(trimmed,
 				&game->textures->west_path, "WE"));
-	if (starts_with(line, "EA "))
-		return (parse_texture_line(line,
+	if (starts_with(trimmed, "EA "))
+		return (parse_texture_line(trimmed,
 				&game->textures->east_path, "EA"));
 	return (1);
 }

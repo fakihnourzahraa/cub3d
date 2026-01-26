@@ -34,8 +34,9 @@ int     is_empty_line(char *line)
 		return (1);
 	while (line[i])
     {
-        if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-            return (0); 
+        if (line[i] != ' ' && line[i] != '\t' && 
+            line[i] != '\n' && line[i] != '\r')
+            return (0);
         i++;
     }
 	return (1);
@@ -98,6 +99,6 @@ lines between sections ,returns 1 if empty, 0 if it has actual content*/
 
 /* .int count_lines(char **lines) :used bcz btkhud array of string and count it
 char **lines = {"NO ./path1","SO ./path2","F 220,100,0",NULL };
-muhme laan need to know how many lines read from file*/
+muhme laan need to know how many lines read from file and to know array size*/
 
 /* .void free_string_array(char **arr) : used for free array leaks yane*/

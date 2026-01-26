@@ -21,10 +21,10 @@ char	*extract_rgb_string(char *line)
 		i++;
 	while (line[i] == ' ')
 		i++;
-	return (ft_strtrim(line + i, "\n"));
+	return (ft_strtrim(line + i, "\t\n\r"));
 }
 
-int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
+/*int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
 {
 	char	**parts;
 
@@ -48,6 +48,50 @@ int	parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
 	}
 	free_string_array(parts);
 	return (1);
+}*/
+int parse_rgb_values(char *rgb_str, int *r, int *g, int *b)
+{
+    char **parts;
+
+    printf("DEBUG RGB: Input string: [%s]\n", rgb_str);  // ADD THIS
+    printf("DEBUG RGB: String length: %zu\n", ft_strlen(rgb_str));  // ADD THIS
+    
+    parts = ft_split(rgb_str, ',');
+    if (!parts || count_lines(parts) != 3)
+    {
+        printf("DEBUG RGB: Split failed or not 3 parts\n");  // ADD THIS
+        free_string_array(parts);
+        return (0);
+    }
+    
+    printf("DEBUG RGB: part[0] = [%s]\n", parts[0]);  // ADD THIS
+    printf("DEBUG RGB: part[1] = [%s]\n", parts[1]);  // ADD THIS
+    printf("DEBUG RGB: part[2] = [%s]\n", parts[2]);  // ADD THIS
+    
+    if (!ft_atoi_safe(parts[0], r)
+        || !ft_atoi_safe(parts[1], g)
+        || !ft_atoi_safe(parts[2], b))
+    {
+        printf("DEBUG RGB: ft_atoi_safe failed\n");  // ADD THIS
+        free_string_array(parts);
+        return (0);
+    }
+    
+    printf("DEBUG RGB: Converted: R=%d, G=%d, B=%d\n", *r, *g, *b);  // ADD THIS
+    
+    if (*r < 0 || *r > 255 || *g < 0 || *g > 255 || *b < 0 || *b > 255)
+    {
+        printf("DEBUG RGB: Out of range check failed\n");  // ADD THIS
+        printf("DEBUG RGB: R=%d (valid: %d), G=%d (valid: %d), B=%d (valid: %d)\n",
+               *r, (*r >= 0 && *r <= 255),
+               *g, (*g >= 0 && *g <= 255),
+               *b, (*b >= 0 && *b <= 255));  // ADD THIS
+        free_string_array(parts);
+        return (0);
+    }
+    
+    free_string_array(parts);
+    return (1);
 }
 
 int	parse_one_color(char *line, int *dest, char *id)
@@ -76,7 +120,7 @@ int	parse_one_color(char *line, int *dest, char *id)
 static int	process_color_line(char *line, t_game *game)
 {
 	char	*trimmed;
-
+	(void)line;
 	trimmed = skip_whitespace(line);
 	if (starts_with(trimmed, "F "))
 		return (parse_one_color(trimmed,

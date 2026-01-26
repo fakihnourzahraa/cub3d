@@ -38,6 +38,8 @@ int  is_map_char(char c)
 		return (1);
 	if (c == ' ')
 		return (1);
+	 if (c == '\n' || c == '\r')
+        return (1);
 	return (0);
 }
 

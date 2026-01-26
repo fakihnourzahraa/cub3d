@@ -1,10 +1,12 @@
 NO ./txt/wall.xpm
-SO ./txt/wall.xpm
-WE ./txt/wall.xpm
+		SO ./txt/wall.xpm
+  WE ./txt/wall.xpm
 EA ./txt/wall.xpm
 
-F 30,20,20
-C 40,0,40
+
+F 220,100,0
+		C 225,30,0
+
 
 1111111
 1000001

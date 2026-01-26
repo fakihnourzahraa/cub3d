@@ -81,7 +81,7 @@ void init_game(t_game *game)
 }*/
 
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
     t_game *game;
 
@@ -110,6 +110,36 @@ int main(int argc, char **argv)
     mlx_loop(game->mlx);
 
     return (0);
+}*/
+int main(int argc, char **argv)
+{
+    t_game *game;
+
+    if (argc != 2)
+    {
+        print_error("Usage: ./cub3D <map.cub>");
+        return (1);
+    }
+    game = init_game_struct();
+    if (!game)
+        return (1);
+
+    if (!parse_cub_file(argv[1], game))
+    {
+        free_game(game);
+        return (1);
+    }
+
+    printf("✅ Parsing complete - freeing memory...\n");
+    free_game(game);
+    printf("✅ Memory freed - exiting cleanly\n");
+    return (0);
+    
+    // COMMENT OUT THE REST:
+    // init_game(game);
+    // update(game);
+    // mlx_hook(game->win, 2, 1, keys, game);
+    // ...
 }
 
 // int main(int argc, char **argv)
