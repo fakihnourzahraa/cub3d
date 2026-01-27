@@ -34,7 +34,34 @@ D - Move right
 → - Rotate right
 ESC / x button - Exit program
 
-# Map File Format
+
+# Goals
+- Read a 2D map from a .cub file (parsing and validation)
+- Placing the player inside it and handle player view
+- Using raycasting to display a 3D maze
+- Allowing the player to:
+- Move
+- Rotate
+- See the correct textured walls
+- Correctly collide with walls
+
+## Parsing
+
+The parsing module handles reading, validating, and preparing the
+.cub map file for the game engine. This ensures maps are safe and playable.
+
+1. *** Some_Map_Rules_For_Parsing**
+
+Valid Maps:
+- Must be surrounded by walls (closed)
+- Contains exactly one player position (N/S/E/W)
+- Only uses valid characters: `0`, `1`, `N`, `S`, `E`, `W`, space
+- 0 for empty space, 1 for walls, N/S/E/W for player
+- Lines can have different lengths (spaces handled correctly)
+- Colors in rgb values
+- The map needs to be the last item in the file
+
+2. *** Map_File_Format**
 
 .cub file 
 
@@ -61,26 +88,15 @@ C 225,30,0
 11110111 1110101 101111010001
 11111111 1111111 111111111111
 
-### Map Rules
+3. ***Notes**
 
-Valid Maps:
-- Must be surrounded by walls (closed)
-- Contains exactly one player position (N/S/E/W)
-- Only uses valid characters: `0`, `1`, `N`, `S`, `E`, `W`, space
-- 0 for empty space, 1 for walls, N/S/E/W for player
-- Lines can have different lengths (spaces handled correctly)
-- Colors in rgb values
-- The map needs to be the last item in the file
+- Spaces inside the map are allowed only if they are unreachable from the player
 
-# Goals
-- Read a 2D map from a .cub file (parsing and validation)
-- Placing the player inside it and handle player view
-- Using raycasting to display a 3D maze
-- Allowing the player to:
-- Move
-- Rotate
-- See the correct textured walls
-- Correctly collide with walls
+- Leading and trailing spaces are automatically handled by normalization
+
+- Exactly one player start position is required for a valid map
+
+- Error handling provides descriptive messages if the map is invalid
 
 ## Raycasting
 
@@ -114,6 +130,7 @@ line_height = (int)(screen_height / perp_wall_dist)
 
 # Parsing
 - https://www.youtube.com/watch?v=ldqAmkdthHY
+- https://devabdilah.medium.com/3d-ray-casting-game-with-cub3d-7a116376056a
 
 # Execution 
 - https://lodev.org/cgtutor/raycasting.html
@@ -121,6 +138,7 @@ line_height = (int)(screen_height / perp_wall_dist)
 
 # AI Usage
 - Understanding raycasting at a more tecnical level
+- Understanding flood_fill algorithm 
 - Debugging and stress testing
 - Helped trace fish eye cause
 - Assisted with crashes and overlooked parts of the code
