@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:44:31 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/27 10:40:35 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/27 12:40:27 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	copy_grid_for_flood_fill(t_map *map)
 	map->ff_grid[i] = NULL;
 }
 
-
 void	flood_fill(t_map *map, int x, int y, int *error)
 {
 	if (*error)
@@ -72,7 +71,6 @@ void	flood_fill(t_map *map, int x, int y, int *error)
 	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')
 		return ;
 	map->ff_grid[y][x] = '1';
-
 	flood_fill(map, x + 1, y, error);
 	flood_fill(map, x - 1, y, error);
 	flood_fill(map, x, y + 1, error);
