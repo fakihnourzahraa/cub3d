@@ -6,7 +6,7 @@
 #    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2026/01/27 10:38:30 by nour             ###   ########.fr        #
+#    Updated: 2026/01/27 10:59:01 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = main.c raycasting/moves.c raycasting/calculations.c mlx.c\
  Libft/ft_strstr.c Libft/ft_strtrim.c Libft/ft_substr.c Libft/ft_atoi_safe.c\
  raycasting/DDA.c raycasting/drawing.c raycasting/initial.c \
  data_structures/cleanup1.c data_structures/data_structures.c \
- data_structures/fake_map.c data_structures/cleanup2.c \
+ data_structures/cleanup2.c \
  raycasting/rotations.c\
  parsing/error_handle.c parsing/helped.c parsing/parse_utils.c \
  parsing/parse_utils2.c parsing/parse.c parsing/parse_texture.c \
