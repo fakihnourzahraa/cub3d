@@ -2,10 +2,9 @@
 
 _This project has been created as part of the 42 curriculum by nfakih and miwehbe._
 
-A 3D graphical representation of a maze from a first-person perspective, inspired by Wolfenstein 3D
-
 # Description
-//To do
+
+A 3D graphical representation of a maze from a first-person perspective, inspired by Wolfenstein.
 
 - **Raycasting Engine**: Full DDA (Digital Differential Analysis) algorithm implementation
 - **Textured Walls**: Different textures for each cardinal direction (North, South, East, West)
@@ -65,15 +64,27 @@ C 225,30,0
 ### Map Rules
 
 Valid Maps:
-- Must be surrounded by walls
+- Must be surrounded by walls (closed)
 - Contains exactly one player position (N/S/E/W)
 - Only uses valid characters: `0`, `1`, `N`, `S`, `E`, `W`, space
+- 0 for empty space, 1 for walls, N/S/E/W for player
 - Lines can have different lengths (spaces handled correctly)
 - Colors in rgb values
+- The map needs to be the last item in the file
+
+# Goals
+- Read a 2D map from a .cub file (parsing and validation)
+- Placing the player inside it and handle player view
+- Using raycasting to display a 3D maze
+- Allowing the player to:
+- Move
+- Rotate
+- See the correct textured walls
+- Correctly collide with walls
 
 ## Raycasting
 
-Raycasting creates a 3D perspective from a 2D map by:
+Raycasting is a way to create a 3D game/view from a 2D map
 
 1. **Casting rays** from the player's position for each screen column
 2. **Traversing the grid** using DDA until hitting a wall
