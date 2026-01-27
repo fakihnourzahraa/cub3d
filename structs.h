@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/27 12:20:37 by nour              #+#    #+#             */
+/*   Updated: 2026/01/27 12:26:25 by nour             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
@@ -18,6 +30,7 @@ typedef struct s_player
 	double		plane_x;
 	double		plane_y;
 }				t_player;
+
 /*
 x & y
 x y are the exact positions in the map (centered)
@@ -28,13 +41,18 @@ changing with moves
 the directions
 -1, 0, 1
 changing with rotations
+center of vision
 */
 
 /* plane x & plane y
-waiperpendicular to direction vector and are the camera planes
+from -0.66 to + 0.66
+peripheral vision
+helps us decide how to normalize the view
+perpendicular to direction vector and are the camera planes
 plane distance is used to avoid the fish eye/curved look and maintain
 the straight line look
 */
+//to do: how the length and angle stay the same rotation matrix math
 
 typedef struct s_calc
 {
@@ -46,7 +64,22 @@ typedef struct s_calc
 	double		delta_dist_y;
 	double		perp_wall_dist;
 }	t_calc;
-//side dist x is the distance till the next y line
+/* ray dirx x & ray dir y
+-1.66 to 1.66
+the direction the ray is pointing
+*/
+/* side dist x and & y
+distance from ray to next x or y line!
+*/
+/* delta dist x & y
+distance the need to travel to cross one x or y(one grid cell)
+based on ray dir x
+pythagorean theorm
+*/
+/* per wall dist
+perpendicular distance from player to wall, for fish eye
+set when wall is hit
+*/
 //delta dist x is the distance to travel one grid cell
 //perp wall dist is the perpendiculat distance to the wall
 
@@ -67,23 +100,34 @@ typedef struct s_ray
 	t_calc		*calc;
 }				t_ray;
 // everything needed to cast one ray and draw one vertical line
-//map x is the current swuare
-//step x is the step direction
-//hit is a bool
-//side = 0 for x
-//wall x is the exact hit position on wall for textures
-//tex_x is the x coordinate on texture
+//map x is the grid position
+//step x is the step direction, either adding or subtracting 1
+//hit is a bool for the wall, stop casting
+/* side
+0 means vertical wall(ns), 1 horiztonal(ew)
+determines which texture
+*/
+/* line height
+wall height, based on screen height and perp wall dist
+*/
+//wall x is the exact hit position on wall for textures, between 0 and 1
+//tex_x is the x coordinate on texture, same as wall x just horizontally
 
 typedef struct s_img
 {
 	void		*img;
-	char		*addr; //pixed data address
-	int			bits_per_pixel; //color depth
-	int			line_length; //bytes per line
-	int			endian; //byte order
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 	int			width;
 	int			height;
 }				t_img;
+//addr is the fixed data address, gives us direct access
+//bits per pixel color depth
+//line length bytes per line, needs to be filled by mlx bc of padding
+//endian byte order
+//width and heigh in pixels
 
 typedef struct s_textures
 {
@@ -106,7 +150,7 @@ typedef struct s_map
 	int			width;
 	int			height;
 	char		p;
-	int			p_x; //starting positions
+	int			p_x;
 	int			p_y;
 	char		**ff_grid;
 }				t_map;
