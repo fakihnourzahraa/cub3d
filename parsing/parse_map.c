@@ -44,7 +44,6 @@ static char	**get_validated_map(char **lines, int *map_start, int *map_height)
 	if (!validate_map_chars(map_grid))
 	{
 		free_string_array(map_grid);
-		//print_error("Invalid map characters");
 		return (NULL);
 	}
 	return (map_grid);

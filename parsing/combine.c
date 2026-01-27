@@ -78,23 +78,6 @@ int	complete_parse(char *filename, t_game *game)
 	return (validate_parsed_map(game->map));
 }
 
-/*int	complete_parse(char *filename, t_game *game)
-{
-	char	**lines;
-	int		success;
-
-	if (!validate_file(filename))
-		return (0);
-	lines = load_file_lines(filename);
-	if (!lines)
-		return (0);
-	success = parse_file_content(lines, game);
-	free_string_array(lines);
-	if (!success)
-		return (0);
-	return (validate_parsed_map(game->map));
-}*/
-
 /*
 complete_parse()
     1. validate_file()           Check extension & access
@@ -103,31 +86,3 @@ complete_parse()
     4. free_string_array()       Clean up lines
     5. validate_parsed_map()     Validate player & walls
     Return success/failure*/
-
-/*int	has_config_after_map(char **lines, int map_start)
-{
-	int		i;
-	char	*trimmed;
-
-	if (map_start < 0)
-		return (0);
-	
-	i = map_start;
-
-	while (lines[i] && !is_empty_line(lines[i]))
-		i++;
-	while (lines[i])
-	{
-		trimmed = skip_whitespace(lines[i]);
-		
-		if (!is_empty_line(trimmed))
-		{
-			if (starts_with(trimmed, "NO ") || starts_with(trimmed, "SO ")
-				|| starts_with(trimmed, "WE ") || starts_with(trimmed, "EA ")
-				|| starts_with(trimmed, "F ") || starts_with(trimmed, "C "))
-				return (1);
-		}
-		i++;
-	}
-	return (0);
-}*/

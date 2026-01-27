@@ -54,38 +54,33 @@ void	copy_grid_for_flood_fill(t_map *map)
 	map->ff_grid[i] = NULL;
 }
 
-static int	is_valid_position(t_map *map, int x, int y)
-{
-	if (y < 0 || y >= map->height || x < 0)
-		return (0);
-	if (x >= (int)ft_strlen(map->grid[y]))
-		return (0);
-	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')
-		return (0);
-	return (1);
-}
 
 void	flood_fill(t_map *map, int x, int y, int *error)
 {
 	if (*error)
 		return ;
-	if (!is_valid_position(map, x, y))
+	if (y < 0 || y >= map->height || x < 0 || x >= map->width)
 	{
-		if (y < 0 || y >= map->height || x < 0
-			|| x >= (int)ft_strlen(map->grid[y]))
-			*error = 1;
+		*error = 1;
 		return ;
 	}
+	if (map->grid[y][x] == ' ')
+	{
+		*error = 1;
+		return ;
+	}
+	if (map->grid[y][x] == '1' || map->ff_grid[y][x] == '1')
+		return ;
 	map->ff_grid[y][x] = '1';
+
 	flood_fill(map, x + 1, y, error);
 	flood_fill(map, x - 1, y, error);
 	flood_fill(map, x, y + 1, error);
 	flood_fill(map, x, y - 1, error);
 }
 
-int	validate_map_closed(t_map *map)
+static int	validate_map_borders(t_map *map)
 {
-	int	error;
 	int	y;
 	int	x;
 
@@ -98,17 +93,24 @@ int	validate_map_closed(t_map *map)
 			if (y == 0 || y == map->height - 1
 				|| x == 0 || x == (int)ft_strlen(map->grid[y]) - 1)
 			{
-				if (map->grid[y][x] == '0' ||
-					map->grid[y][x] == 'N' ||
-					map->grid[y][x] == 'S' ||
-					map->grid[y][x] == 'E' ||
-					map->grid[y][x] == 'W')
+				if (map->grid[y][x] == '0' || map->grid[y][x] == 'N'
+					|| map->grid[y][x] == 'S' || map->grid[y][x] == 'E'
+					|| map->grid[y][x] == 'W')
 					return (0);
 			}
 			x++;
 		}
 		y++;
 	}
+	return (1);
+}
+
+int	validate_map_closed(t_map *map)
+{
+	int	error;
+
+	if (!validate_map_borders(map))
+		return (0);
 	error = 0;
 	copy_grid_for_flood_fill(map);
 	if (!map->ff_grid)
@@ -119,21 +121,6 @@ int	validate_map_closed(t_map *map)
 		return (0);
 	return (1);
 }
-
-/*int	validate_map_closed(t_map *map)
-{
-	int	error;
-
-	error = 0;
-	copy_grid_for_flood_fill(map);
-	if (!map->ff_grid)
-		return (0);
-	flood_fill(map, map->p_x, map->p_y, &error);
-	free_ff_grid(map);
-	if (error)
-		return (0);
-	return (1);
-}*/
 
 /*
 .void	copy_grid_for_flood_fill(t_map *map):

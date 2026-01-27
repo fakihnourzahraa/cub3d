@@ -1,0 +1,13 @@
+NO ./txt/north.xpm
+SO ./txt/south.xpm
+WE ./txt/west.xpm
+EA ./txt/east.xpm
+
+F 30,20,20
+C 40,0,40
+
+111111
+10N001
+111101
+1    1
+111111
