@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:14:58 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/22 16:34:49 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/27 12:24:28 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
+//start of image data + correct row + correct column
 // were just finding offset and writing the 32 bit color to it
 
 int	get_texture_color(t_img *texture, int x, int y)
@@ -92,4 +93,3 @@ void	update(t_game *game)
 }
 // we're drawing pixel by pixel into the buffer, then putting the buffer
 // that way its smoother execution
-// to do: put pixel function
