@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:44:03 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/23 16:36:35 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:28:02 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-static int	is_player(char c)
+int	is_player(char c)
 {
 	return (c == 'N' || c == 'S'
 		|| c == 'E' || c == 'W');
@@ -35,7 +35,7 @@ int	find_player(t_map *map, int *count)
 				map->p = map->grid[y][x];
 				map->p_x = x;
 				map->p_y = y;
-				map->grid[y][x] = '0'; 
+				map->grid[y][x] = '0';
 				(*count)++;
 			}
 			x++;
@@ -43,4 +43,18 @@ int	find_player(t_map *map, int *count)
 		y++;
 	}
 	return (0);
+}
+
+int	validate_texture_path(char *path)
+{
+	int	len;
+
+	if (!path)
+		return (0);
+	len = ft_strlen(path);
+	if (len < 5)
+		return (0);
+	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+		return (0);
+	return (1);
 }

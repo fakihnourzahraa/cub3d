@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_help.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 22:24:45 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/26 22:24:45 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:33:50 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int 	count_map_lines(char **lines, int start)
+int	count_map_lines(char **lines, int start)
 {
 	int	i;
 	int	count;
@@ -22,14 +22,14 @@ int 	count_map_lines(char **lines, int start)
 	while (lines[i])
 	{
 		if (is_empty_line(lines[i]))
-			break;
+			break ;
 		count++;
 		i++;
 	}
 	return (count);
 }
 
-char **extract_map_lines(char **lines, int start, int count)
+char	**extract_map_lines(char **lines, int start, int count)
 {
 	char	**map;
 	char	*temp;

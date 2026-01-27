@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   combine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:54:23 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/23 16:57:20 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:34:50 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-static int	validate_file(char *filename)
-{
-	if (!validate_file_extension(filename))
-		return (print_error("Invalid file extension (must be .cub)"));
-	if (!validate_file_access(filename))
-		return (print_error("Cannot access file"));
-	return (1);
-}
-
-static char	**load_file_lines(char *filename)
-{
-	char	**lines;
-
-	lines = read_entire_file(filename);
-	if (!lines)
-		print_error("Failed to read file");
-	return (lines);
-}
-
-static int	parse_file_content(char **lines, t_game *game)
+int	parse_file_content(char **lines, t_game *game)
 {
 	if (!parse_textures(lines, game))
 		return (0);
@@ -42,7 +23,7 @@ static int	parse_file_content(char **lines, t_game *game)
 	return (1);
 }
 
-static int	validate_parsed_map(t_map *map)
+int	validate_parsed_map(t_map *map)
 {
 	if (validate_player(map))
 		return (0);
@@ -51,7 +32,7 @@ static int	validate_parsed_map(t_map *map)
 	return (1);
 }
 
-static int	has_config_after_map(char **lines, int map_start)
+int	has_config_after_map(char **lines, int map_start)
 {
 	int		i;
 
@@ -62,11 +43,10 @@ static int	has_config_after_map(char **lines, int map_start)
 		i++;
 	if (lines[i])
 		return (1);
-	
 	return (0);
 }
 
-static int	validate_file_order(char **lines)
+int	validate_file_order(char **lines)
 {
 	int	map_start;
 
@@ -91,7 +71,6 @@ int	complete_parse(char *filename, t_game *game)
 		free_string_array(lines);
 		return (0);
 	}
-	
 	success = parse_file_content(lines, game);
 	free_string_array(lines);
 	if (!success)
@@ -125,8 +104,7 @@ complete_parse()
     5. validate_parsed_map()     Validate player & walls
     Return success/failure*/
 
-
-/*static int	has_config_after_map(char **lines, int map_start)
+/*int	has_config_after_map(char **lines, int map_start)
 {
 	int		i;
 	char	*trimmed;

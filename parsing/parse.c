@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 23:34:15 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/24 12:01:37 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:31:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,37 +55,41 @@ int	parse_cub_file(char *filename, t_game *game)
 	return (1);
 }
 
-char **fill_lines(int fd, int lines_count)
+char	**fill_lines(int fd, int lines_count)
 {
-    char	**lines;
-    char	*line;
-    int		i;
+	char	**lines;
+	char	*line;
+	int		i;
 
-    lines = malloc(sizeof(char *) * (lines_count + 1));
-    if (!lines)
-        return (NULL);
-    i = 0;
-    while ((line = get_next_line(fd)) != NULL)
-        lines[i++] = line;
-    lines[i] = NULL;
-    return (lines);
+	lines = malloc(sizeof(char *) * (lines_count + 1));
+	if (!lines)
+		return (NULL);
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		lines[i++] = line;
+		line = get_next_line(fd);
+	}
+	lines[i] = NULL;
+	return (lines);
 }
 
-char **read_entire_file(char *filename)
+char	**read_entire_file(char *filename)
 {
-    int fd;
-    int lines_count;
-    char **lines;
+	int		fd;
+	int		lines_count;
+	char	**lines;
 
-    lines_count = count_file_lines(filename);
-    if (lines_count <= 0)
-        return (NULL);
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        return (NULL);
-    lines = fill_lines(fd, lines_count);
-    close(fd);
-    return (lines);
+	lines_count = count_file_lines(filename);
+	if (lines_count <= 0)
+		return (NULL);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	lines = fill_lines(fd, lines_count);
+	close(fd);
+	return (lines);
 }
 
 /*int parse_cub_file(char *filename, t_game *game): 

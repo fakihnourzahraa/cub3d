@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fills.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:44:31 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/04 09:44:31 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:40:35 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,14 @@ int	validate_map_closed(t_map *map)
 		x = 0;
 		while (map->grid[y][x])
 		{
-			if (y == 0 || y == map->height - 1 || 
-			    x == 0 || x == (int)ft_strlen(map->grid[y]) - 1)
+			if (y == 0 || y == map->height - 1
+				|| x == 0 || x == (int)ft_strlen(map->grid[y]) - 1)
 			{
-				if (map->grid[y][x] == '0' || 
-				    map->grid[y][x] == 'N' || 
-				    map->grid[y][x] == 'S' || 
-				    map->grid[y][x] == 'E' || 
-				    map->grid[y][x] == 'W')
+				if (map->grid[y][x] == '0' ||
+					map->grid[y][x] == 'N' ||
+					map->grid[y][x] == 'S' ||
+					map->grid[y][x] == 'E' ||
+					map->grid[y][x] == 'W')
 					return (0);
 			}
 			x++;
@@ -141,7 +141,6 @@ create a copy for map  and see who which cell
 is visited ,awal shi btkun m3btun klun 0 yani manu visited abl
 .void	flood_fill(t_map *map, int x, int y, int *error):
 */
-
 
 /*flood fill is algo that test if map is valid or not,
 there is many cas when map is not vlaid:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 00:47:22 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/31 00:47:22 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:28:40 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	get_map_width(char **map)
 		i++;
 	}
 	return (max);
-
 }
 
 int	is_map_char(char c)
@@ -39,8 +38,8 @@ int	is_map_char(char c)
 		return (1);
 	if (c == ' ')
 		return (1);
-	 if (c == '\n' || c == '\r')
-        return (1);
+	if (c == '\n' || c == '\r')
+		return (1);
 	return (0);
 }
 

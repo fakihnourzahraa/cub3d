@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/24 12:38:30 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:54:32 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,27 +90,24 @@ t_img	*load_texture(void *mlx, char *path)
 	return (1);
 }
 */
-int load_wall_textures(t_game *game)
+
+int	load_wall_textures(t_game *game)
 {
-    game->textures->north = load_texture(game->mlx, 
-                                         game->textures->north_path);
-    if (!game->textures->north)
-        return (0);
-
-    game->textures->south = load_texture(game->mlx, 
-                                         game->textures->south_path);
-    if (!game->textures->south)
-        return (0);
-
-    game->textures->east = load_texture(game->mlx, 
-                                        game->textures->east_path);
-    if (!game->textures->east)
-        return (0);
-
-    game->textures->west = load_texture(game->mlx, 
-                                        game->textures->west_path);
-    if (!game->textures->west)
-        return (0);
-
-    return (1);
+	game->textures->north = load_texture(game->mlx,
+			game->textures->north_path);
+	if (!game->textures->north)
+		return (0);
+	game->textures->south = load_texture(game->mlx,
+			game->textures->south_path);
+	if (!game->textures->south)
+		return (0);
+	game->textures->east = load_texture(game->mlx,
+			game->textures->east_path);
+	if (!game->textures->east)
+		return (0);
+	game->textures->west = load_texture(game->mlx,
+			game->textures->west_path);
+	if (!game->textures->west)
+		return (0);
+	return (1);
 }

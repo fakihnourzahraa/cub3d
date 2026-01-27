@@ -3,12 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 11:56:04 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/29 11:56:04 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:24:24 by nour             ###   ########.fr       */
 /*                                                                            */
-/* ***********.*************************************************************** */
+/* ************************************************************************** */
 
 #include "../cub3D.h"
 
@@ -69,7 +69,7 @@ int	parse_one_color(char *line, int *dest, char *id)
 	if (!parse_rgb_values(rgb_str, &r, &g, &b))
 	{
 		free(rgb_str);
-		return(0);
+		return (0);
 	}
 	*dest = rgb_to_int(r, g, b);
 	free(rgb_str);
@@ -79,6 +79,7 @@ int	parse_one_color(char *line, int *dest, char *id)
 static int	process_color_line(char *line, t_game *game)
 {
 	char	*trimmed;
+
 	(void)line;
 	trimmed = skip_whitespace(line);
 	if (starts_with(trimmed, "F "))

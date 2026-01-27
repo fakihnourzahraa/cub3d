@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+         #
+#    By: nour <nour@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 17:23:49 by nfakih            #+#    #+#              #
-#    Updated: 2026/01/24 12:40:18 by miwehbe          ###   ########.fr        #
+#    Updated: 2026/01/27 10:38:30 by nour             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = main.c raycasting/moves.c raycasting/calculations.c mlx.c\
  parsing/parse_color.c parsing/parse_map.c parsing/map_utils.c \
  parsing/validate_map.c parsing/flood_fills.c parsing/combine.c\
  parsing/map_help.c raycasting/drawing_single.c\
+ parsing/combine2.c\
 
 OBJ	= $(SRC:.c=.o)
 

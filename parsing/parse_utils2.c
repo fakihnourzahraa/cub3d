@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 22:33:12 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/27 22:33:12 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:23:35 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	validate_player_count(int count)
 	if (count == 0)
 	{
 		print_error("Error: No player found");
-		return (1); 
+		return (1);
 	}
 	if (count > 1)
 	{

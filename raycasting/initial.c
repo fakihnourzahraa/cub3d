@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/26 20:51:49 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/27 10:41:33 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	start_player(t_game *game)
 		vertical(map, player);
 }
 
-
 t_game	*init_game_struct(void)
 {
 	t_game	*game;
@@ -74,7 +73,7 @@ t_game	*init_game_struct(void)
 	game->mlx = NULL;
 	game->win = NULL;
 	if (!game)
-        return (NULL);
+		return (NULL);
 	game->player = init_player();
 	game->textures = init_textures();
 	game->screen_width = 1280;

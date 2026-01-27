@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 00:02:39 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/28 00:02:39 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/27 10:28:11 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ char	*extract_texture_path(char *line)
 	while (line[i] == ' ')
 		i++;
 	return (ft_strtrim(line + i, " \t\n\r"));
-}
-
-int	validate_texture_path(char *path)
-{
-	int	len;
-
-	if (!path)
-		return (0);
-	len = ft_strlen(path);
-	if (len < 5)
-		return (0);
-	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
-		return (0);
-	return (1);
 }
 
 int	check_duplicate_texture(char *existing, char *id)
@@ -67,6 +53,7 @@ int	parse_texture_line(char *line, char **dest, char *id)
 static int	process_texture_line(char *line, t_game *game)
 {
 	char	*trimmed;
+
 	(void)line;
 	trimmed = skip_whitespace(line);
 	if (starts_with(trimmed, "NO "))
