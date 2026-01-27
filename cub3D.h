@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 10:48:57 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/27 11:15:25 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ typedef struct s_game
 }				t_game;
 //includes player, map, textures (includes details), img
 
-int			create_rgb(int r, int g, int b);
 char		*skip_whitespace(char *str);
 t_game		*init_game_struct(void);
 void		move_left(t_game *game);
