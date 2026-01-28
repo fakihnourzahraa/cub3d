@@ -28,7 +28,7 @@ int	check_collision(t_game *g, double new_x, double new_y)
 {
 	double b;
 
-	b = 0.25;
+	b = 0.38;
 	if (colliding(g, new_x - b, new_y - b))
 		return (1);
 	if (colliding(g, new_x + b, new_y - b))

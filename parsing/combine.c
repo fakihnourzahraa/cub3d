@@ -86,3 +86,12 @@ complete_parse()
     4. free_string_array()       Clean up lines
     5. validate_parsed_map()     Validate player & walls
     Return success/failure*/
+
+/*
+while (lines[i] && !is_empty_line(lines[i]))
+		i++;//Skip all map lines
+	if (lines[i])
+		return (1);If after the map there is still a line
+		 that is not empty, it means there is extra content 
+		 after the map, which is forbidden
+*/
