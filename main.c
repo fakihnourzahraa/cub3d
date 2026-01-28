@@ -25,6 +25,8 @@ void	init_game(t_game *game)
 		free_game(game);
 		exit(1);
 	}
+	mlx_get_screen_size(game->mlx, &game->screen_width, &game->screen_height);
+	game->img = init_image(game);
 	game->win = mlx_new_window(game->mlx, game->screen_width,
 			game->screen_height, "cub3d");
 	game->img->img = mlx_new_image(game->mlx, game->screen_width,

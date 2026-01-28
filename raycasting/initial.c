@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:37:06 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 10:41:33 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/28 17:54:21 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ t_game	*init_game_struct(void)
 		game->keys[i] = 0;
 		i++;
 	}
-	game->img = init_image(game);
 	return (game);
 }
 // valgrind:
