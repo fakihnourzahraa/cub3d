@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:12:07 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/29 11:30:17 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 11:55:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_collision(t_game *g, double new_x, double new_y)
 {
 	double b;
 
-	b = 0.38;
+	b = 0.15;
 	if (colliding(g, new_x - b, new_y - b))
 		return (1);
 	if (colliding(g, new_x + b, new_y - b))
