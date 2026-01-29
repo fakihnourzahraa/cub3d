@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:08:19 by nour              #+#    #+#             */
-/*   Updated: 2025/12/27 16:23:49 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/30 00:14:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	calc_to_draw(t_ray *ray)
 		ray->draw_start = 0;
 	ray->draw_end = (ray->line_height / 2) + game->screen_height / 2;
 	if (ray->draw_end >= game->screen_height)
-		ray->draw_end = game->screen_height;
+		ray->draw_end = game->screen_height - 1;
 }
 // line height: the lower the distance the higher the wall (perspective)
 // draw start: the center of the screen - the offset
-//  = 0 so it wont start off screen
+//  = 0 so it wont start off screen and -1 so gun shows
