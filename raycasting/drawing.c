@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:14:58 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 12:24:28 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:45:24 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,27 @@ void	draw_line(t_ray *ray, int x)
 	draw_floor(game, x, ray->draw_end);
 }
 
-void	update(t_game *game)
+void	draw_gun(t_game *game, t_img *gun_texture)
 {
-	int		i;
-	t_ray	*ray;
+	int					x;
+	int					y;
+	int					start_x;
+	int					start_y;
+	unsigned int		color;
 
-	i = 0;
-	while (i < game->screen_width)
+	start_x = (game->screen_width - gun_texture->width) / 2;
+	start_y = game->screen_height - gun_texture->height;
+	y = 0;
+	while (y < gun_texture->height)
 	{
-		ray = init_ray(game);
-		init_for_col(ray, i);
-		dda(ray, game);
-		calc_to_draw(ray);
-		draw_line(ray, i);
-		i++;
-		free(ray->calc);
-		free(ray);
+		x = 0;
+		while (x < gun_texture->width)
+		{
+			color = get_texture_color(gun_texture, x, y);
+			if (color != 0xFF000000)
+				put_pixel(game->img, start_x + x, start_y + y, color);
+			x++;
+		}
+		y++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }
-// we're drawing pixel by pixel into the buffer, then putting the buffer
-// that way its smoother execution

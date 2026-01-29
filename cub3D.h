@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/29 11:26:54 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:46:22 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,9 @@ int			validate_player(t_map *map);
 int			complete_parse(char *filename, t_game *game);
 int			validate_file(char *filename);
 char		**load_file_lines(char *filename);
+t_img		*load_texture(void *mlx, char *path);
+int			check_collision(t_game *g, double new_x, double new_y);
+void		draw_line(t_ray *ray, int x);
+void		draw_gun(t_game *game, t_img *gun_texture);
 
 #endif

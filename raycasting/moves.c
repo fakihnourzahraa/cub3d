@@ -6,39 +6,11 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:12:07 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/29 14:34:42 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:42:34 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-int	colliding(t_game *g, double x, double y)
-{
-	int	map_x;
-	int	map_y;
-
-	map_x = (int)x;
-	map_y = (int)y;
-	if (g->map->grid[map_y][map_x] == '1')
-		return (1);
-	return (0);
-}
-
-int	check_collision(t_game *g, double new_x, double new_y)
-{
-	double b;
-
-	b = 0.075;
-	if (colliding(g, new_x - b, new_y - b))
-		return (1);
-	if (colliding(g, new_x + b, new_y - b))
-		return (1);
-	if (colliding(g, new_x - b, new_y + b))
-		return (1);
-	if (colliding(g, new_x + b, new_y + b))
-		return (1);
-	return (0);
-}
 
 void	move_left(t_game *g, bool glide)
 {
@@ -119,3 +91,26 @@ void	move_down(t_game *g, bool glide)
 	else if (!glide)
 		move_left(g, true);
 }
+
+void	update(t_game *game)
+{
+	int		i;
+	t_ray	*ray;
+
+	i = 0;
+	while (i < game->screen_width)
+	{
+		ray = init_ray(game);
+		init_for_col(ray, i);
+		dda(ray, game);
+		calc_to_draw(ray);
+		draw_line(ray, i);
+		i++;
+		free(ray->calc);
+		free(ray);
+	}
+	draw_gun(game, game->textures->gun);
+	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
+}
+// we're drawing pixel by pixel into the buffer, then putting the buffer
+// that way its smoother execution

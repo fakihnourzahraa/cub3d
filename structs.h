@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 12:20:37 by nour              #+#    #+#             */
-/*   Updated: 2026/01/27 12:26:25 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:03:46 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ typedef struct s_textures
 	t_img		*south;
 	t_img		*west;
 	t_img		*east;
+	t_img		*gun;
+	char		*gun_path;
 	char		*north_path;
 	char		*south_path;
 	char		*west_path;

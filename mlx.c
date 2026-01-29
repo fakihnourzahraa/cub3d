@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/29 15:47:14 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:11:38 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ int	load_wall_textures(t_game *game)
 	game->textures->west = load_texture(game->mlx,
 			game->textures->west_path);
 	if (!game->textures->west)
+		return (0);
+	game->textures->gun = load_texture(game->mlx, "./txt/gun.xpm");
+	if (!game->textures->gun)
 		return (0);
 	return (1);
 }

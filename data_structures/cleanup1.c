@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:57:13 by nour              #+#    #+#             */
-/*   Updated: 2026/01/29 19:01:18 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 20:23:28 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_textures_struct(void *mlx, t_textures *tex)
 	free_texture_img(mlx, tex->south);
 	free_texture_img(mlx, tex->west);
 	free_texture_img(mlx, tex->east);
+	free_texture_img(mlx, tex->gun);
 	if (tex->north_path)
 		free(tex->north_path);
 	if (tex->south_path)
