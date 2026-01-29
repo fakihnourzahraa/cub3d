@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:40:17 by nfakih            #+#    #+#             */
-/*   Updated: 2025/12/27 16:25:15 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/30 00:16:30 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ double	wall_hit(t_ray *ray, t_game *game)
 // map_x - pos_x how far the wall is
 // 1-step_x /2 offset correction
 // ray dir x makes it perpendicular
-// to do: calculate step x step side dist x and side dist y before loop
 
 double	dda(t_ray *ray, t_game *game)
 {

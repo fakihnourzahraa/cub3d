@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 12:20:37 by nour              #+#    #+#             */
-/*   Updated: 2026/01/29 20:03:46 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/30 00:16:20 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ perpendicular to direction vector and are the camera planes
 plane distance is used to avoid the fish eye/curved look and maintain
 the straight line look
 */
-//to do: how the length and angle stay the same rotation matrix math
 
 typedef struct s_calc
 {
