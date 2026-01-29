@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 00:47:08 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/31 00:47:08 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/29 19:31:16 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	**get_validated_map(char **lines, int *map_start, int *map_height)
 
 static int	init_map_struct(t_game *game, char **map_grid, int map_height)
 {
-	game->map = malloc(sizeof(t_map));
+	game->map = init_map();
 	if (!game->map)
 	{
 		free_string_array(map_grid);
