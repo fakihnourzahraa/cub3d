@@ -6,13 +6,13 @@ _This project has been created as part of the 42 curriculum by nfakih and miwehb
 
 A 3D graphical representation of a maze from a first-person perspective, inspired by Wolfenstein.
 
-- **Raycasting Engine**: Full DDA (Digital Differential Analysis) algorithm implementation
-- **Textured Walls**: Different textures for each cardinal direction (North, South, East, West)
-- **Player Movement**: Smooth WASD movement with arrow key rotation
-- **Collision Detection**: Prevents walking through walls
-- **Custom Maps**: Parse and validate `.cub` map files
-- **RGB Colors**: Customizable floor and ceiling colors
-- **Error Handling**: Comprehensive validation and clean error messages
+- Raycasting Engine: Full DDA (Digital Differential Analysis) algorithm implementation
+- Textured Walls: Different textures for each direction (North, South, East, West)
+- Player Movement: Smooth WASD movement with arrow key rotation
+- Collision Detection: Prevents walking through walls
+- Custom Maps: Parse and validate `.cub` map files
+- RGB Colors: Customizable floor and ceiling colors
+- Error Handling: Comprehensive validation and clean error messages
 
 # Instructions
 
@@ -33,7 +33,6 @@ D - Move right
 ← - Rotate left
 → - Rotate right
 ESC / x button - Exit program
-
 
 # Goals
 - Read a 2D map from a .cub file (parsing and validation)
@@ -132,9 +131,10 @@ line_height = (int)(screen_height / perp_wall_dist)
 - https://www.youtube.com/watch?v=ldqAmkdthHY
 - https://devabdilah.medium.com/3d-ray-casting-game-with-cub3d-7a116376056a
 
-# Execution 
+# Raycasting 
 - https://lodev.org/cgtutor/raycasting.html
 - https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
+- https://www.youtube.com/watch?v=NbSee-XM7WA
 
 # AI Usage
 - Understanding raycasting at a more tecnical level
