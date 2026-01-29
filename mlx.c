@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:35:25 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 10:54:32 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 11:27:03 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	key_loop(t_game *game)
 
 	keys = game->keys;
 	if (keys[97])
-		move_left(game);
+		move_left(game, false);
 	else if (keys[100])
-		move_right(game);
+		move_right(game, false);
 	else if (keys[119])
-		move_up(game);
+		move_up(game, false);
 	else if (keys[115])
-		move_down(game);
+		move_down(game, false);
 	return (0);
 }
 

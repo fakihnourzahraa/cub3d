@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 18:12:07 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 13:12:32 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 11:30:17 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_collision(t_game *g, double new_x, double new_y)
 	return (0);
 }
 
-void	move_left(t_game *g)
+void	move_left(t_game *g, bool glide)
 {
 	char	t;
 	double	x;
@@ -55,9 +55,13 @@ void	move_left(t_game *g)
 		g->player->y = y;
 		update(g);
 	}
+	else if (!glide)
+	{
+		move_up(g, true);
+	}
 }
 
-void	move_right(t_game *g)
+void	move_right(t_game *g, bool glide)
 {
 	char	t;
 	double	x;
@@ -72,9 +76,13 @@ void	move_right(t_game *g)
 		g->player->y = y;
 		update(g);
 	}
+	else if (!glide)
+	{
+		move_up(g, true);
+	}
 }
 
-void	move_up(t_game *g)
+void	move_up(t_game *g, bool glide)
 {
 	char	t;
 	double	x;
@@ -89,9 +97,11 @@ void	move_up(t_game *g)
 		g->player->y = y;
 		update(g);
 	}
+	else if (!glide)
+		move_right(g, true);
 }
 
-void	move_down(t_game *g)
+void	move_down(t_game *g, bool glide)
 {
 	char	t;
 	double	x;
@@ -106,4 +116,6 @@ void	move_down(t_game *g)
 		g->player->y = y;
 		update(g);
 	}
+	else if (!glide)
+		move_left(g, true);
 }

@@ -6,7 +6,7 @@
 /*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 00:00:00 by nfakih            #+#    #+#             */
-/*   Updated: 2026/01/27 11:23:50 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/29 11:26:54 by nour             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 # include "get_next_line/get_next_line_bonus.h"
 # include "Libft/libft.h"
 # include "structs.h"
+# include "stdbool.h"
 
 char		*skip_whitespace(char *str);
 t_game		*init_game_struct(void);
-void		move_left(t_game *game);
-void		move_right(t_game *game);
-void		move_up(t_game *game);
-void		move_down(t_game *game);
+void		move_left(t_game *game, bool glide);
+void		move_right(t_game *game, bool glide);
+void		move_up(t_game *game, bool glide);
+void		move_down(t_game *game, bool glide);
 void		free_game(t_game *game);
 void		free_map(t_map *map);
 double		dda(t_ray *ray, t_game *game);
@@ -50,10 +51,6 @@ t_player	*init_player(void);
 t_map		*init_map(void);
 void		error_message(void);
 void		free_game(t_game *game);
-void		move_up(t_game *game);
-void		move_down(t_game *game);
-void		move_left(t_game *game);
-void		move_right(t_game *game);
 void		rotate_left(t_game *game);
 void		rotate_right(t_game *game);
 int			keys(int code, void *p);
