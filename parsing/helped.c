@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helped.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miwehbe <miwehbe@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 23:10:58 by miwehbe           #+#    #+#             */
-/*   Updated: 2025/12/27 23:10:58 by miwehbe          ###   ########.fr       */
+/*   Updated: 2026/01/30 09:24:53 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,9 @@ void	free_ff_grid(t_map *map)
 	}
 	free(map->ff_grid);
 	map->ff_grid = NULL;
+}
+
+int	is_walkable(char c)
+{
+	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }

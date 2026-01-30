@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fills.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: miwehbe <miwehbe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:44:31 by miwehbe           #+#    #+#             */
-/*   Updated: 2026/01/27 12:40:27 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/30 09:25:01 by miwehbe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,16 @@ static int	validate_map_borders(t_map *map)
 	while (y < map->height)
 	{
 		x = 0;
-		while (map->grid[y][x])
+		while (x < map->width)
 		{
-			if (y == 0 || y == map->height - 1
-				|| x == 0 || x == (int)ft_strlen(map->grid[y]) - 1)
+			if (is_walkable(map->grid[y][x]))
 			{
-				if (map->grid[y][x] == '0' || map->grid[y][x] == 'N'
-					|| map->grid[y][x] == 'S' || map->grid[y][x] == 'E'
-					|| map->grid[y][x] == 'W')
+				if (y == 0 || y == map->height - 1
+					|| x == 0 || x == map->width - 1)
+					return (0);
+				if (x + 1 < map->width && map->grid[y][x + 1] == ' ')
+					return (0);
+				if (y + 1 < map->height && map->grid[y + 1][x] == ' ')
 					return (0);
 			}
 			x++;
