@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nour <nour@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nfakih <nfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 18:51:55 by nour              #+#    #+#             */
-/*   Updated: 2026/01/29 19:25:33 by nour             ###   ########.fr       */
+/*   Updated: 2026/01/30 09:45:30 by nfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_textures	*init_textures(void)
 	text->south = NULL;
 	text->west = NULL;
 	text->east = NULL;
+	text->gun = NULL;
 	text->north_path = NULL;
 	text->south_path = NULL;
 	text->west_path = NULL;
